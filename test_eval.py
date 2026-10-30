@@ -282,3 +282,55 @@ def test_b0_declined_counted(monkeypatch, tmp_path):
     out = load_result(tmp_path)
     assert out["runs"][0]["metrics"]["b0_declined"] == 2
     assert "无法确定" in out["runs"][0]["items"][0]["declined"]["hits"]
+
+
+# ---------------------------------------------------------------------------
+# 禁用词记录与 failures.md
+# ---------------------------------------------------------------------------
+
+def test_forbidden_hits_recorded_and_listed_in_failures(monkeypatch, tmp_path):
+    monkeypatch.setattr(run_eval, "load_items", lambda *a: [item(
+        id="A98", input="庆熙大学经营大学院一般硕士第一次的报名截止日期是哪天？",
+        expected_path=["router", "requirement_retriever", "verify"],
+        gold={"must_contain": [], "must_not_contain": ["庆熙", "首尔大学"], "per_school": {}})])
+    assert run_eval.main(["--config", "full"]) == 0
+    rec = load_result(tmp_path)["runs"][0]["items"][0]
+    assert rec["forbidden_hits"] == ["庆熙"]
+
+    assert run_eval.main(["--report"]) == 0
+    failures = (tmp_path / "results" / "failures.md").read_text(encoding="utf-8")
+    assert "初步分类，需要人工确认" in failures
+    section = failures[failures.index("## 触发禁用词的题"):]
+    assert "full · A98" in section and "触发的禁用词：庆熙" in section
+    assert (tmp_path / "results" / "manual_review.md").exists()
+
+
+def test_report_without_failures(monkeypatch, tmp_path):
+    assert run_eval.main(["--config", "full", "--limit", "1"]) == 0
+    assert run_eval.main(["--report"]) == 0
+    failures = (tmp_path / "results" / "failures.md").read_text(encoding="utf-8")
+    assert "无失败题目" in failures and failures.rstrip().endswith("无。")
+
+
+def test_classify_route_and_retrieval():
+    base = {"id": "A01", "error": None, "contains": {"missing_groups": [], "forbidden_hits": []},
+            "expected_paths": [["router", "requirement_retriever", "verify"]]}
+    verify_fail = {**base, "route": {"ok": False}, "path": ["router", "requirement_retriever", "verify", "fallback"],
+                   "trace": ["verify", "verify:llm_unsupported_claims(1)"]}
+    assert run_eval.classify(verify_fail) == ["verify 误判"]
+    routed = {**base, "route": {"ok": False}, "path": ["router", "fallback"], "trace": []}
+    assert run_eval.classify(routed) == ["路由错误"]
+    missing = {**base, "route": {"ok": True}, "path": [], "trace": [],
+               "contains": {"missing_groups": [["已截止"]], "forbidden_hits": []}}
+    assert run_eval.classify(missing) == ["检索遗漏"]
+
+
+def test_classify_clarify_without_profile_and_b0():
+    base = {"id": "G02", "error": None, "contains": {"missing_groups": [], "forbidden_hits": []},
+            "expected_paths": [["router"]], "trace": []}
+    assert run_eval.classify({**base, "route": {"ok": False}, "path": ["router", "clarify"]}) == ["路由错误"]
+    profile = {**base, "route": {"ok": False}, "path": ["router", "profile_extractor", "clarify"]}
+    assert run_eval.classify(profile) == ["画像抽取错误"]
+    b0 = {**base, "id": "A01", "route": {"ok": None}, "path": None,
+          "contains": {"missing_groups": [["已截止"]], "forbidden_hits": []}}
+    assert run_eval.classify(b0) == ["其他"]

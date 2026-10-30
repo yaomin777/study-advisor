@@ -1,0 +1,5246 @@
+{
+ "config": "no_verify",
+ "model": "claude-haiku-5-5",
+ "eval_date": "2026-10-30",
+ "args": {
+  "config": "no_verify",
+  "repeat": 3,
+  "limit": null,
+  "include_unchecked": false,
+  "report": false
+ },
+ "item_ids": [
+  "A01",
+  "A02",
+  "A03",
+  "A04",
+  "A05",
+  "A06",
+  "A07",
+  "A08",
+  "A09",
+  "A10",
+  "B01",
+  "B02",
+  "B03",
+  "B04",
+  "B05",
+  "B06",
+  "B07",
+  "C01",
+  "C02",
+  "C03",
+  "D01",
+  "D02",
+  "D03",
+  "E01",
+  "E02",
+  "E03",
+  "E04",
+  "F01",
+  "F02",
+  "F03",
+  "F04",
+  "F05",
+  "G01",
+  "G02"
+ ],
+ "average": {
+  "routing_accuracy": 0.9411764705882352,
+  "fact_accuracy": 1.0,
+  "hallucination_rate": 0.0,
+  "hallucination_rate_F": 0.0,
+  "fit_accuracy": 1.0,
+  "fit_auto_checked": 15.0,
+  "fit_manual_pending": 1.0,
+  "avg_latency_s": 2.072764705882353,
+  "avg_model_calls": 1.5,
+  "error_rate": 0.0,
+  "n_items": 34.0,
+  "supplement_answers": 7.0,
+  "supplement_removal_answers": 0.0,
+  "supplements_generated": 35.0,
+  "supplements_removed": 0.0,
+  "supplement_removal_rate": 0.0,
+  "removed_no_evidence": 0.0,
+  "removed_parse_error": 0.0,
+  "removed_other": 0.0,
+  "b0_declined": null
+ },
+ "runs": [
+  {
+   "run": 1,
+   "metrics": {
+    "routing_accuracy": 0.9705882352941176,
+    "fact_accuracy": 1.0,
+    "hallucination_rate": 0.0,
+    "hallucination_rate_F": 0.0,
+    "fit_accuracy": 1.0,
+    "fit_auto_checked": 15,
+    "fit_manual_pending": 1,
+    "avg_latency_s": 2.181,
+    "avg_model_calls": 1.5294117647058822,
+    "error_rate": 0.0,
+    "n_items": 34,
+    "supplement_answers": 7,
+    "supplement_removal_answers": 0,
+    "supplements_generated": 35,
+    "supplements_removed": 0,
+    "supplement_removal_rate": 0.0,
+    "removed_no_evidence": 0,
+    "removed_parse_error": 0,
+    "removed_other": 0,
+    "b0_declined": null
+   },
+   "manual_fit_checks": [
+    {
+     "id": "B03",
+     "school": "仁济大学",
+     "field": "major",
+     "gold": "与专业无关均可报考",
+     "actual": "未限制专业",
+     "reason": "标准判断不是四类结果之一，需人工检查"
+    }
+   ],
+   "items": [
+    {
+     "id": "A01",
+     "category": "qa",
+     "input": "庆熙大学经营大学院一般硕士第一次的报名截止日期是哪天？",
+     "eval_date": "2026-10-30",
+     "supplements": null,
+     "profile": {},
+     "error": null,
+     "latency_s": 1.442,
+     "model_calls": 1,
+     "answer": "根据检索到的资料：\n庆熙大学 经营大学院（2026学年度后期）\n  申请轮次（今天 2026-10-30）：一般硕士1次（报名 2026-04-13 起） 截止 2026-05-15，已截止（以最新简章为准）；一般硕士2次（报名 2026-05-22 起） 截止 2026-06-05，已截止（以最新简章为准）；外国人（国际班）1次（报名 2026-04-29 起） 截止 2026-05-21，已截止（以最新简章为准）\n  GMAT/GRE：资料中未提及，请以最新简章为准\n  语言：TOPIK 5级以上（仅限外国人）\n  背景要求：4年制大学毕业（预定）者，未限制专业\n  文书：官网未说明（核实日期 2026-10-29）\n  推荐信：官网未说明（核实日期 2026-10-29）\n  工作经验：报考资格中未要求工作经验\n  出处：https://khmba.khu.ac.kr/khmba_kor/user/bbs/BMSR00040/view.do?boardId=532435&menuNo=10800152（截至 2026-10-29）",
+     "trace": [
+      "router",
+      "router:llm",
+      "requirement_retriever",
+      "verify",
+      "verify:skipped"
+     ],
+     "path": [
+      "router",
+      "requirement_retriever",
+      "verify"
+     ],
+     "route": {
+      "ok": true,
+      "reason": "一致"
+     },
+     "contains": {
+      "ok": true,
+      "missing_groups": [],
+      "forbidden_hits": []
+     },
+     "forbidden_hits": [],
+     "expected_paths": [
+      [
+       "router",
+       "requirement_retriever",
+       "verify"
+      ]
+     ],
+     "fact_ok": true
+    },
+    {
+     "id": "A02",
+     "category": "qa",
+     "input": "庆熙大学外国人（国际班）第一次的报名截止日期是哪天？",
+     "eval_date": "2026-10-30",
+     "supplements": null,
+     "profile": {},
+     "error": null,
+     "latency_s": 0.886,
+     "model_calls": 1,
+     "answer": "根据检索到的资料：\n庆熙大学 经营大学院（2026学年度后期）\n  申请轮次（今天 2026-10-30）：一般硕士1次（报名 2026-04-13 起） 截止 2026-05-15，已截止（以最新简章为准）；一般硕士2次（报名 2026-05-22 起） 截止 2026-06-05，已截止（以最新简章为准）；外国人（国际班）1次（报名 2026-04-29 起） 截止 2026-05-21，已截止（以最新简章为准）\n  GMAT/GRE：资料中未提及，请以最新简章为准\n  语言：TOPIK 5级以上（仅限外国人）\n  背景要求：4年制大学毕业（预定）者，未限制专业\n  文书：官网未说明（核实日期 2026-10-29）\n  推荐信：官网未说明（核实日期 2026-10-29）\n  工作经验：报考资格中未要求工作经验\n  出处：https://khmba.khu.ac.kr/khmba_kor/user/bbs/BMSR00040/view.do?boardId=532435&menuNo=10800152（截至 2026-10-29）",
+     "trace": [
+      "router",
+      "router:llm",
+      "requirement_retriever",
+      "verify",
+      "verify:skipped"
+     ],
+     "path": [
+      "router",
+      "requirement_retriever",
+      "verify"
+     ],
+     "route": {
+      "ok": true,
+      "reason": "一致"
+     },
+     "contains": {
+      "ok": true,
+      "missing_groups": [],
+      "forbidden_hits": []
+     },
+     "forbidden_hits": [],
+     "expected_paths": [
+      [
+       "router",
+       "requirement_retriever",
+       "verify"
+      ]
+     ],
+     "fact_ok": true
+    },
+    {
+     "id": "A03",
+     "category": "qa",
+     "input": "仁济大学经营大学院的报名截止日期是什么时候？",
+     "eval_date": "2026-10-30",
+     "supplements": null,
+     "profile": {},
+     "error": null,
+     "latency_s": 1.039,
+     "model_calls": 1,
+     "answer": "根据检索到的资料：\n仁济大学 经营大学院（2026学年度后期）\n  申请轮次（今天 2026-10-30）：报名 2026-06-22 起 截止 2026-07-17，已截止（以最新简章为准）\n  GMAT/GRE：官网未说明（核实日期 2026-10-29）（请以最新简章为准）\n  语言：官网未说明（核实日期 2026-10-29）\n  背景要求：与所修专业无关均可报考\n  文书：官网未说明（核实日期 2026-10-29）\n  推荐信：官网未说明（核实日期 2026-10-29）\n  工作经验：报考资格中未要求工作经验\n  出处：https://mba.inje.ac.kr/mba/info/notice.do?mode=download&articleNo=75480&attachNo=40633（截至 2026-10-29）",
+     "trace": [
+      "router",
+      "router:llm",
+      "requirement_retriever",
+      "verify",
+      "verify:skipped"
+     ],
+     "path": [
+      "router",
+      "requirement_retriever",
+      "verify"
+     ],
+     "route": {
+      "ok": true,
+      "reason": "一致"
+     },
+     "contains": {
+      "ok": true,
+      "missing_groups": [],
+      "forbidden_hits": []
+     },
+     "forbidden_hits": [],
+     "expected_paths": [
+      [
+       "router",
+       "requirement_retriever",
+       "verify"
+      ]
+     ],
+     "fact_ok": true
+    },
+    {
+     "id": "A04",
+     "category": "qa",
+     "input": "国民大学经营大学院2027学年度前期什么时候截止报名？",
+     "eval_date": "2026-10-30",
+     "supplements": null,
+     "profile": {},
+     "error": null,
+     "latency_s": 2.114,
+     "model_calls": 1,
+     "answer": "根据检索到的资料：\n国民大学 经营大学院（2027学年度前期）\n  申请轮次（今天 2026-10-30）：2027学年度前期（报名 2026-10-19 起，17:00 截止） 截止 2026-11-13，未截止（距截止 14 天）\n  GMAT/GRE：官网未说明（核实日期 2026-10-29）（请以最新简章为准）\n  语言：官网未说明（核实日期 2026-10-29）\n  背景要求：学士学位取得（预定）者及依法令认定具备同等资格者，未限制专业\n  文书：官网未说明（核实日期 2026-10-29）\n  推荐信：官网未说明（核实日期 2026-10-29）\n  工作经验：报考资格中未要求工作经验\n  出处：https://mba.kookmin.ac.kr/mba/main/notice.do?mode=view&articleNo=5940485（截至 2026-10-29）",
+     "trace": [
+      "router",
+      "router:llm",
+      "requirement_retriever",
+      "verify",
+      "verify:skipped"
+     ],
+     "path": [
+      "router",
+      "requirement_retriever",
+      "verify"
+     ],
+     "route": {
+      "ok": true,
+      "reason": "一致"
+     },
+     "contains": {
+      "ok": true,
+      "missing_groups": [],
+      "forbidden_hits": []
+     },
+     "forbidden_hits": [],
+     "expected_paths": [
+      [
+       "router",
+       "requirement_retriever",
+       "verify"
+      ]
+     ],
+     "fact_ok": true
+    },
+    {
+     "id": "A05",
+     "category": "qa",
+     "input": "崇实大学硕士的报名截止时间是什么时候？",
+     "eval_date": "2026-10-30",
+     "supplements": null,
+     "profile": {},
+     "error": null,
+     "latency_s": 1.062,
+     "model_calls": 1,
+     "answer": "根据检索到的资料：\n崇实大学 一般大学院·硕士（2027学年度前期；各学科要求不同，以所申请学科为准）\n  申请轮次（今天 2026-10-30）：2027学年度前期（报名 2026-10-06 10:00 起，16:00 截止） 截止 2026-10-16，已截止（以最新简章为准）\n  GMAT/GRE：资料中未提及，请以最新简章为准\n  语言：外国人特别录取：TOPIK 3级以上，或英语能力成绩可替代（具体分数以简章为准）；入学后毕业需 TOPIK 4级以上；部分学科对外国人另有 TOPIK 要求\n  背景要求：国内外4年制正规大学学士学位取得（预定）者，未限制本科专业；跨专业者入学后可能需修先修课或补学分\n  文书：官网未说明（博士需学业计划书）\n  推荐信：硕士不需提交（简章规定仅博士提交1封）\n  工作经验：报考资格中未要求工作经验\n  出处：https://mba.ssu.ac.kr/（截至 2026-10-29）",
+     "trace": [
+      "router",
+      "router:llm",
+      "requirement_retriever",
+      "verify",
+      "verify:skipped"
+     ],
+     "path": [
+      "router",
+      "requirement_retriever",
+      "verify"
+     ],
+     "route": {
+      "ok": true,
+      "reason": "一致"
+     },
+     "contains": {
+      "ok": true,
+      "missing_groups": [],
+      "forbidden_hits": []
+     },
+     "forbidden_hits": [],
+     "expected_paths": [
+      [
+       "router",
+       "requirement_retriever",
+       "verify"
+      ]
+     ],
+     "fact_ok": true
+    },
+    {
+     "id": "A06",
+     "category": "qa",
+     "input": "崇实大学硕士需要提交推荐信吗？",
+     "supplements": null,
+     "profile": {},
+     "error": null,
+     "latency_s": 1.393,
+     "model_calls": 1,
+     "answer": "根据检索到的资料：\n崇实大学 一般大学院·硕士（2027学年度前期；各学科要求不同，以所申请学科为准）\n  申请轮次（今天 2026-10-30）：2027学年度前期（报名 2026-10-06 10:00 起，16:00 截止） 截止 2026-10-16，已截止（以最新简章为准）\n  GMAT/GRE：资料中未提及，请以最新简章为准\n  语言：外国人特别录取：TOPIK 3级以上，或英语能力成绩可替代（具体分数以简章为准）；入学后毕业需 TOPIK 4级以上；部分学科对外国人另有 TOPIK 要求\n  背景要求：国内外4年制正规大学学士学位取得（预定）者，未限制本科专业；跨专业者入学后可能需修先修课或补学分\n  文书：官网未说明（博士需学业计划书）\n  推荐信：硕士不需提交（简章规定仅博士提交1封）\n  工作经验：报考资格中未要求工作经验\n  出处：https://mba.ssu.ac.kr/（截至 2026-10-29）",
+     "trace": [
+      "router",
+      "router:llm",
+      "requirement_retriever",
+      "verify",
+      "verify:skipped"
+     ],
+     "path": [
+      "router",
+      "requirement_retriever",
+      "verify"
+     ],
+     "route": {
+      "ok": true,
+      "reason": "一致"
+     },
+     "contains": {
+      "ok": true,
+      "missing_groups": [],
+      "forbidden_hits": []
+     },
+     "forbidden_hits": [],
+     "expected_paths": [
+      [
+       "router",
+       "requirement_retriever",
+       "verify"
+      ]
+     ],
+     "fact_ok": true
+    },
+    {
+     "id": "A07",
+     "category": "qa",
+     "input": "庆熙大学对外国人的韩语成绩有什么要求？",
+     "supplements": null,
+     "profile": {},
+     "error": null,
+     "latency_s": 0.945,
+     "model_calls": 1,
+     "answer": "根据检索到的资料：\n庆熙大学 经营大学院（2026学年度后期）\n  申请轮次（今天 2026-10-30）：一般硕士1次（报名 2026-04-13 起） 截止 2026-05-15，已截止（以最新简章为准）；一般硕士2次（报名 2026-05-22 起） 截止 2026-06-05，已截止（以最新简章为准）；外国人（国际班）1次（报名 2026-04-29 起） 截止 2026-05-21，已截止（以最新简章为准）\n  GMAT/GRE：资料中未提及，请以最新简章为准\n  语言：TOPIK 5级以上（仅限外国人）\n  背景要求：4年制大学毕业（预定）者，未限制专业\n  文书：官网未说明（核实日期 2026-10-29）\n  推荐信：官网未说明（核实日期 2026-10-29）\n  工作经验：报考资格中未要求工作经验\n  出处：https://khmba.khu.ac.kr/khmba_kor/user/bbs/BMSR00040/view.do?boardId=532435&menuNo=10800152（截至 2026-10-29）",
+     "trace": [
+      "router",
+      "router:llm",
+      "requirement_retriever",
+      "verify",
+      "verify:skipped"
+     ],
+     "path": [
+      "router",
+      "requirement_retriever",
+      "verify"
+     ],
+     "route": {
+      "ok": true,
+      "reason": "一致"
+     },
+     "contains": {
+      "ok": true,
+      "missing_groups": [],
+      "forbidden_hits": []
+     },
+     "forbidden_hits": [],
+     "expected_paths": [
+      [
+       "router",
+       "requirement_retriever",
+       "verify"
+      ]
+     ],
+     "fact_ok": true
+    },
+    {
+     "id": "A08",
+     "category": "qa",
+     "input": "崇实大学是否要求提交GMAT或GRE成绩？",
+     "supplements": null,
+     "profile": {},
+     "error": null,
+     "latency_s": 1.018,
+     "model_calls": 1,
+     "answer": "根据检索到的资料：\n- 崇实大学 一般大学院·硕士（2027学年度前期；各学科要求不同，以所申请学科为准）：GMAT/GRE 资料中未提及，请以最新简章为准（出处：https://mba.ssu.ac.kr/，截至 2026-10-29）",
+     "trace": [
+      "router",
+      "router:llm",
+      "requirement_retriever",
+      "verify",
+      "verify:skipped"
+     ],
+     "path": [
+      "router",
+      "requirement_retriever",
+      "verify"
+     ],
+     "route": {
+      "ok": true,
+      "reason": "一致"
+     },
+     "contains": {
+      "ok": true,
+      "missing_groups": [],
+      "forbidden_hits": []
+     },
+     "forbidden_hits": [],
+     "expected_paths": [
+      [
+       "router",
+       "requirement_retriever",
+       "verify"
+      ]
+     ],
+     "fact_ok": true
+    },
+    {
+     "id": "A09",
+     "category": "qa",
+     "input": "仁济大学对本科专业有限制吗？",
+     "supplements": null,
+     "profile": {},
+     "error": null,
+     "latency_s": 1.384,
+     "model_calls": 1,
+     "answer": "根据检索到的资料：\n仁济大学 经营大学院（2026学年度后期）\n  申请轮次（今天 2026-10-30）：报名 2026-06-22 起 截止 2026-07-17，已截止（以最新简章为准）\n  GMAT/GRE：官网未说明（核实日期 2026-10-29）（请以最新简章为准）\n  语言：官网未说明（核实日期 2026-10-29）\n  背景要求：与所修专业无关均可报考\n  文书：官网未说明（核实日期 2026-10-29）\n  推荐信：官网未说明（核实日期 2026-10-29）\n  工作经验：报考资格中未要求工作经验\n  出处：https://mba.inje.ac.kr/mba/info/notice.do?mode=download&articleNo=75480&attachNo=40633（截至 2026-10-29）",
+     "trace": [
+      "router",
+      "router:llm",
+      "requirement_retriever",
+      "verify",
+      "verify:skipped"
+     ],
+     "path": [
+      "router",
+      "requirement_retriever",
+      "verify"
+     ],
+     "route": {
+      "ok": true,
+      "reason": "一致"
+     },
+     "contains": {
+      "ok": true,
+      "missing_groups": [],
+      "forbidden_hits": []
+     },
+     "forbidden_hits": [],
+     "expected_paths": [
+      [
+       "router",
+       "requirement_retriever",
+       "verify"
+      ]
+     ],
+     "fact_ok": true
+    },
+    {
+     "id": "A10",
+     "category": "qa",
+     "input": "国民大学经营大学院要求申请者有工作经验吗？",
+     "supplements": null,
+     "profile": {},
+     "error": null,
+     "latency_s": 0.882,
+     "model_calls": 1,
+     "answer": "根据检索到的资料：\n- 国民大学 经营大学院（2027学年度前期）：工作经验 报考资格中未要求工作经验（出处：https://mba.kookmin.ac.kr/mba/main/notice.do?mode=view&articleNo=5940485，截至 2026-10-29）",
+     "trace": [
+      "router",
+      "router:llm",
+      "requirement_retriever",
+      "verify",
+      "verify:skipped"
+     ],
+     "path": [
+      "router",
+      "requirement_retriever",
+      "verify"
+     ],
+     "route": {
+      "ok": true,
+      "reason": "一致"
+     },
+     "contains": {
+      "ok": true,
+      "missing_groups": [],
+      "forbidden_hits": []
+     },
+     "forbidden_hits": [],
+     "expected_paths": [
+      [
+       "router",
+       "requirement_retriever",
+       "verify"
+      ]
+     ],
+     "fact_ok": true
+    },
+    {
+     "id": "B01",
+     "category": "profile",
+     "input": "我是外国留学生，TOPIK 6级，GPA 3.6/4.5，本科专业是经营学，想申请经营学硕士，请看看哪些学校符合要求。",
+     "supplements": {
+      "generated": 5,
+      "removed": 0,
+      "by_reason": {
+       "无依据": 0,
+       "解析失败": 0,
+       "其他": 0
+      }
+     },
+     "profile": {
+      "gpa": "3.6/4.5",
+      "language_score": "TOPIK 6级",
+      "major": "经营学"
+     },
+     "error": null,
+     "latency_s": 5.625,
+     "model_calls": 3,
+     "answer": "你的画像：GPA 3.6/4.5（学校记录未提供 GPA 要求，未作判断）；语言成绩 TOPIK 6级；本科专业 经营学；GMAT/GRE 未提供\n以下为各校公开要求的符合度（由系统根据学校记录判断，仅供参考，请以最新简章为准）：\n\n庆熙大学 经营大学院（2026学年度后期）\n  语言：符合（要求 TOPIK 5级以上，你的 TOPIK 6级）｜原文：TOPIK 5级以上（仅限外国人）\n  本科专业：未限制专业｜原文：4年制大学毕业（预定）者，未限制专业\n  GMAT/GRE：官网未提及\n  工作经验：报考资格中未要求工作经验\n  截止状态：一般硕士1次（报名 2026-04-13 起） 截止 2026-05-15，已截止（以最新简章为准）；一般硕士2次（报名 2026-05-22 起） 截止 2026-06-05，已截止（以最新简章为准）；外国人（国际班）1次（报名 2026-04-29 起） 截止 2026-05-21，已截止（以最新简章为准）\n  补充说明：语言要求 TOPIK 5级以上，你的 TOPIK 6级符合；本科专业未限制，GMAT/GRE 官网未提及。\n  出处：https://khmba.khu.ac.kr/khmba_kor/user/bbs/BMSR00040/view.do?boardId=532435&menuNo=10800152（数据整理日期 2026-10-29）\n\n仁济大学 经营大学院（2026学年度后期）\n  语言：官网未说明｜原文：官网未说明（核实日期 2026-10-29）\n  本科专业：未限制专业｜原文：与所修专业无关均可报考\n  GMAT/GRE：官网未说明（核实日期 2026-10-29）\n  工作经验：报考资格中未要求工作经验\n  截止状态：报名 2026-06-22 起 截止 2026-07-17，已截止（以最新简章为准）\n  补充说明：官网未说明语言及 GMAT/GRE 要求；本科专业未限制，报考资格中未要求工作经验。\n  出处：https://mba.inje.ac.kr/mba/info/notice.do?mode=download&articleNo=75480&attachNo=40633（数据整理日期 2026-10-29）\n\n成均馆大学 SKK GSB Full-Time MBA\n  语言：无法判断，以简章为准（记录未列出 TOPIK 级别要求）｜原文：TOEFL、TOEIC、TOEIC Speaking、OPIc、TEPS、IELTS 中选其一；母语为英语或在100%英语授课的大学（院）取得学位者可免\n  本科专业：未限制专业｜原文：4年制大学毕业以上（学士）或同等学历者，未限制专业\n  GMAT/GRE：选择性提交（GMAT或GRE成绩单），提交优秀成绩者在书面评审中加分\n  工作经验：报考资格中未要求工作经验\n  截止状态：报名 2026-10-01 起（入学学期以官网为准） 截止 2026-11-06，未截止（距截止 7 天）\n  补充说明：语言需 TOEFL、TOEIC、IELTS 等成绩之一，你的记录仅有 TOPIK，无法对照判断；GMAT/GRE 为选择性提交。\n  出处：https://gsb.skku.edu/gsb/Full-time_MBA/Admissions.do（数据整理日期 2026-10-29）\n\n国民大学 经营大学院（2027学年度前期）\n  语言：官网未说明｜原文：官网未说明（核实日期 2026-10-29）\n  本科专业：未限制专业｜原文：学士学位取得（预定）者及依法令认定具备同等资格者，未限制专业\n  GMAT/GRE：官网未说明（核实日期 2026-10-29）\n  工作经验：报考资格中未要求工作经验\n  截止状态：2027学年度前期（报名 2026-10-19 起，17:00 截止） 截止 2026-11-13，未截止（距截止 14 天）\n  补充说明：官网未说明语言及 GMAT/GRE 要求；学士学位取得者未限制专业，报考资格中未要求工作经验。\n  出处：https://mba.kookmin.ac.kr/mba/main/notice.do?mode=view&articleNo=5940485（数据整理日期 2026-10-29）\n\n崇实大学 一般大学院·硕士（2027学年度前期；各学科要求不同，以所申请学科为准）\n  语言：符合（要求 TOPIK 3级以上，你的 TOPIK 6级）｜原文：外国人特别录取：TOPIK 3级以上，或英语能力成绩可替代（具体分数以简章为准）；入学后毕业需 TOPIK 4级以上；部分学科对外国人另有 TOPIK 要求\n  本科专业：未限制专业｜原文：国内外4年制正规大学学士学位取得（预定）者，未限制本科专业；跨专业者入学后可能需修先修课或补学分\n  GMAT/GRE：官网未提及\n  工作经验：报考资格中未要求工作经验\n  截止状态：2027学年度前期（报名 2026-10-06 10:00 起，16:00 截止） 截止 2026-10-16，已截止（以最新简章为准）\n  补充说明：外国人特别录取要求 TOPIK 3级以上，你的 TOPIK 6级符合；入学后毕业需 TOPIK 4级以上，部分学科另有要求。\n  出处：https://mba.ssu.ac.kr/（数据整理日期 2026-10-29）",
+     "trace": [
+      "router",
+      "router:llm",
+      "profile_extractor",
+      "profile_extractor:llm",
+      "school_matcher",
+      "school_matcher:llm",
+      "verify",
+      "verify:skipped"
+     ],
+     "path": [
+      "router",
+      "profile_extractor",
+      "school_matcher",
+      "verify"
+     ],
+     "route": {
+      "ok": true,
+      "reason": "一致"
+     },
+     "contains": {
+      "ok": true,
+      "missing_groups": [],
+      "forbidden_hits": []
+     },
+     "forbidden_hits": [],
+     "expected_paths": [
+      [
+       "router",
+       "profile_extractor",
+       "school_matcher",
+       "verify"
+      ]
+     ],
+     "fit": {
+      "checks": [
+       {
+        "school": "庆熙大学",
+        "field": "language",
+        "gold": "符合",
+        "actual": "符合（要求 TOPIK 5级以上，你的 TOPIK 6级）",
+        "ok": true,
+        "reason": "一致"
+       },
+       {
+        "school": "崇实大学",
+        "field": "language",
+        "gold": "符合",
+        "actual": "符合（要求 TOPIK 3级以上，你的 TOPIK 6级）",
+        "ok": true,
+        "reason": "一致"
+       },
+       {
+        "school": "仁济大学",
+        "field": "language",
+        "gold": "官网未说明",
+        "actual": "官网未说明",
+        "ok": true,
+        "reason": "一致"
+       },
+       {
+        "school": "国民大学",
+        "field": "language",
+        "gold": "官网未说明",
+        "actual": "官网未说明",
+        "ok": true,
+        "reason": "一致"
+       }
+      ],
+      "manual": []
+     }
+    },
+    {
+     "id": "B02",
+     "category": "profile",
+     "input": "我的TOPIK是3级，GPA 3.2/4.0，本科读的英语文学，想申请经营学硕士，哪些学校符合？",
+     "supplements": {
+      "generated": 5,
+      "removed": 0,
+      "by_reason": {
+       "无依据": 0,
+       "解析失败": 0,
+       "其他": 0
+      }
+     },
+     "profile": {
+      "gpa": "3.2/4.0",
+      "language_score": "TOPIK 3",
+      "major": "英语文学"
+     },
+     "error": null,
+     "latency_s": 4.411,
+     "model_calls": 3,
+     "answer": "你的画像：GPA 3.2/4.0（学校记录未提供 GPA 要求，未作判断）；语言成绩 TOPIK 3；本科专业 英语文学；GMAT/GRE 未提供\n以下为各校公开要求的符合度（由系统根据学校记录判断，仅供参考，请以最新简章为准）：\n\n庆熙大学 经营大学院（2026学年度后期）\n  语言：不符合（要求 TOPIK 5级以上，你的 TOPIK 3级）｜原文：TOPIK 5级以上（仅限外国人）\n  本科专业：未限制专业｜原文：4年制大学毕业（预定）者，未限制专业\n  GMAT/GRE：官网未提及\n  工作经验：报考资格中未要求工作经验\n  截止状态：一般硕士1次（报名 2026-04-13 起） 截止 2026-05-15，已截止（以最新简章为准）；一般硕士2次（报名 2026-05-22 起） 截止 2026-06-05，已截止（以最新简章为准）；外国人（国际班）1次（报名 2026-04-29 起） 截止 2026-05-21，已截止（以最新简章为准）\n  补充说明：语言要求 TOPIK 5级以上（仅限外国人），你的 TOPIK 3级未达到该要求；本科专业未限制。\n  出处：https://khmba.khu.ac.kr/khmba_kor/user/bbs/BMSR00040/view.do?boardId=532435&menuNo=10800152（数据整理日期 2026-10-29）\n\n仁济大学 经营大学院（2026学年度后期）\n  语言：官网未说明｜原文：官网未说明（核实日期 2026-10-29）\n  本科专业：未限制专业｜原文：与所修专业无关均可报考\n  GMAT/GRE：官网未说明（核实日期 2026-10-29）\n  工作经验：报考资格中未要求工作经验\n  截止状态：报名 2026-06-22 起 截止 2026-07-17，已截止（以最新简章为准）\n  补充说明：官网语言要求未说明，无法比较；与所修专业无关均可报考，本科专业不构成限制。\n  出处：https://mba.inje.ac.kr/mba/info/notice.do?mode=download&articleNo=75480&attachNo=40633（数据整理日期 2026-10-29）\n\n成均馆大学 SKK GSB Full-Time MBA\n  语言：无法判断，以简章为准（记录未列出 TOPIK 级别要求）｜原文：TOEFL、TOEIC、TOEIC Speaking、OPIc、TEPS、IELTS 中选其一；母语为英语或在100%英语授课的大学（院）取得学位者可免\n  本科专业：未限制专业｜原文：4年制大学毕业以上（学士）或同等学历者，未限制专业\n  GMAT/GRE：选择性提交（GMAT或GRE成绩单），提交优秀成绩者在书面评审中加分\n  工作经验：报考资格中未要求工作经验\n  截止状态：报名 2026-10-01 起（入学学期以官网为准） 截止 2026-11-06，未截止（距截止 7 天）\n  补充说明：语言需 TOEFL、TOEIC、IELTS 等任一成绩，具体分数以简章为准，你的 TOPIK 3级不能直接对应；本科专业未限制。\n  出处：https://gsb.skku.edu/gsb/Full-time_MBA/Admissions.do（数据整理日期 2026-10-29）\n\n国民大学 经营大学院（2027学年度前期）\n  语言：官网未说明｜原文：官网未说明（核实日期 2026-10-29）\n  本科专业：未限制专业｜原文：学士学位取得（预定）者及依法令认定具备同等资格者，未限制专业\n  GMAT/GRE：官网未说明（核实日期 2026-10-29）\n  工作经验：报考资格中未要求工作经验\n  截止状态：2027学年度前期（报名 2026-10-19 起，17:00 截止） 截止 2026-11-13，未截止（距截止 14 天）\n  补充说明：官网未说明语言与 GMAT/GRE 要求，无法比较；学士学位要求未限制专业，你的英语文学背景符合该条件。\n  出处：https://mba.kookmin.ac.kr/mba/main/notice.do?mode=view&articleNo=5940485（数据整理日期 2026-10-29）\n\n崇实大学 一般大学院·硕士（2027学年度前期；各学科要求不同，以所申请学科为准）\n  语言：符合（要求 TOPIK 3级以上，你的 TOPIK 3级）｜原文：外国人特别录取：TOPIK 3级以上，或英语能力成绩可替代（具体分数以简章为准）；入学后毕业需 TOPIK 4级以上；部分学科对外国人另有 TOPIK 要求\n  本科专业：未限制专业｜原文：国内外4年制正规大学学士学位取得（预定）者，未限制本科专业；跨专业者入学后可能需修先修课或补学分\n  GMAT/GRE：官网未提及\n  工作经验：报考资格中未要求工作经验\n  截止状态：2027学年度前期（报名 2026-10-06 10:00 起，16:00 截止） 截止 2026-10-16，已截止（以最新简章为准）\n  补充说明：外国人特别录取要求 TOPIK 3级以上，你的 TOPIK 3级符合；本科专业未限制，但入学后毕业需 TOPIK 4级以上。\n  出处：https://mba.ssu.ac.kr/（数据整理日期 2026-10-29）",
+     "trace": [
+      "router",
+      "router:llm",
+      "profile_extractor",
+      "profile_extractor:llm",
+      "school_matcher",
+      "school_matcher:llm",
+      "verify",
+      "verify:skipped"
+     ],
+     "path": [
+      "router",
+      "profile_extractor",
+      "school_matcher",
+      "verify"
+     ],
+     "route": {
+      "ok": true,
+      "reason": "一致"
+     },
+     "contains": {
+      "ok": true,
+      "missing_groups": [],
+      "forbidden_hits": []
+     },
+     "forbidden_hits": [],
+     "expected_paths": [
+      [
+       "router",
+       "profile_extractor",
+       "school_matcher",
+       "verify"
+      ]
+     ],
+     "fit": {
+      "checks": [
+       {
+        "school": "庆熙大学",
+        "field": "language",
+        "gold": "不符合",
+        "actual": "不符合（要求 TOPIK 5级以上，你的 TOPIK 3级）",
+        "ok": true,
+        "reason": "一致"
+       },
+       {
+        "school": "崇实大学",
+        "field": "language",
+        "gold": "符合",
+        "actual": "符合（要求 TOPIK 3级以上，你的 TOPIK 3级）",
+        "ok": true,
+        "reason": "一致"
+       }
+      ],
+      "manual": []
+     }
+    },
+    {
+     "id": "B03",
+     "category": "profile",
+     "input": "TOPIK 4级，GPA 3.0/4.0，本科专业计算机，申请经营学硕士可以吗？",
+     "supplements": {
+      "generated": 5,
+      "removed": 0,
+      "by_reason": {
+       "无依据": 0,
+       "解析失败": 0,
+       "其他": 0
+      }
+     },
+     "profile": {
+      "gpa": "3.0/4.0",
+      "language_score": "TOPIK 4级",
+      "major": "计算机"
+     },
+     "error": null,
+     "latency_s": 4.511,
+     "model_calls": 3,
+     "answer": "你的画像：GPA 3.0/4.0（学校记录未提供 GPA 要求，未作判断）；语言成绩 TOPIK 4级；本科专业 计算机；GMAT/GRE 未提供\n以下为各校公开要求的符合度（由系统根据学校记录判断，仅供参考，请以最新简章为准）：\n\n庆熙大学 经营大学院（2026学年度后期）\n  语言：不符合（要求 TOPIK 5级以上，你的 TOPIK 4级）｜原文：TOPIK 5级以上（仅限外国人）\n  本科专业：未限制专业｜原文：4年制大学毕业（预定）者，未限制专业\n  GMAT/GRE：官网未提及\n  工作经验：报考资格中未要求工作经验\n  截止状态：一般硕士1次（报名 2026-04-13 起） 截止 2026-05-15，已截止（以最新简章为准）；一般硕士2次（报名 2026-05-22 起） 截止 2026-06-05，已截止（以最新简章为准）；外国人（国际班）1次（报名 2026-04-29 起） 截止 2026-05-21，已截止（以最新简章为准）\n  补充说明：语言要求 TOPIK 5级以上（仅限外国人），你的 TOPIK 4级未达到该要求。\n  出处：https://khmba.khu.ac.kr/khmba_kor/user/bbs/BMSR00040/view.do?boardId=532435&menuNo=10800152（数据整理日期 2026-10-29）\n\n仁济大学 经营大学院（2026学年度后期）\n  语言：官网未说明｜原文：官网未说明（核实日期 2026-10-29）\n  本科专业：未限制专业｜原文：与所修专业无关均可报考\n  GMAT/GRE：官网未说明（核实日期 2026-10-29）\n  工作经验：报考资格中未要求工作经验\n  截止状态：报名 2026-06-22 起 截止 2026-07-17，已截止（以最新简章为准）\n  补充说明：资料未说明语言与GMAT/GRE要求，无法据此比较；本科专业不限，工作经验亦无要求。\n  出处：https://mba.inje.ac.kr/mba/info/notice.do?mode=download&articleNo=75480&attachNo=40633（数据整理日期 2026-10-29）\n\n成均馆大学 SKK GSB Full-Time MBA\n  语言：无法判断，以简章为准（记录未列出 TOPIK 级别要求）｜原文：TOEFL、TOEIC、TOEIC Speaking、OPIc、TEPS、IELTS 中选其一；母语为英语或在100%英语授课的大学（院）取得学位者可免\n  本科专业：未限制专业｜原文：4年制大学毕业以上（学士）或同等学历者，未限制专业\n  GMAT/GRE：选择性提交（GMAT或GRE成绩单），提交优秀成绩者在书面评审中加分\n  工作经验：报考资格中未要求工作经验\n  截止状态：报名 2026-10-01 起（入学学期以官网为准） 截止 2026-11-06，未截止（距截止 7 天）\n  补充说明：语言需TOEFL等英语成绩之一（或英语授课学位可免），你的TOPIK成绩不在列，需另行确认是否可免；GMAT/GRE选择性提交。\n  出处：https://gsb.skku.edu/gsb/Full-time_MBA/Admissions.do（数据整理日期 2026-10-29）\n\n国民大学 经营大学院（2027学年度前期）\n  语言：官网未说明｜原文：官网未说明（核实日期 2026-10-29）\n  本科专业：未限制专业｜原文：学士学位取得（预定）者及依法令认定具备同等资格者，未限制专业\n  GMAT/GRE：官网未说明（核实日期 2026-10-29）\n  工作经验：报考资格中未要求工作经验\n  截止状态：2027学年度前期（报名 2026-10-19 起，17:00 截止） 截止 2026-11-13，未截止（距截止 14 天）\n  补充说明：资料未说明语言与GMAT/GRE要求，无法据此比较；本科专业不限，工作经验亦无要求。\n  出处：https://mba.kookmin.ac.kr/mba/main/notice.do?mode=view&articleNo=5940485（数据整理日期 2026-10-29）\n\n崇实大学 一般大学院·硕士（2027学年度前期；各学科要求不同，以所申请学科为准）\n  语言：符合（要求 TOPIK 3级以上，你的 TOPIK 4级）｜原文：外国人特别录取：TOPIK 3级以上，或英语能力成绩可替代（具体分数以简章为准）；入学后毕业需 TOPIK 4级以上；部分学科对外国人另有 TOPIK 要求\n  本科专业：未限制专业｜原文：国内外4年制正规大学学士学位取得（预定）者，未限制本科专业；跨专业者入学后可能需修先修课或补学分\n  GMAT/GRE：官网未提及\n  工作经验：报考资格中未要求工作经验\n  截止状态：2027学年度前期（报名 2026-10-06 10:00 起，16:00 截止） 截止 2026-10-16，已截止（以最新简章为准）\n  补充说明：外国人特别录取要求TOPIK 3级以上，你的TOPIK 4级符合；本科专业不限，入学后毕业需TOPIK 4级以上。\n  出处：https://mba.ssu.ac.kr/（数据整理日期 2026-10-29）",
+     "trace": [
+      "router",
+      "router:llm",
+      "profile_extractor",
+      "profile_extractor:llm",
+      "school_matcher",
+      "school_matcher:llm",
+      "verify",
+      "verify:skipped"
+     ],
+     "path": [
+      "router",
+      "profile_extractor",
+      "school_matcher",
+      "verify"
+     ],
+     "route": {
+      "ok": true,
+      "reason": "一致"
+     },
+     "contains": {
+      "ok": true,
+      "missing_groups": [],
+      "forbidden_hits": []
+     },
+     "forbidden_hits": [],
+     "expected_paths": [
+      [
+       "router",
+       "profile_extractor",
+       "school_matcher",
+       "verify"
+      ]
+     ],
+     "fit": {
+      "checks": [
+       {
+        "school": "庆熙大学",
+        "field": "language",
+        "gold": "不符合",
+        "actual": "不符合（要求 TOPIK 5级以上，你的 TOPIK 4级）",
+        "ok": true,
+        "reason": "一致"
+       },
+       {
+        "school": "崇实大学",
+        "field": "language",
+        "gold": "符合",
+        "actual": "符合（要求 TOPIK 3级以上，你的 TOPIK 4级）",
+        "ok": true,
+        "reason": "一致"
+       }
+      ],
+      "manual": [
+       {
+        "school": "仁济大学",
+        "field": "major",
+        "gold": "与专业无关均可报考",
+        "actual": "未限制专业",
+        "reason": "标准判断不是四类结果之一，需人工检查"
+       }
+      ]
+     }
+    },
+    {
+     "id": "B04",
+     "category": "profile",
+     "input": "我没有TOPIK成绩，只有雅思6.5，GPA 3.4/4.0，本科经济学，请看看符合哪些学校的要求。",
+     "supplements": {
+      "generated": 5,
+      "removed": 0,
+      "by_reason": {
+       "无依据": 0,
+       "解析失败": 0,
+       "其他": 0
+      }
+     },
+     "profile": {
+      "gpa": "3.4/4.0",
+      "language_score": "IELTS 6.5",
+      "major": "经济学"
+     },
+     "error": null,
+     "latency_s": 4.472,
+     "model_calls": 3,
+     "answer": "你的画像：GPA 3.4/4.0（学校记录未提供 GPA 要求，未作判断）；语言成绩 IELTS 6.5；本科专业 经济学；GMAT/GRE 未提供\n以下为各校公开要求的符合度（由系统根据学校记录判断，仅供参考，请以最新简章为准）：\n\n庆熙大学 经营大学院（2026学年度后期）\n  语言：无法判断（要求 TOPIK 5级以上，未提供 TOPIK 成绩）｜原文：TOPIK 5级以上（仅限外国人）\n  本科专业：未限制专业｜原文：4年制大学毕业（预定）者，未限制专业\n  GMAT/GRE：官网未提及\n  工作经验：报考资格中未要求工作经验\n  截止状态：一般硕士1次（报名 2026-04-13 起） 截止 2026-05-15，已截止（以最新简章为准）；一般硕士2次（报名 2026-05-22 起） 截止 2026-06-05，已截止（以最新简章为准）；外国人（国际班）1次（报名 2026-04-29 起） 截止 2026-05-21，已截止（以最新简章为准）\n  补充说明：要求外国人TOPIK 5级以上，你的雅思6.5无法直接替代TOPIK成绩，语言条件需单独确认。\n  出处：https://khmba.khu.ac.kr/khmba_kor/user/bbs/BMSR00040/view.do?boardId=532435&menuNo=10800152（数据整理日期 2026-10-29）\n\n仁济大学 经营大学院（2026学年度后期）\n  语言：官网未说明｜原文：官网未说明（核实日期 2026-10-29）\n  本科专业：未限制专业｜原文：与所修专业无关均可报考\n  GMAT/GRE：官网未说明（核实日期 2026-10-29）\n  工作经验：报考资格中未要求工作经验\n  截止状态：报名 2026-06-22 起 截止 2026-07-17，已截止（以最新简章为准）\n  补充说明：官网未说明语言与GMAT/GRE要求，报考资格中未要求工作经验，本科专业不限，需以简章为准。\n  出处：https://mba.inje.ac.kr/mba/info/notice.do?mode=download&articleNo=75480&attachNo=40633（数据整理日期 2026-10-29）\n\n成均馆大学 SKK GSB Full-Time MBA\n  语言：无法判断，以简章为准（记录未给出 IELTS 的具体分数要求）｜原文：TOEFL、TOEIC、TOEIC Speaking、OPIc、TEPS、IELTS 中选其一；母语为英语或在100%英语授课的大学（院）取得学位者可免\n  本科专业：未限制专业｜原文：4年制大学毕业以上（学士）或同等学历者，未限制专业\n  GMAT/GRE：选择性提交（GMAT或GRE成绩单），提交优秀成绩者在书面评审中加分\n  工作经验：报考资格中未要求工作经验\n  截止状态：报名 2026-10-01 起（入学学期以官网为准） 截止 2026-11-06，未截止（距截止 7 天）\n  补充说明：语言可选IELTS但记录未给分数标准，GMAT/GRE为选择性提交，工作经验未要求，本科专业不限。\n  出处：https://gsb.skku.edu/gsb/Full-time_MBA/Admissions.do（数据整理日期 2026-10-29）\n\n国民大学 经营大学院（2027学年度前期）\n  语言：官网未说明｜原文：官网未说明（核实日期 2026-10-29）\n  本科专业：未限制专业｜原文：学士学位取得（预定）者及依法令认定具备同等资格者，未限制专业\n  GMAT/GRE：官网未说明（核实日期 2026-10-29）\n  工作经验：报考资格中未要求工作经验\n  截止状态：2027学年度前期（报名 2026-10-19 起，17:00 截止） 截止 2026-11-13，未截止（距截止 14 天）\n  补充说明：官网未说明语言与GMAT/GRE要求，报考资格中未要求工作经验，学士学位与专业不限，需以简章为准。\n  出处：https://mba.kookmin.ac.kr/mba/main/notice.do?mode=view&articleNo=5940485（数据整理日期 2026-10-29）\n\n崇实大学 一般大学院·硕士（2027学年度前期；各学科要求不同，以所申请学科为准）\n  语言：无法判断，以简章为准（记录未给出 IELTS 的具体分数要求）｜原文：外国人特别录取：TOPIK 3级以上，或英语能力成绩可替代（具体分数以简章为准）；入学后毕业需 TOPIK 4级以上；部分学科对外国人另有 TOPIK 要求\n  本科专业：未限制专业｜原文：国内外4年制正规大学学士学位取得（预定）者，未限制本科专业；跨专业者入学后可能需修先修课或补学分\n  GMAT/GRE：官网未提及\n  工作经验：报考资格中未要求工作经验\n  截止状态：2027学年度前期（报名 2026-10-06 10:00 起，16:00 截止） 截止 2026-10-16，已截止（以最新简章为准）\n  补充说明：外国人特别录取要求TOPIK 3级以上或英语成绩替代，具体分数以简章为准，本科专业不限，跨专业可能需补修课程。\n  出处：https://mba.ssu.ac.kr/（数据整理日期 2026-10-29）",
+     "trace": [
+      "router",
+      "router:llm",
+      "profile_extractor",
+      "profile_extractor:llm",
+      "school_matcher",
+      "school_matcher:llm",
+      "verify",
+      "verify:skipped"
+     ],
+     "path": [
+      "router",
+      "profile_extractor",
+      "school_matcher",
+      "verify"
+     ],
+     "route": {
+      "ok": true,
+      "reason": "一致"
+     },
+     "contains": {
+      "ok": true,
+      "missing_groups": [],
+      "forbidden_hits": []
+     },
+     "forbidden_hits": [],
+     "expected_paths": [
+      [
+       "router",
+       "profile_extractor",
+       "school_matcher",
+       "verify"
+      ]
+     ],
+     "fit": {
+      "checks": [
+       {
+        "school": "庆熙大学",
+        "field": "language",
+        "gold": "不得判为符合",
+        "actual": "无法判断（要求 TOPIK 5级以上，未提供 TOPIK 成绩）",
+        "ok": true,
+        "reason": "一致"
+       },
+       {
+        "school": "崇实大学",
+        "field": "language",
+        "gold": "无法判断，以简章为准",
+        "actual": "无法判断，以简章为准（记录未给出 IELTS 的具体分数要求）",
+        "ok": true,
+        "reason": "一致"
+       }
+      ],
+      "manual": []
+     }
+    },
+    {
+     "id": "B05",
+     "category": "profile",
+     "input": "我的托福95分，GPA 3.5/4.0，本科会计，想申请崇实大学，我的英语成绩够吗？",
+     "supplements": {
+      "generated": 5,
+      "removed": 0,
+      "by_reason": {
+       "无依据": 0,
+       "解析失败": 0,
+       "其他": 0
+      }
+     },
+     "profile": {
+      "gpa": "3.5/4.0",
+      "language_score": "TOEFL 95",
+      "major": "会计"
+     },
+     "error": null,
+     "latency_s": 7.825,
+     "model_calls": 3,
+     "answer": "你的画像：GPA 3.5/4.0（学校记录未提供 GPA 要求，未作判断）；语言成绩 TOEFL 95；本科专业 会计；GMAT/GRE 未提供\n以下为各校公开要求的符合度（由系统根据学校记录判断，仅供参考，请以最新简章为准）：\n\n庆熙大学 经营大学院（2026学年度后期）\n  语言：无法判断（要求 TOPIK 5级以上，未提供 TOPIK 成绩）｜原文：TOPIK 5级以上（仅限外国人）\n  本科专业：未限制专业｜原文：4年制大学毕业（预定）者，未限制专业\n  GMAT/GRE：官网未提及\n  工作经验：报考资格中未要求工作经验\n  截止状态：一般硕士1次（报名 2026-04-13 起） 截止 2026-05-15，已截止（以最新简章为准）；一般硕士2次（报名 2026-05-22 起） 截止 2026-06-05，已截止（以最新简章为准）；外国人（国际班）1次（报名 2026-04-29 起） 截止 2026-05-21，已截止（以最新简章为准）\n  补充说明：报考资格未限制专业，你的会计专业符合；外国人班需TOPIK5级以上，你的语言成绩为TOEFL，需确认是否满足。\n  出处：https://khmba.khu.ac.kr/khmba_kor/user/bbs/BMSR00040/view.do?boardId=532435&menuNo=10800152（数据整理日期 2026-10-29）\n\n仁济大学 经营大学院（2026学年度后期）\n  语言：官网未说明｜原文：官网未说明（核实日期 2026-10-29）\n  本科专业：未限制专业｜原文：与所修专业无关均可报考\n  GMAT/GRE：官网未说明（核实日期 2026-10-29）\n  工作经验：报考资格中未要求工作经验\n  截止状态：报名 2026-06-22 起 截止 2026-07-17，已截止（以最新简章为准）\n  补充说明：与所修专业无关均可报考，会计背景符合；官网未说明语言及GMAT/GRE要求，需以简章为准。\n  出处：https://mba.inje.ac.kr/mba/info/notice.do?mode=download&articleNo=75480&attachNo=40633（数据整理日期 2026-10-29）\n\n成均馆大学 SKK GSB Full-Time MBA\n  语言：无法判断，以简章为准（记录未给出 TOEFL 的具体分数要求）｜原文：TOEFL、TOEIC、TOEIC Speaking、OPIc、TEPS、IELTS 中选其一；母语为英语或在100%英语授课的大学（院）取得学位者可免\n  本科专业：未限制专业｜原文：4年制大学毕业以上（学士）或同等学历者，未限制专业\n  GMAT/GRE：选择性提交（GMAT或GRE成绩单），提交优秀成绩者在书面评审中加分\n  工作经验：报考资格中未要求工作经验\n  截止状态：报名 2026-10-01 起（入学学期以官网为准） 截止 2026-11-06，未截止（距截止 7 天）\n  补充说明：未限制专业，会计背景符合；语言可用TOEFL，但记录未给出具体分数线，需以简章为准；GMAT/GRE为选择性提交。\n  出处：https://gsb.skku.edu/gsb/Full-time_MBA/Admissions.do（数据整理日期 2026-10-29）\n\n国民大学 经营大学院（2027学年度前期）\n  语言：官网未说明｜原文：官网未说明（核实日期 2026-10-29）\n  本科专业：未限制专业｜原文：学士学位取得（预定）者及依法令认定具备同等资格者，未限制专业\n  GMAT/GRE：官网未说明（核实日期 2026-10-29）\n  工作经验：报考资格中未要求工作经验\n  截止状态：2027学年度前期（报名 2026-10-19 起，17:00 截止） 截止 2026-11-13，未截止（距截止 14 天）\n  补充说明：学士学位即可报考，未限制专业，会计背景符合；官网未说明语言及GMAT/GRE要求。\n  出处：https://mba.kookmin.ac.kr/mba/main/notice.do?mode=view&articleNo=5940485（数据整理日期 2026-10-29）\n\n崇实大学 一般大学院·硕士（2027学年度前期；各学科要求不同，以所申请学科为准）\n  语言：无法判断，以简章为准（记录未给出 TOEFL 的具体分数要求）｜原文：外国人特别录取：TOPIK 3级以上，或英语能力成绩可替代（具体分数以简章为准）；入学后毕业需 TOPIK 4级以上；部分学科对外国人另有 TOPIK 要求\n  本科专业：未限制专业｜原文：国内外4年制正规大学学士学位取得（预定）者，未限制本科专业；跨专业者入学后可能需修先修课或补学分\n  GMAT/GRE：官网未提及\n  工作经验：报考资格中未要求工作经验\n  截止状态：2027学年度前期（报名 2026-10-06 10:00 起，16:00 截止） 截止 2026-10-16，已截止（以最新简章为准）\n  补充说明：未限制本科专业，会计背景符合；外国人录取可用TOPIK3级或英语成绩替代，具体分数以简章为准。\n  出处：https://mba.ssu.ac.kr/（数据整理日期 2026-10-29）",
+     "trace": [
+      "router",
+      "router:llm",
+      "profile_extractor",
+      "profile_extractor:llm",
+      "school_matcher",
+      "school_matcher:llm",
+      "verify",
+      "verify:skipped"
+     ],
+     "path": [
+      "router",
+      "profile_extractor",
+      "school_matcher",
+      "verify"
+     ],
+     "route": {
+      "ok": true,
+      "reason": "一致"
+     },
+     "contains": {
+      "ok": true,
+      "missing_groups": [],
+      "forbidden_hits": []
+     },
+     "forbidden_hits": [],
+     "expected_paths": [
+      [
+       "router",
+       "profile_extractor",
+       "school_matcher",
+       "verify"
+      ]
+     ],
+     "fit": {
+      "checks": [
+       {
+        "school": "崇实大学",
+        "field": "language",
+        "gold": "无法判断，以简章为准",
+        "actual": "无法判断，以简章为准（记录未给出 TOEFL 的具体分数要求）",
+        "ok": true,
+        "reason": "一致"
+       }
+      ],
+      "manual": []
+     }
+    },
+    {
+     "id": "B06",
+     "category": "profile",
+     "input": "GPA 90/100，TOPIK 5级，本科国际贸易，想申请经营学硕士，请评估。",
+     "supplements": {
+      "generated": 5,
+      "removed": 0,
+      "by_reason": {
+       "无依据": 0,
+       "解析失败": 0,
+       "其他": 0
+      }
+     },
+     "profile": {
+      "gpa": "90/100",
+      "language_score": "TOPIK 5级",
+      "major": "国际贸易"
+     },
+     "error": null,
+     "latency_s": 4.396,
+     "model_calls": 3,
+     "answer": "你的画像：GPA 90/100（学校记录未提供 GPA 要求，未作判断）；语言成绩 TOPIK 5级；本科专业 国际贸易；GMAT/GRE 未提供\n以下为各校公开要求的符合度（由系统根据学校记录判断，仅供参考，请以最新简章为准）：\n\n庆熙大学 经营大学院（2026学年度后期）\n  语言：符合（要求 TOPIK 5级以上，你的 TOPIK 5级）｜原文：TOPIK 5级以上（仅限外国人）\n  本科专业：未限制专业｜原文：4年制大学毕业（预定）者，未限制专业\n  GMAT/GRE：官网未提及\n  工作经验：报考资格中未要求工作经验\n  截止状态：一般硕士1次（报名 2026-04-13 起） 截止 2026-05-15，已截止（以最新简章为准）；一般硕士2次（报名 2026-05-22 起） 截止 2026-06-05，已截止（以最新简章为准）；外国人（国际班）1次（报名 2026-04-29 起） 截止 2026-05-21，已截止（以最新简章为准）\n  补充说明：语言要求TOPIK 5级以上，你的TOPIK 5级符合；本科专业未限制，与你的国际贸易背景无冲突。\n  出处：https://khmba.khu.ac.kr/khmba_kor/user/bbs/BMSR00040/view.do?boardId=532435&menuNo=10800152（数据整理日期 2026-10-29）\n\n仁济大学 经营大学院（2026学年度后期）\n  语言：官网未说明｜原文：官网未说明（核实日期 2026-10-29）\n  本科专业：未限制专业｜原文：与所修专业无关均可报考\n  GMAT/GRE：官网未说明（核实日期 2026-10-29）\n  工作经验：报考资格中未要求工作经验\n  截止状态：报名 2026-06-22 起 截止 2026-07-17，已截止（以最新简章为准）\n  补充说明：官网语言和GMAT/GRE要求未说明，无法据此比较；本科专业与报考无关，你的国际贸易背景不受限制。\n  出处：https://mba.inje.ac.kr/mba/info/notice.do?mode=download&articleNo=75480&attachNo=40633（数据整理日期 2026-10-29）\n\n成均馆大学 SKK GSB Full-Time MBA\n  语言：无法判断，以简章为准（记录未列出 TOPIK 级别要求）｜原文：TOEFL、TOEIC、TOEIC Speaking、OPIc、TEPS、IELTS 中选其一；母语为英语或在100%英语授课的大学（院）取得学位者可免\n  本科专业：未限制专业｜原文：4年制大学毕业以上（学士）或同等学历者，未限制专业\n  GMAT/GRE：选择性提交（GMAT或GRE成绩单），提交优秀成绩者在书面评审中加分\n  工作经验：报考资格中未要求工作经验\n  截止状态：报名 2026-10-01 起（入学学期以官网为准） 截止 2026-11-06，未截止（距截止 7 天）\n  补充说明：语言需TOEFL等英语成绩之一，你的记录中仅有TOPIK 5级，英语成绩缺失；GMAT/GRE选择性提交，优秀成绩可加分。\n  出处：https://gsb.skku.edu/gsb/Full-time_MBA/Admissions.do（数据整理日期 2026-10-29）\n\n国民大学 经营大学院（2027学年度前期）\n  语言：官网未说明｜原文：官网未说明（核实日期 2026-10-29）\n  本科专业：未限制专业｜原文：学士学位取得（预定）者及依法令认定具备同等资格者，未限制专业\n  GMAT/GRE：官网未说明（核实日期 2026-10-29）\n  工作经验：报考资格中未要求工作经验\n  截止状态：2027学年度前期（报名 2026-10-19 起，17:00 截止） 截止 2026-11-13，未截止（距截止 14 天）\n  补充说明：官网未说明语言和GMAT/GRE要求，无法比较；本科专业未限制，你的国际贸易背景符合。\n  出处：https://mba.kookmin.ac.kr/mba/main/notice.do?mode=view&articleNo=5940485（数据整理日期 2026-10-29）\n\n崇实大学 一般大学院·硕士（2027学年度前期；各学科要求不同，以所申请学科为准）\n  语言：符合（要求 TOPIK 3级以上，你的 TOPIK 5级）｜原文：外国人特别录取：TOPIK 3级以上，或英语能力成绩可替代（具体分数以简章为准）；入学后毕业需 TOPIK 4级以上；部分学科对外国人另有 TOPIK 要求\n  本科专业：未限制专业｜原文：国内外4年制正规大学学士学位取得（预定）者，未限制本科专业；跨专业者入学后可能需修先修课或补学分\n  GMAT/GRE：官网未提及\n  工作经验：报考资格中未要求工作经验\n  截止状态：2027学年度前期（报名 2026-10-06 10:00 起，16:00 截止） 截止 2026-10-16，已截止（以最新简章为准）\n  补充说明：外国人特别录取要求TOPIK 3级以上，你的TOPIK 5级符合；本科专业未限制，入学后毕业需TOPIK 4级以上。\n  出处：https://mba.ssu.ac.kr/（数据整理日期 2026-10-29）",
+     "trace": [
+      "router",
+      "router:llm",
+      "profile_extractor",
+      "profile_extractor:llm",
+      "school_matcher",
+      "school_matcher:llm",
+      "verify",
+      "verify:skipped"
+     ],
+     "path": [
+      "router",
+      "profile_extractor",
+      "school_matcher",
+      "verify"
+     ],
+     "route": {
+      "ok": true,
+      "reason": "一致"
+     },
+     "contains": {
+      "ok": true,
+      "missing_groups": [],
+      "forbidden_hits": []
+     },
+     "forbidden_hits": [],
+     "expected_paths": [
+      [
+       "router",
+       "profile_extractor",
+       "school_matcher",
+       "verify"
+      ]
+     ],
+     "fit": {
+      "checks": [
+       {
+        "school": "庆熙大学",
+        "field": "language",
+        "gold": "符合",
+        "actual": "符合（要求 TOPIK 5级以上，你的 TOPIK 5级）",
+        "ok": true,
+        "reason": "一致"
+       },
+       {
+        "school": "崇实大学",
+        "field": "language",
+        "gold": "符合",
+        "actual": "符合（要求 TOPIK 3级以上，你的 TOPIK 5级）",
+        "ok": true,
+        "reason": "一致"
+       }
+      ],
+      "manual": []
+     }
+    },
+    {
+     "id": "B07",
+     "category": "profile",
+     "input": "TOPIK 2级，GPA 3.8/4.5，本科管理学，想申请经营学硕士，请评估。",
+     "supplements": {
+      "generated": 5,
+      "removed": 0,
+      "by_reason": {
+       "无依据": 0,
+       "解析失败": 0,
+       "其他": 0
+      }
+     },
+     "profile": {
+      "gpa": "3.8/4.5",
+      "language_score": "TOPIK 2",
+      "major": "管理学"
+     },
+     "error": null,
+     "latency_s": 5.382,
+     "model_calls": 3,
+     "answer": "你的画像：GPA 3.8/4.5（学校记录未提供 GPA 要求，未作判断）；语言成绩 TOPIK 2；本科专业 管理学；GMAT/GRE 未提供\n以下为各校公开要求的符合度（由系统根据学校记录判断，仅供参考，请以最新简章为准）：\n\n庆熙大学 经营大学院（2026学年度后期）\n  语言：不符合（要求 TOPIK 5级以上，你的 TOPIK 2级）｜原文：TOPIK 5级以上（仅限外国人）\n  本科专业：未限制专业｜原文：4年制大学毕业（预定）者，未限制专业\n  GMAT/GRE：官网未提及\n  工作经验：报考资格中未要求工作经验\n  截止状态：一般硕士1次（报名 2026-04-13 起） 截止 2026-05-15，已截止（以最新简章为准）；一般硕士2次（报名 2026-05-22 起） 截止 2026-06-05，已截止（以最新简章为准）；外国人（国际班）1次（报名 2026-04-29 起） 截止 2026-05-21，已截止（以最新简章为准）\n  补充说明：语言要求 TOPIK 5级以上（仅限外国人），你的 TOPIK 2级未达到；本科专业未限制。\n  出处：https://khmba.khu.ac.kr/khmba_kor/user/bbs/BMSR00040/view.do?boardId=532435&menuNo=10800152（数据整理日期 2026-10-29）\n\n仁济大学 经营大学院（2026学年度后期）\n  语言：官网未说明｜原文：官网未说明（核实日期 2026-10-29）\n  本科专业：未限制专业｜原文：与所修专业无关均可报考\n  GMAT/GRE：官网未说明（核实日期 2026-10-29）\n  工作经验：报考资格中未要求工作经验\n  截止状态：报名 2026-06-22 起 截止 2026-07-17，已截止（以最新简章为准）\n  补充说明：官网未说明语言及 GMAT/GRE 要求；与所修专业无关均可报考，本科专业不构成限制。\n  出处：https://mba.inje.ac.kr/mba/info/notice.do?mode=download&articleNo=75480&attachNo=40633（数据整理日期 2026-10-29）\n\n成均馆大学 SKK GSB Full-Time MBA\n  语言：无法判断，以简章为准（记录未列出 TOPIK 级别要求）｜原文：TOEFL、TOEIC、TOEIC Speaking、OPIc、TEPS、IELTS 中选其一；母语为英语或在100%英语授课的大学（院）取得学位者可免\n  本科专业：未限制专业｜原文：4年制大学毕业以上（学士）或同等学历者，未限制专业\n  GMAT/GRE：选择性提交（GMAT或GRE成绩单），提交优秀成绩者在书面评审中加分\n  工作经验：报考资格中未要求工作经验\n  截止状态：报名 2026-10-01 起（入学学期以官网为准） 截止 2026-11-06，未截止（距截止 7 天）\n  补充说明：语言需 TOEFL、TOEIC 等之一，具体分数以简章为准；GMAT/GRE 为选择性提交，提交优秀成绩者书面评审加分。\n  出处：https://gsb.skku.edu/gsb/Full-time_MBA/Admissions.do（数据整理日期 2026-10-29）\n\n国民大学 经营大学院（2027学年度前期）\n  语言：官网未说明｜原文：官网未说明（核实日期 2026-10-29）\n  本科专业：未限制专业｜原文：学士学位取得（预定）者及依法令认定具备同等资格者，未限制专业\n  GMAT/GRE：官网未说明（核实日期 2026-10-29）\n  工作经验：报考资格中未要求工作经验\n  截止状态：2027学年度前期（报名 2026-10-19 起，17:00 截止） 截止 2026-11-13，未截止（距截止 14 天）\n  补充说明：官网未说明语言及 GMAT/GRE 要求；学士学位取得者即可报考，未限制专业，报考资格中未要求工作经验。\n  出处：https://mba.kookmin.ac.kr/mba/main/notice.do?mode=view&articleNo=5940485（数据整理日期 2026-10-29）\n\n崇实大学 一般大学院·硕士（2027学年度前期；各学科要求不同，以所申请学科为准）\n  语言：不符合（要求 TOPIK 3级以上，你的 TOPIK 2级）｜原文：外国人特别录取：TOPIK 3级以上，或英语能力成绩可替代（具体分数以简章为准）；入学后毕业需 TOPIK 4级以上；部分学科对外国人另有 TOPIK 要求\n  本科专业：未限制专业｜原文：国内外4年制正规大学学士学位取得（预定）者，未限制本科专业；跨专业者入学后可能需修先修课或补学分\n  GMAT/GRE：官网未提及\n  工作经验：报考资格中未要求工作经验\n  截止状态：2027学年度前期（报名 2026-10-06 10:00 起，16:00 截止） 截止 2026-10-16，已截止（以最新简章为准）\n  补充说明：外国人特别录取要求 TOPIK 3级以上，你的 TOPIK 2级未达到；部分学科另有 TOPIK 要求，以所申请学科为准。\n  出处：https://mba.ssu.ac.kr/（数据整理日期 2026-10-29）",
+     "trace": [
+      "router",
+      "router:llm",
+      "profile_extractor",
+      "profile_extractor:llm",
+      "school_matcher",
+      "school_matcher:llm",
+      "verify",
+      "verify:skipped"
+     ],
+     "path": [
+      "router",
+      "profile_extractor",
+      "school_matcher",
+      "verify"
+     ],
+     "route": {
+      "ok": true,
+      "reason": "一致"
+     },
+     "contains": {
+      "ok": true,
+      "missing_groups": [],
+      "forbidden_hits": []
+     },
+     "forbidden_hits": [],
+     "expected_paths": [
+      [
+       "router",
+       "profile_extractor",
+       "school_matcher",
+       "verify"
+      ]
+     ],
+     "fit": {
+      "checks": [
+       {
+        "school": "庆熙大学",
+        "field": "language",
+        "gold": "不符合",
+        "actual": "不符合（要求 TOPIK 5级以上，你的 TOPIK 2级）",
+        "ok": true,
+        "reason": "一致"
+       },
+       {
+        "school": "崇实大学",
+        "field": "language",
+        "gold": "不符合",
+        "actual": "不符合（要求 TOPIK 3级以上，你的 TOPIK 2级）",
+        "ok": true,
+        "reason": "一致"
+       }
+      ],
+      "manual": []
+     }
+    },
+    {
+     "id": "C01",
+     "category": "timeline",
+     "input": "我想申请国民大学经营大学院，请帮我按截止日期倒推准备计划。",
+     "eval_date": "2026-10-30",
+     "supplements": null,
+     "profile": {},
+     "error": null,
+     "latency_s": 0.966,
+     "model_calls": 1,
+     "answer": "[占位] 今天是 2026-10-30。以下为检索到的申请轮次信息，完整的时间规划功能待接入大模型：\n- 国民大学 经营大学院（2027学年度前期）：2027学年度前期（报名 2026-10-19 起，17:00 截止） 截止 2026-11-13，未截止（距截止 14 天）（出处：https://mba.kookmin.ac.kr/mba/main/notice.do?mode=view&articleNo=5940485，截至 2026-10-29）",
+     "trace": [
+      "router",
+      "router:llm",
+      "requirement_retriever",
+      "timeline_planner",
+      "verify",
+      "verify:skipped"
+     ],
+     "path": [
+      "router",
+      "requirement_retriever",
+      "timeline_planner",
+      "verify"
+     ],
+     "route": {
+      "ok": true,
+      "reason": "一致"
+     },
+     "contains": {
+      "ok": true,
+      "missing_groups": [],
+      "forbidden_hits": []
+     },
+     "forbidden_hits": [],
+     "expected_paths": [
+      [
+       "router",
+       "requirement_retriever",
+       "timeline_planner",
+       "verify"
+      ]
+     ],
+     "fact_ok": true
+    },
+    {
+     "id": "C02",
+     "category": "timeline",
+     "input": "我想申请庆熙大学，请帮我规划申请时间。",
+     "eval_date": "2026-10-30",
+     "supplements": null,
+     "profile": {},
+     "error": null,
+     "latency_s": 1.049,
+     "model_calls": 1,
+     "answer": "[占位] 今天是 2026-10-30。以下为检索到的申请轮次信息，完整的时间规划功能待接入大模型：\n- 庆熙大学 经营大学院（2026学年度后期）：一般硕士1次（报名 2026-04-13 起） 截止 2026-05-15，已截止（以最新简章为准）；一般硕士2次（报名 2026-05-22 起） 截止 2026-06-05，已截止（以最新简章为准）；外国人（国际班）1次（报名 2026-04-29 起） 截止 2026-05-21，已截止（以最新简章为准）（出处：https://khmba.khu.ac.kr/khmba_kor/user/bbs/BMSR00040/view.do?boardId=532435&menuNo=10800152，截至 2026-10-29）\n  注意：资料中的轮次均已截止，暂无可申请轮次，请查阅最新简章确认下一轮日期。",
+     "trace": [
+      "router",
+      "router:llm",
+      "requirement_retriever",
+      "timeline_planner",
+      "verify",
+      "verify:skipped"
+     ],
+     "path": [
+      "router",
+      "requirement_retriever",
+      "timeline_planner",
+      "verify"
+     ],
+     "route": {
+      "ok": true,
+      "reason": "一致"
+     },
+     "contains": {
+      "ok": true,
+      "missing_groups": [],
+      "forbidden_hits": []
+     },
+     "forbidden_hits": [],
+     "expected_paths": [
+      [
+       "router",
+       "requirement_retriever",
+       "timeline_planner",
+       "verify"
+      ]
+     ],
+     "fact_ok": true
+    },
+    {
+     "id": "C03",
+     "category": "timeline",
+     "input": "帮我规划崇实大学硕士的申请时间。",
+     "eval_date": "2026-10-30",
+     "supplements": null,
+     "profile": {},
+     "error": null,
+     "latency_s": 1.198,
+     "model_calls": 1,
+     "answer": "[占位] 今天是 2026-10-30。以下为检索到的申请轮次信息，完整的时间规划功能待接入大模型：\n- 崇实大学 一般大学院·硕士（2027学年度前期；各学科要求不同，以所申请学科为准）：2027学年度前期（报名 2026-10-06 10:00 起，16:00 截止） 截止 2026-10-16，已截止（以最新简章为准）（出处：https://mba.ssu.ac.kr/，截至 2026-10-29）\n  注意：资料中的轮次均已截止，暂无可申请轮次，请查阅最新简章确认下一轮日期。",
+     "trace": [
+      "router",
+      "router:llm",
+      "requirement_retriever",
+      "timeline_planner",
+      "verify",
+      "verify:skipped"
+     ],
+     "path": [
+      "router",
+      "requirement_retriever",
+      "timeline_planner",
+      "verify"
+     ],
+     "route": {
+      "ok": true,
+      "reason": "一致"
+     },
+     "contains": {
+      "ok": true,
+      "missing_groups": [],
+      "forbidden_hits": []
+     },
+     "forbidden_hits": [],
+     "expected_paths": [
+      [
+       "router",
+       "requirement_retriever",
+       "timeline_planner",
+       "verify"
+      ]
+     ],
+     "fact_ok": true
+    },
+    {
+     "id": "D01",
+     "category": "review",
+     "input": "请点评下面这段学习计划：\n我本科学习经营学，对数据驱动的市场营销很感兴趣。大三时在一家电商公司实习三个月，负责整理用户购买数据，并协助制作月度销售报告，发现老客户复购率低于预期。我希望通过硕士阶段的学习，系统掌握市场分析方法，将来从事电商运营分析工作。我认为贵校的课程很适合我。",
+     "supplements": null,
+     "profile": {},
+     "error": null,
+     "latency_s": 1.466,
+     "model_calls": 1,
+     "answer": "文书内容较短（约 126 字），无法给出有效反馈。请粘贴完整的段落或全文（建议至少 150 字）后再发给我。",
+     "trace": [
+      "router",
+      "router:llm",
+      "doc_reviewer",
+      "doc_reviewer:too_short"
+     ],
+     "path": [
+      "router",
+      "doc_reviewer"
+     ],
+     "route": {
+      "ok": true,
+      "reason": "一致"
+     },
+     "contains": {
+      "ok": false,
+      "missing_groups": [
+       [
+        "结构"
+       ],
+       [
+        "针对性"
+       ],
+       [
+        "具体"
+       ]
+      ],
+      "forbidden_hits": []
+     },
+     "forbidden_hits": [],
+     "expected_paths": [
+      [
+       "router",
+       "doc_reviewer"
+      ]
+     ]
+    },
+    {
+     "id": "D02",
+     "category": "review",
+     "input": "请点评我的文书：我想读经营学硕士。",
+     "supplements": null,
+     "profile": {},
+     "error": null,
+     "latency_s": 1.097,
+     "model_calls": 1,
+     "answer": "文书内容较短（约 9 字），无法给出有效反馈。请粘贴完整的段落或全文（建议至少 150 字）后再发给我。",
+     "trace": [
+      "router",
+      "router:llm",
+      "doc_reviewer",
+      "doc_reviewer:too_short"
+     ],
+     "path": [
+      "router",
+      "doc_reviewer"
+     ],
+     "route": {
+      "ok": true,
+      "reason": "一致"
+     },
+     "contains": {
+      "ok": false,
+      "missing_groups": [
+       [
+        "补充",
+        "太短",
+        "更多"
+       ]
+      ],
+      "forbidden_hits": []
+     },
+     "forbidden_hits": [],
+     "expected_paths": [
+      [
+       "router",
+       "doc_reviewer"
+      ]
+     ]
+    },
+    {
+     "id": "D03",
+     "category": "review",
+     "input": "帮我看看我的简历写得怎么样。",
+     "supplements": null,
+     "profile": {},
+     "error": null,
+     "latency_s": 0.925,
+     "model_calls": 1,
+     "answer": "文书内容较短（约 14 字），无法给出有效反馈。请粘贴完整的段落或全文（建议至少 150 字）后再发给我。",
+     "trace": [
+      "router",
+      "router:llm",
+      "doc_reviewer",
+      "doc_reviewer:too_short"
+     ],
+     "path": [
+      "router",
+      "doc_reviewer"
+     ],
+     "route": {
+      "ok": true,
+      "reason": "一致"
+     },
+     "contains": {
+      "ok": true,
+      "missing_groups": [],
+      "forbidden_hits": []
+     },
+     "forbidden_hits": [],
+     "expected_paths": [
+      [
+       "router",
+       "doc_reviewer"
+      ],
+      [
+       "router",
+       "clarify"
+      ]
+     ]
+    },
+    {
+     "id": "E01",
+     "category": "unclear",
+     "input": "我想申请经营学硕士，该怎么准备？",
+     "supplements": null,
+     "profile": {},
+     "error": null,
+     "latency_s": 2.539,
+     "model_calls": 2,
+     "answer": "为了给出选校建议，还需要你补充以下信息：GPA（及满分制）、语言成绩（雅思/托福/TOPIK）、本科专业。",
+     "trace": [
+      "router",
+      "router:llm",
+      "profile_extractor",
+      "profile_extractor:llm",
+      "clarify"
+     ],
+     "path": [
+      "router",
+      "profile_extractor",
+      "clarify"
+     ],
+     "route": {
+      "ok": true,
+      "reason": "一致"
+     },
+     "contains": {
+      "ok": true,
+      "missing_groups": [],
+      "forbidden_hits": []
+     },
+     "forbidden_hits": [],
+     "expected_paths": [
+      [
+       "router",
+       "clarify"
+      ],
+      [
+       "router",
+       "profile_extractor",
+       "clarify"
+      ]
+     ]
+    },
+    {
+     "id": "E02",
+     "category": "unclear",
+     "input": "帮我推荐学校。",
+     "supplements": null,
+     "profile": {},
+     "error": null,
+     "latency_s": 2.604,
+     "model_calls": 2,
+     "answer": "为了给出选校建议，还需要你补充以下信息：GPA（及满分制）、语言成绩（雅思/托福/TOPIK）、本科专业。",
+     "trace": [
+      "router",
+      "router:llm",
+      "profile_extractor",
+      "profile_extractor:llm",
+      "clarify"
+     ],
+     "path": [
+      "router",
+      "profile_extractor",
+      "clarify"
+     ],
+     "route": {
+      "ok": true,
+      "reason": "一致"
+     },
+     "contains": {
+      "ok": true,
+      "missing_groups": [],
+      "forbidden_hits": []
+     },
+     "forbidden_hits": [],
+     "expected_paths": [
+      [
+       "router",
+       "profile_extractor",
+       "clarify"
+      ]
+     ]
+    },
+    {
+     "id": "E03",
+     "category": "unclear",
+     "input": "我GPA 3.5/4.0，想申请，请看看。",
+     "supplements": null,
+     "profile": {
+      "gpa": "3.5/4.0"
+     },
+     "error": null,
+     "latency_s": 2.44,
+     "model_calls": 2,
+     "answer": "为了给出选校建议，还需要你补充以下信息：语言成绩（雅思/托福/TOPIK）、本科专业。",
+     "trace": [
+      "router",
+      "router:llm",
+      "profile_extractor",
+      "profile_extractor:llm",
+      "clarify"
+     ],
+     "path": [
+      "router",
+      "profile_extractor",
+      "clarify"
+     ],
+     "route": {
+      "ok": true,
+      "reason": "一致"
+     },
+     "contains": {
+      "ok": true,
+      "missing_groups": [],
+      "forbidden_hits": []
+     },
+     "forbidden_hits": [],
+     "expected_paths": [
+      [
+       "router",
+       "profile_extractor",
+       "clarify"
+      ]
+     ]
+    },
+    {
+     "id": "E04",
+     "category": "unclear",
+     "input": "这个怎么弄？",
+     "supplements": null,
+     "profile": {},
+     "error": null,
+     "latency_s": 1.015,
+     "model_calls": 1,
+     "answer": "能再具体说说你的需求吗？例如：选校定位、查询某校申请要求、制定申请时间规划，或点评文书。",
+     "trace": [
+      "router",
+      "router:llm",
+      "clarify"
+     ],
+     "path": [
+      "router",
+      "clarify"
+     ],
+     "route": {
+      "ok": true,
+      "reason": "一致"
+     },
+     "contains": {
+      "ok": true,
+      "missing_groups": [],
+      "forbidden_hits": []
+     },
+     "forbidden_hits": [],
+     "expected_paths": [
+      [
+       "router",
+       "clarify"
+      ]
+     ]
+    },
+    {
+     "id": "F01",
+     "category": "no_answer",
+     "input": "首尔大学经营大学院的报名截止日期是哪天？",
+     "supplements": null,
+     "profile": {},
+     "error": null,
+     "latency_s": 1.039,
+     "model_calls": 1,
+     "answer": "抱歉，这个问题我暂时无法从可靠来源确认。建议直接查阅目标学校项目的官方网站或联系招生办公室，以获取最新、准确的信息。",
+     "trace": [
+      "router",
+      "router:llm",
+      "requirement_retriever",
+      "fallback"
+     ],
+     "path": [
+      "router",
+      "requirement_retriever",
+      "fallback"
+     ],
+     "route": {
+      "ok": true,
+      "reason": "一致"
+     },
+     "contains": {
+      "ok": true,
+      "missing_groups": [],
+      "forbidden_hits": []
+     },
+     "forbidden_hits": [],
+     "expected_paths": [
+      [
+       "router",
+       "requirement_retriever",
+       "fallback"
+      ]
+     ]
+    },
+    {
+     "id": "F02",
+     "category": "no_answer",
+     "input": "延世大学经营专门大学院的报名截止日期是哪天？",
+     "supplements": null,
+     "profile": {},
+     "error": null,
+     "latency_s": 2.15,
+     "model_calls": 1,
+     "answer": "抱歉，这个问题我暂时无法从可靠来源确认。建议直接查阅目标学校项目的官方网站或联系招生办公室，以获取最新、准确的信息。",
+     "trace": [
+      "router",
+      "router:llm",
+      "requirement_retriever",
+      "fallback"
+     ],
+     "path": [
+      "router",
+      "requirement_retriever",
+      "fallback"
+     ],
+     "route": {
+      "ok": true,
+      "reason": "一致"
+     },
+     "contains": {
+      "ok": true,
+      "missing_groups": [],
+      "forbidden_hits": []
+     },
+     "forbidden_hits": [],
+     "expected_paths": [
+      [
+       "router",
+       "requirement_retriever",
+       "fallback"
+      ]
+     ]
+    },
+    {
+     "id": "F03",
+     "category": "no_answer",
+     "input": "高丽大学经营大学院对GMAT有什么要求？",
+     "supplements": null,
+     "profile": {},
+     "error": null,
+     "latency_s": 1.041,
+     "model_calls": 1,
+     "answer": "抱歉，这个问题我暂时无法从可靠来源确认。建议直接查阅目标学校项目的官方网站或联系招生办公室，以获取最新、准确的信息。",
+     "trace": [
+      "router",
+      "router:llm",
+      "requirement_retriever",
+      "fallback"
+     ],
+     "path": [
+      "router",
+      "requirement_retriever",
+      "fallback"
+     ],
+     "route": {
+      "ok": true,
+      "reason": "一致"
+     },
+     "contains": {
+      "ok": true,
+      "missing_groups": [],
+      "forbidden_hits": []
+     },
+     "forbidden_hits": [],
+     "expected_paths": [
+      [
+       "router",
+       "requirement_retriever",
+       "fallback"
+      ]
+     ]
+    },
+    {
+     "id": "F04",
+     "category": "no_answer",
+     "input": "庆熙大学经营大学院的学费是多少？",
+     "supplements": null,
+     "profile": {},
+     "error": null,
+     "latency_s": 1.63,
+     "model_calls": 1,
+     "answer": "根据检索到的资料：\n庆熙大学 经营大学院（2026学年度后期）\n  申请轮次（今天 2026-10-30）：一般硕士1次（报名 2026-04-13 起） 截止 2026-05-15，已截止（以最新简章为准）；一般硕士2次（报名 2026-05-22 起） 截止 2026-06-05，已截止（以最新简章为准）；外国人（国际班）1次（报名 2026-04-29 起） 截止 2026-05-21，已截止（以最新简章为准）\n  GMAT/GRE：资料中未提及，请以最新简章为准\n  语言：TOPIK 5级以上（仅限外国人）\n  背景要求：4年制大学毕业（预定）者，未限制专业\n  文书：官网未说明（核实日期 2026-10-29）\n  推荐信：官网未说明（核实日期 2026-10-29）\n  工作经验：报考资格中未要求工作经验\n  出处：https://khmba.khu.ac.kr/khmba_kor/user/bbs/BMSR00040/view.do?boardId=532435&menuNo=10800152（截至 2026-10-29）",
+     "trace": [
+      "router",
+      "router:llm",
+      "requirement_retriever",
+      "verify",
+      "verify:skipped"
+     ],
+     "path": [
+      "router",
+      "requirement_retriever",
+      "verify"
+     ],
+     "route": {
+      "ok": true,
+      "reason": "一致"
+     },
+     "contains": {
+      "ok": true,
+      "missing_groups": [],
+      "forbidden_hits": []
+     },
+     "forbidden_hits": [],
+     "expected_paths": [
+      [
+       "router",
+       "requirement_retriever",
+       "fallback"
+      ],
+      [
+       "router",
+       "requirement_retriever",
+       "verify"
+      ]
+     ]
+    },
+    {
+     "id": "F05",
+     "category": "no_answer",
+     "input": "我能被庆熙大学录取吗？大概有多大把握？",
+     "supplements": null,
+     "profile": {},
+     "error": null,
+     "latency_s": 2.265,
+     "model_calls": 2,
+     "answer": "为了给出选校建议，还需要你补充以下信息：GPA（及满分制）、语言成绩（雅思/托福/TOPIK）、本科专业。",
+     "trace": [
+      "router",
+      "router:llm",
+      "profile_extractor",
+      "profile_extractor:llm",
+      "clarify"
+     ],
+     "path": [
+      "router",
+      "profile_extractor",
+      "clarify"
+     ],
+     "route": {
+      "ok": true,
+      "reason": "一致"
+     },
+     "contains": {
+      "ok": true,
+      "missing_groups": [],
+      "forbidden_hits": []
+     },
+     "forbidden_hits": [],
+     "expected_paths": [
+      [
+       "router",
+       "profile_extractor",
+       "clarify"
+      ],
+      [
+       "router",
+       "requirement_retriever",
+       "fallback"
+      ],
+      [
+       "router",
+       "clarify"
+      ]
+     ]
+    },
+    {
+     "id": "G01",
+     "category": "chitchat",
+     "input": "你好，你是谁？",
+     "supplements": null,
+     "profile": {},
+     "error": null,
+     "latency_s": 0.986,
+     "model_calls": 1,
+     "answer": "你好！我是 AI 经营学硕士留学申请顾问，可以帮你做选校定位、查询申请要求、规划时间线和点评文书。",
+     "trace": [
+      "router",
+      "router:llm"
+     ],
+     "path": [
+      "router"
+     ],
+     "route": {
+      "ok": true,
+      "reason": "一致"
+     },
+     "contains": {
+      "ok": true,
+      "missing_groups": [],
+      "forbidden_hits": []
+     },
+     "forbidden_hits": [],
+     "expected_paths": [
+      [
+       "router"
+      ]
+     ]
+    },
+    {
+     "id": "G02",
+     "category": "chitchat",
+     "input": "今天天气怎么样？",
+     "supplements": null,
+     "profile": {},
+     "error": null,
+     "latency_s": 0.957,
+     "model_calls": 1,
+     "answer": "能再具体说说你的需求吗？例如：选校定位、查询某校申请要求、制定申请时间规划，或点评文书。",
+     "trace": [
+      "router",
+      "router:llm",
+      "clarify"
+     ],
+     "path": [
+      "router",
+      "clarify"
+     ],
+     "route": {
+      "ok": false,
+      "reason": "实际 ['router', 'clarify']，预期 [['router']]"
+     },
+     "contains": {
+      "ok": true,
+      "missing_groups": [],
+      "forbidden_hits": []
+     },
+     "forbidden_hits": [],
+     "expected_paths": [
+      [
+       "router"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "run": 2,
+   "metrics": {
+    "routing_accuracy": 0.9411764705882353,
+    "fact_accuracy": 1.0,
+    "hallucination_rate": 0.0,
+    "hallucination_rate_F": 0.0,
+    "fit_accuracy": 1.0,
+    "fit_auto_checked": 15,
+    "fit_manual_pending": 1,
+    "avg_latency_s": 2.0124411764705883,
+    "avg_model_calls": 1.5,
+    "error_rate": 0.0,
+    "n_items": 34,
+    "supplement_answers": 7,
+    "supplement_removal_answers": 0,
+    "supplements_generated": 35,
+    "supplements_removed": 0,
+    "supplement_removal_rate": 0.0,
+    "removed_no_evidence": 0,
+    "removed_parse_error": 0,
+    "removed_other": 0,
+    "b0_declined": null
+   },
+   "manual_fit_checks": [
+    {
+     "id": "B03",
+     "school": "仁济大学",
+     "field": "major",
+     "gold": "与专业无关均可报考",
+     "actual": "未限制专业",
+     "reason": "标准判断不是四类结果之一，需人工检查"
+    }
+   ],
+   "items": [
+    {
+     "id": "A01",
+     "category": "qa",
+     "input": "庆熙大学经营大学院一般硕士第一次的报名截止日期是哪天？",
+     "eval_date": "2026-10-30",
+     "supplements": null,
+     "profile": {},
+     "error": null,
+     "latency_s": 1.141,
+     "model_calls": 1,
+     "answer": "根据检索到的资料：\n庆熙大学 经营大学院（2026学年度后期）\n  申请轮次（今天 2026-10-30）：一般硕士1次（报名 2026-04-13 起） 截止 2026-05-15，已截止（以最新简章为准）；一般硕士2次（报名 2026-05-22 起） 截止 2026-06-05，已截止（以最新简章为准）；外国人（国际班）1次（报名 2026-04-29 起） 截止 2026-05-21，已截止（以最新简章为准）\n  GMAT/GRE：资料中未提及，请以最新简章为准\n  语言：TOPIK 5级以上（仅限外国人）\n  背景要求：4年制大学毕业（预定）者，未限制专业\n  文书：官网未说明（核实日期 2026-10-29）\n  推荐信：官网未说明（核实日期 2026-10-29）\n  工作经验：报考资格中未要求工作经验\n  出处：https://khmba.khu.ac.kr/khmba_kor/user/bbs/BMSR00040/view.do?boardId=532435&menuNo=10800152（截至 2026-10-29）",
+     "trace": [
+      "router",
+      "router:llm",
+      "requirement_retriever",
+      "verify",
+      "verify:skipped"
+     ],
+     "path": [
+      "router",
+      "requirement_retriever",
+      "verify"
+     ],
+     "route": {
+      "ok": true,
+      "reason": "一致"
+     },
+     "contains": {
+      "ok": true,
+      "missing_groups": [],
+      "forbidden_hits": []
+     },
+     "forbidden_hits": [],
+     "expected_paths": [
+      [
+       "router",
+       "requirement_retriever",
+       "verify"
+      ]
+     ],
+     "fact_ok": true
+    },
+    {
+     "id": "A02",
+     "category": "qa",
+     "input": "庆熙大学外国人（国际班）第一次的报名截止日期是哪天？",
+     "eval_date": "2026-10-30",
+     "supplements": null,
+     "profile": {},
+     "error": null,
+     "latency_s": 0.827,
+     "model_calls": 1,
+     "answer": "根据检索到的资料：\n庆熙大学 经营大学院（2026学年度后期）\n  申请轮次（今天 2026-10-30）：一般硕士1次（报名 2026-04-13 起） 截止 2026-05-15，已截止（以最新简章为准）；一般硕士2次（报名 2026-05-22 起） 截止 2026-06-05，已截止（以最新简章为准）；外国人（国际班）1次（报名 2026-04-29 起） 截止 2026-05-21，已截止（以最新简章为准）\n  GMAT/GRE：资料中未提及，请以最新简章为准\n  语言：TOPIK 5级以上（仅限外国人）\n  背景要求：4年制大学毕业（预定）者，未限制专业\n  文书：官网未说明（核实日期 2026-10-29）\n  推荐信：官网未说明（核实日期 2026-10-29）\n  工作经验：报考资格中未要求工作经验\n  出处：https://khmba.khu.ac.kr/khmba_kor/user/bbs/BMSR00040/view.do?boardId=532435&menuNo=10800152（截至 2026-10-29）",
+     "trace": [
+      "router",
+      "router:llm",
+      "requirement_retriever",
+      "verify",
+      "verify:skipped"
+     ],
+     "path": [
+      "router",
+      "requirement_retriever",
+      "verify"
+     ],
+     "route": {
+      "ok": true,
+      "reason": "一致"
+     },
+     "contains": {
+      "ok": true,
+      "missing_groups": [],
+      "forbidden_hits": []
+     },
+     "forbidden_hits": [],
+     "expected_paths": [
+      [
+       "router",
+       "requirement_retriever",
+       "verify"
+      ]
+     ],
+     "fact_ok": true
+    },
+    {
+     "id": "A03",
+     "category": "qa",
+     "input": "仁济大学经营大学院的报名截止日期是什么时候？",
+     "eval_date": "2026-10-30",
+     "supplements": null,
+     "profile": {},
+     "error": null,
+     "latency_s": 1.016,
+     "model_calls": 1,
+     "answer": "根据检索到的资料：\n仁济大学 经营大学院（2026学年度后期）\n  申请轮次（今天 2026-10-30）：报名 2026-06-22 起 截止 2026-07-17，已截止（以最新简章为准）\n  GMAT/GRE：官网未说明（核实日期 2026-10-29）（请以最新简章为准）\n  语言：官网未说明（核实日期 2026-10-29）\n  背景要求：与所修专业无关均可报考\n  文书：官网未说明（核实日期 2026-10-29）\n  推荐信：官网未说明（核实日期 2026-10-29）\n  工作经验：报考资格中未要求工作经验\n  出处：https://mba.inje.ac.kr/mba/info/notice.do?mode=download&articleNo=75480&attachNo=40633（截至 2026-10-29）",
+     "trace": [
+      "router",
+      "router:llm",
+      "requirement_retriever",
+      "verify",
+      "verify:skipped"
+     ],
+     "path": [
+      "router",
+      "requirement_retriever",
+      "verify"
+     ],
+     "route": {
+      "ok": true,
+      "reason": "一致"
+     },
+     "contains": {
+      "ok": true,
+      "missing_groups": [],
+      "forbidden_hits": []
+     },
+     "forbidden_hits": [],
+     "expected_paths": [
+      [
+       "router",
+       "requirement_retriever",
+       "verify"
+      ]
+     ],
+     "fact_ok": true
+    },
+    {
+     "id": "A04",
+     "category": "qa",
+     "input": "国民大学经营大学院2027学年度前期什么时候截止报名？",
+     "eval_date": "2026-10-30",
+     "supplements": null,
+     "profile": {},
+     "error": null,
+     "latency_s": 0.953,
+     "model_calls": 1,
+     "answer": "根据检索到的资料：\n国民大学 经营大学院（2027学年度前期）\n  申请轮次（今天 2026-10-30）：2027学年度前期（报名 2026-10-19 起，17:00 截止） 截止 2026-11-13，未截止（距截止 14 天）\n  GMAT/GRE：官网未说明（核实日期 2026-10-29）（请以最新简章为准）\n  语言：官网未说明（核实日期 2026-10-29）\n  背景要求：学士学位取得（预定）者及依法令认定具备同等资格者，未限制专业\n  文书：官网未说明（核实日期 2026-10-29）\n  推荐信：官网未说明（核实日期 2026-10-29）\n  工作经验：报考资格中未要求工作经验\n  出处：https://mba.kookmin.ac.kr/mba/main/notice.do?mode=view&articleNo=5940485（截至 2026-10-29）",
+     "trace": [
+      "router",
+      "router:llm",
+      "requirement_retriever",
+      "verify",
+      "verify:skipped"
+     ],
+     "path": [
+      "router",
+      "requirement_retriever",
+      "verify"
+     ],
+     "route": {
+      "ok": true,
+      "reason": "一致"
+     },
+     "contains": {
+      "ok": true,
+      "missing_groups": [],
+      "forbidden_hits": []
+     },
+     "forbidden_hits": [],
+     "expected_paths": [
+      [
+       "router",
+       "requirement_retriever",
+       "verify"
+      ]
+     ],
+     "fact_ok": true
+    },
+    {
+     "id": "A05",
+     "category": "qa",
+     "input": "崇实大学硕士的报名截止时间是什么时候？",
+     "eval_date": "2026-10-30",
+     "supplements": null,
+     "profile": {},
+     "error": null,
+     "latency_s": 1.174,
+     "model_calls": 1,
+     "answer": "根据检索到的资料：\n崇实大学 一般大学院·硕士（2027学年度前期；各学科要求不同，以所申请学科为准）\n  申请轮次（今天 2026-10-30）：2027学年度前期（报名 2026-10-06 10:00 起，16:00 截止） 截止 2026-10-16，已截止（以最新简章为准）\n  GMAT/GRE：资料中未提及，请以最新简章为准\n  语言：外国人特别录取：TOPIK 3级以上，或英语能力成绩可替代（具体分数以简章为准）；入学后毕业需 TOPIK 4级以上；部分学科对外国人另有 TOPIK 要求\n  背景要求：国内外4年制正规大学学士学位取得（预定）者，未限制本科专业；跨专业者入学后可能需修先修课或补学分\n  文书：官网未说明（博士需学业计划书）\n  推荐信：硕士不需提交（简章规定仅博士提交1封）\n  工作经验：报考资格中未要求工作经验\n  出处：https://mba.ssu.ac.kr/（截至 2026-10-29）",
+     "trace": [
+      "router",
+      "router:llm",
+      "requirement_retriever",
+      "verify",
+      "verify:skipped"
+     ],
+     "path": [
+      "router",
+      "requirement_retriever",
+      "verify"
+     ],
+     "route": {
+      "ok": true,
+      "reason": "一致"
+     },
+     "contains": {
+      "ok": true,
+      "missing_groups": [],
+      "forbidden_hits": []
+     },
+     "forbidden_hits": [],
+     "expected_paths": [
+      [
+       "router",
+       "requirement_retriever",
+       "verify"
+      ]
+     ],
+     "fact_ok": true
+    },
+    {
+     "id": "A06",
+     "category": "qa",
+     "input": "崇实大学硕士需要提交推荐信吗？",
+     "supplements": null,
+     "profile": {},
+     "error": null,
+     "latency_s": 0.893,
+     "model_calls": 1,
+     "answer": "根据检索到的资料：\n崇实大学 一般大学院·硕士（2027学年度前期；各学科要求不同，以所申请学科为准）\n  申请轮次（今天 2026-10-30）：2027学年度前期（报名 2026-10-06 10:00 起，16:00 截止） 截止 2026-10-16，已截止（以最新简章为准）\n  GMAT/GRE：资料中未提及，请以最新简章为准\n  语言：外国人特别录取：TOPIK 3级以上，或英语能力成绩可替代（具体分数以简章为准）；入学后毕业需 TOPIK 4级以上；部分学科对外国人另有 TOPIK 要求\n  背景要求：国内外4年制正规大学学士学位取得（预定）者，未限制本科专业；跨专业者入学后可能需修先修课或补学分\n  文书：官网未说明（博士需学业计划书）\n  推荐信：硕士不需提交（简章规定仅博士提交1封）\n  工作经验：报考资格中未要求工作经验\n  出处：https://mba.ssu.ac.kr/（截至 2026-10-29）",
+     "trace": [
+      "router",
+      "router:llm",
+      "requirement_retriever",
+      "verify",
+      "verify:skipped"
+     ],
+     "path": [
+      "router",
+      "requirement_retriever",
+      "verify"
+     ],
+     "route": {
+      "ok": true,
+      "reason": "一致"
+     },
+     "contains": {
+      "ok": true,
+      "missing_groups": [],
+      "forbidden_hits": []
+     },
+     "forbidden_hits": [],
+     "expected_paths": [
+      [
+       "router",
+       "requirement_retriever",
+       "verify"
+      ]
+     ],
+     "fact_ok": true
+    },
+    {
+     "id": "A07",
+     "category": "qa",
+     "input": "庆熙大学对外国人的韩语成绩有什么要求？",
+     "supplements": null,
+     "profile": {},
+     "error": null,
+     "latency_s": 0.95,
+     "model_calls": 1,
+     "answer": "根据检索到的资料：\n庆熙大学 经营大学院（2026学年度后期）\n  申请轮次（今天 2026-10-30）：一般硕士1次（报名 2026-04-13 起） 截止 2026-05-15，已截止（以最新简章为准）；一般硕士2次（报名 2026-05-22 起） 截止 2026-06-05，已截止（以最新简章为准）；外国人（国际班）1次（报名 2026-04-29 起） 截止 2026-05-21，已截止（以最新简章为准）\n  GMAT/GRE：资料中未提及，请以最新简章为准\n  语言：TOPIK 5级以上（仅限外国人）\n  背景要求：4年制大学毕业（预定）者，未限制专业\n  文书：官网未说明（核实日期 2026-10-29）\n  推荐信：官网未说明（核实日期 2026-10-29）\n  工作经验：报考资格中未要求工作经验\n  出处：https://khmba.khu.ac.kr/khmba_kor/user/bbs/BMSR00040/view.do?boardId=532435&menuNo=10800152（截至 2026-10-29）",
+     "trace": [
+      "router",
+      "router:llm",
+      "requirement_retriever",
+      "verify",
+      "verify:skipped"
+     ],
+     "path": [
+      "router",
+      "requirement_retriever",
+      "verify"
+     ],
+     "route": {
+      "ok": true,
+      "reason": "一致"
+     },
+     "contains": {
+      "ok": true,
+      "missing_groups": [],
+      "forbidden_hits": []
+     },
+     "forbidden_hits": [],
+     "expected_paths": [
+      [
+       "router",
+       "requirement_retriever",
+       "verify"
+      ]
+     ],
+     "fact_ok": true
+    },
+    {
+     "id": "A08",
+     "category": "qa",
+     "input": "崇实大学是否要求提交GMAT或GRE成绩？",
+     "supplements": null,
+     "profile": {},
+     "error": null,
+     "latency_s": 0.975,
+     "model_calls": 1,
+     "answer": "根据检索到的资料：\n- 崇实大学 一般大学院·硕士（2027学年度前期；各学科要求不同，以所申请学科为准）：GMAT/GRE 资料中未提及，请以最新简章为准（出处：https://mba.ssu.ac.kr/，截至 2026-10-29）",
+     "trace": [
+      "router",
+      "router:llm",
+      "requirement_retriever",
+      "verify",
+      "verify:skipped"
+     ],
+     "path": [
+      "router",
+      "requirement_retriever",
+      "verify"
+     ],
+     "route": {
+      "ok": true,
+      "reason": "一致"
+     },
+     "contains": {
+      "ok": true,
+      "missing_groups": [],
+      "forbidden_hits": []
+     },
+     "forbidden_hits": [],
+     "expected_paths": [
+      [
+       "router",
+       "requirement_retriever",
+       "verify"
+      ]
+     ],
+     "fact_ok": true
+    },
+    {
+     "id": "A09",
+     "category": "qa",
+     "input": "仁济大学对本科专业有限制吗？",
+     "supplements": null,
+     "profile": {},
+     "error": null,
+     "latency_s": 1.143,
+     "model_calls": 1,
+     "answer": "根据检索到的资料：\n仁济大学 经营大学院（2026学年度后期）\n  申请轮次（今天 2026-10-30）：报名 2026-06-22 起 截止 2026-07-17，已截止（以最新简章为准）\n  GMAT/GRE：官网未说明（核实日期 2026-10-29）（请以最新简章为准）\n  语言：官网未说明（核实日期 2026-10-29）\n  背景要求：与所修专业无关均可报考\n  文书：官网未说明（核实日期 2026-10-29）\n  推荐信：官网未说明（核实日期 2026-10-29）\n  工作经验：报考资格中未要求工作经验\n  出处：https://mba.inje.ac.kr/mba/info/notice.do?mode=download&articleNo=75480&attachNo=40633（截至 2026-10-29）",
+     "trace": [
+      "router",
+      "router:llm",
+      "requirement_retriever",
+      "verify",
+      "verify:skipped"
+     ],
+     "path": [
+      "router",
+      "requirement_retriever",
+      "verify"
+     ],
+     "route": {
+      "ok": true,
+      "reason": "一致"
+     },
+     "contains": {
+      "ok": true,
+      "missing_groups": [],
+      "forbidden_hits": []
+     },
+     "forbidden_hits": [],
+     "expected_paths": [
+      [
+       "router",
+       "requirement_retriever",
+       "verify"
+      ]
+     ],
+     "fact_ok": true
+    },
+    {
+     "id": "A10",
+     "category": "qa",
+     "input": "国民大学经营大学院要求申请者有工作经验吗？",
+     "supplements": null,
+     "profile": {},
+     "error": null,
+     "latency_s": 1.046,
+     "model_calls": 1,
+     "answer": "根据检索到的资料：\n- 国民大学 经营大学院（2027学年度前期）：工作经验 报考资格中未要求工作经验（出处：https://mba.kookmin.ac.kr/mba/main/notice.do?mode=view&articleNo=5940485，截至 2026-10-29）",
+     "trace": [
+      "router",
+      "router:llm",
+      "requirement_retriever",
+      "verify",
+      "verify:skipped"
+     ],
+     "path": [
+      "router",
+      "requirement_retriever",
+      "verify"
+     ],
+     "route": {
+      "ok": true,
+      "reason": "一致"
+     },
+     "contains": {
+      "ok": true,
+      "missing_groups": [],
+      "forbidden_hits": []
+     },
+     "forbidden_hits": [],
+     "expected_paths": [
+      [
+       "router",
+       "requirement_retriever",
+       "verify"
+      ]
+     ],
+     "fact_ok": true
+    },
+    {
+     "id": "B01",
+     "category": "profile",
+     "input": "我是外国留学生，TOPIK 6级，GPA 3.6/4.5，本科专业是经营学，想申请经营学硕士，请看看哪些学校符合要求。",
+     "supplements": {
+      "generated": 5,
+      "removed": 0,
+      "by_reason": {
+       "无依据": 0,
+       "解析失败": 0,
+       "其他": 0
+      }
+     },
+     "profile": {
+      "gpa": "3.6/4.5",
+      "language_score": "TOPIK 6",
+      "major": "经营学"
+     },
+     "error": null,
+     "latency_s": 5.32,
+     "model_calls": 3,
+     "answer": "你的画像：GPA 3.6/4.5（学校记录未提供 GPA 要求，未作判断）；语言成绩 TOPIK 6；本科专业 经营学；GMAT/GRE 未提供\n以下为各校公开要求的符合度（由系统根据学校记录判断，仅供参考，请以最新简章为准）：\n\n庆熙大学 经营大学院（2026学年度后期）\n  语言：符合（要求 TOPIK 5级以上，你的 TOPIK 6级）｜原文：TOPIK 5级以上（仅限外国人）\n  本科专业：未限制专业｜原文：4年制大学毕业（预定）者，未限制专业\n  GMAT/GRE：官网未提及\n  工作经验：报考资格中未要求工作经验\n  截止状态：一般硕士1次（报名 2026-04-13 起） 截止 2026-05-15，已截止（以最新简章为准）；一般硕士2次（报名 2026-05-22 起） 截止 2026-06-05，已截止（以最新简章为准）；外国人（国际班）1次（报名 2026-04-29 起） 截止 2026-05-21，已截止（以最新简章为准）\n  补充说明：你的 TOPIK 6级符合其 TOPIK 5级以上的语言要求；本科专业未限制，GMAT/GRE 官网未提及。\n  出处：https://khmba.khu.ac.kr/khmba_kor/user/bbs/BMSR00040/view.do?boardId=532435&menuNo=10800152（数据整理日期 2026-10-29）\n\n仁济大学 经营大学院（2026学年度后期）\n  语言：官网未说明｜原文：官网未说明（核实日期 2026-10-29）\n  本科专业：未限制专业｜原文：与所修专业无关均可报考\n  GMAT/GRE：官网未说明（核实日期 2026-10-29）\n  工作经验：报考资格中未要求工作经验\n  截止状态：报名 2026-06-22 起 截止 2026-07-17，已截止（以最新简章为准）\n  补充说明：官网未说明语言与 GMAT/GRE 要求，本科专业未限制，报考资格未要求工作经验，具体条件以简章为准。\n  出处：https://mba.inje.ac.kr/mba/info/notice.do?mode=download&articleNo=75480&attachNo=40633（数据整理日期 2026-10-29）\n\n成均馆大学 SKK GSB Full-Time MBA\n  语言：无法判断，以简章为准（记录未列出 TOPIK 级别要求）｜原文：TOEFL、TOEIC、TOEIC Speaking、OPIc、TEPS、IELTS 中选其一；母语为英语或在100%英语授课的大学（院）取得学位者可免\n  本科专业：未限制专业｜原文：4年制大学毕业以上（学士）或同等学历者，未限制专业\n  GMAT/GRE：选择性提交（GMAT或GRE成绩单），提交优秀成绩者在书面评审中加分\n  工作经验：报考资格中未要求工作经验\n  截止状态：报名 2026-10-01 起（入学学期以官网为准） 截止 2026-11-06，未截止（距截止 7 天）\n  补充说明：语言需 TOEFL/TOEIC/IELTS 等英语成绩之一，你的英语成绩资料未列出；GMAT/GRE 为选择性提交，提交优秀成绩可在书面评审中加分。\n  出处：https://gsb.skku.edu/gsb/Full-time_MBA/Admissions.do（数据整理日期 2026-10-29）\n\n国民大学 经营大学院（2027学年度前期）\n  语言：官网未说明｜原文：官网未说明（核实日期 2026-10-29）\n  本科专业：未限制专业｜原文：学士学位取得（预定）者及依法令认定具备同等资格者，未限制专业\n  GMAT/GRE：官网未说明（核实日期 2026-10-29）\n  工作经验：报考资格中未要求工作经验\n  截止状态：2027学年度前期（报名 2026-10-19 起，17:00 截止） 截止 2026-11-13，未截止（距截止 14 天）\n  补充说明：官网未说明语言与 GMAT/GRE 要求，学士学位取得者未限制专业，报考资格未要求工作经验。\n  出处：https://mba.kookmin.ac.kr/mba/main/notice.do?mode=view&articleNo=5940485（数据整理日期 2026-10-29）\n\n崇实大学 一般大学院·硕士（2027学年度前期；各学科要求不同，以所申请学科为准）\n  语言：符合（要求 TOPIK 3级以上，你的 TOPIK 6级）｜原文：外国人特别录取：TOPIK 3级以上，或英语能力成绩可替代（具体分数以简章为准）；入学后毕业需 TOPIK 4级以上；部分学科对外国人另有 TOPIK 要求\n  本科专业：未限制专业｜原文：国内外4年制正规大学学士学位取得（预定）者，未限制本科专业；跨专业者入学后可能需修先修课或补学分\n  GMAT/GRE：官网未提及\n  工作经验：报考资格中未要求工作经验\n  截止状态：2027学年度前期（报名 2026-10-06 10:00 起，16:00 截止） 截止 2026-10-16，已截止（以最新简章为准）\n  补充说明：外国人特别录取要求 TOPIK 3级以上，你的 TOPIK 6级符合；本科专业未限制，GMAT/GRE 官网未提及。\n  出处：https://mba.ssu.ac.kr/（数据整理日期 2026-10-29）",
+     "trace": [
+      "router",
+      "router:llm",
+      "profile_extractor",
+      "profile_extractor:llm",
+      "school_matcher",
+      "school_matcher:llm",
+      "verify",
+      "verify:skipped"
+     ],
+     "path": [
+      "router",
+      "profile_extractor",
+      "school_matcher",
+      "verify"
+     ],
+     "route": {
+      "ok": true,
+      "reason": "一致"
+     },
+     "contains": {
+      "ok": true,
+      "missing_groups": [],
+      "forbidden_hits": []
+     },
+     "forbidden_hits": [],
+     "expected_paths": [
+      [
+       "router",
+       "profile_extractor",
+       "school_matcher",
+       "verify"
+      ]
+     ],
+     "fit": {
+      "checks": [
+       {
+        "school": "庆熙大学",
+        "field": "language",
+        "gold": "符合",
+        "actual": "符合（要求 TOPIK 5级以上，你的 TOPIK 6级）",
+        "ok": true,
+        "reason": "一致"
+       },
+       {
+        "school": "崇实大学",
+        "field": "language",
+        "gold": "符合",
+        "actual": "符合（要求 TOPIK 3级以上，你的 TOPIK 6级）",
+        "ok": true,
+        "reason": "一致"
+       },
+       {
+        "school": "仁济大学",
+        "field": "language",
+        "gold": "官网未说明",
+        "actual": "官网未说明",
+        "ok": true,
+        "reason": "一致"
+       },
+       {
+        "school": "国民大学",
+        "field": "language",
+        "gold": "官网未说明",
+        "actual": "官网未说明",
+        "ok": true,
+        "reason": "一致"
+       }
+      ],
+      "manual": []
+     }
+    },
+    {
+     "id": "B02",
+     "category": "profile",
+     "input": "我的TOPIK是3级，GPA 3.2/4.0，本科读的英语文学，想申请经营学硕士，哪些学校符合？",
+     "supplements": {
+      "generated": 5,
+      "removed": 0,
+      "by_reason": {
+       "无依据": 0,
+       "解析失败": 0,
+       "其他": 0
+      }
+     },
+     "profile": {
+      "gpa": "3.2/4.0",
+      "language_score": "TOPIK 3",
+      "major": "英语文学"
+     },
+     "error": null,
+     "latency_s": 5.113,
+     "model_calls": 3,
+     "answer": "你的画像：GPA 3.2/4.0（学校记录未提供 GPA 要求，未作判断）；语言成绩 TOPIK 3；本科专业 英语文学；GMAT/GRE 未提供\n以下为各校公开要求的符合度（由系统根据学校记录判断，仅供参考，请以最新简章为准）：\n\n庆熙大学 经营大学院（2026学年度后期）\n  语言：不符合（要求 TOPIK 5级以上，你的 TOPIK 3级）｜原文：TOPIK 5级以上（仅限外国人）\n  本科专业：未限制专业｜原文：4年制大学毕业（预定）者，未限制专业\n  GMAT/GRE：官网未提及\n  工作经验：报考资格中未要求工作经验\n  截止状态：一般硕士1次（报名 2026-04-13 起） 截止 2026-05-15，已截止（以最新简章为准）；一般硕士2次（报名 2026-05-22 起） 截止 2026-06-05，已截止（以最新简章为准）；外国人（国际班）1次（报名 2026-04-29 起） 截止 2026-05-21，已截止（以最新简章为准）\n  补充说明：语言要求 TOPIK 5级以上，你的 TOPIK 3级未达到；本科专业未限制，可报考。\n  出处：https://khmba.khu.ac.kr/khmba_kor/user/bbs/BMSR00040/view.do?boardId=532435&menuNo=10800152（数据整理日期 2026-10-29）\n\n仁济大学 经营大学院（2026学年度后期）\n  语言：官网未说明｜原文：官网未说明（核实日期 2026-10-29）\n  本科专业：未限制专业｜原文：与所修专业无关均可报考\n  GMAT/GRE：官网未说明（核实日期 2026-10-29）\n  工作经验：报考资格中未要求工作经验\n  截止状态：报名 2026-06-22 起 截止 2026-07-17，已截止（以最新简章为准）\n  补充说明：官网对语言和GMAT/GRE均未说明，无法据此比较；本科专业未限制，报考条件较宽。\n  出处：https://mba.inje.ac.kr/mba/info/notice.do?mode=download&articleNo=75480&attachNo=40633（数据整理日期 2026-10-29）\n\n成均馆大学 SKK GSB Full-Time MBA\n  语言：无法判断，以简章为准（记录未列出 TOPIK 级别要求）｜原文：TOEFL、TOEIC、TOEIC Speaking、OPIc、TEPS、IELTS 中选其一；母语为英语或在100%英语授课的大学（院）取得学位者可免\n  本科专业：未限制专业｜原文：4年制大学毕业以上（学士）或同等学历者，未限制专业\n  GMAT/GRE：选择性提交（GMAT或GRE成绩单），提交优秀成绩者在书面评审中加分\n  工作经验：报考资格中未要求工作经验\n  截止状态：报名 2026-10-01 起（入学学期以官网为准） 截止 2026-11-06，未截止（距截止 7 天）\n  补充说明：语言需TOEFL等英语成绩之一，记录未列TOPIK要求；GMAT/GRE选择性提交，优秀成绩可加分。\n  出处：https://gsb.skku.edu/gsb/Full-time_MBA/Admissions.do（数据整理日期 2026-10-29）\n\n国民大学 经营大学院（2027学年度前期）\n  语言：官网未说明｜原文：官网未说明（核实日期 2026-10-29）\n  本科专业：未限制专业｜原文：学士学位取得（预定）者及依法令认定具备同等资格者，未限制专业\n  GMAT/GRE：官网未说明（核实日期 2026-10-29）\n  工作经验：报考资格中未要求工作经验\n  截止状态：2027学年度前期（报名 2026-10-19 起，17:00 截止） 截止 2026-11-13，未截止（距截止 14 天）\n  补充说明：官网对语言和GMAT/GRE均未说明，无法据此比较；学士学位取得者即可报考，未限制专业。\n  出处：https://mba.kookmin.ac.kr/mba/main/notice.do?mode=view&articleNo=5940485（数据整理日期 2026-10-29）\n\n崇实大学 一般大学院·硕士（2027学年度前期；各学科要求不同，以所申请学科为准）\n  语言：符合（要求 TOPIK 3级以上，你的 TOPIK 3级）｜原文：外国人特别录取：TOPIK 3级以上，或英语能力成绩可替代（具体分数以简章为准）；入学后毕业需 TOPIK 4级以上；部分学科对外国人另有 TOPIK 要求\n  本科专业：未限制专业｜原文：国内外4年制正规大学学士学位取得（预定）者，未限制本科专业；跨专业者入学后可能需修先修课或补学分\n  GMAT/GRE：官网未提及\n  工作经验：报考资格中未要求工作经验\n  截止状态：2027学年度前期（报名 2026-10-06 10:00 起，16:00 截止） 截止 2026-10-16，已截止（以最新简章为准）\n  补充说明：外国人特别录取要求TOPIK 3级以上，你的TOPIK 3级符合；入学后毕业需TOPIK 4级以上，需另行准备。\n  出处：https://mba.ssu.ac.kr/（数据整理日期 2026-10-29）",
+     "trace": [
+      "router",
+      "router:llm",
+      "profile_extractor",
+      "profile_extractor:llm",
+      "school_matcher",
+      "school_matcher:llm",
+      "verify",
+      "verify:skipped"
+     ],
+     "path": [
+      "router",
+      "profile_extractor",
+      "school_matcher",
+      "verify"
+     ],
+     "route": {
+      "ok": true,
+      "reason": "一致"
+     },
+     "contains": {
+      "ok": true,
+      "missing_groups": [],
+      "forbidden_hits": []
+     },
+     "forbidden_hits": [],
+     "expected_paths": [
+      [
+       "router",
+       "profile_extractor",
+       "school_matcher",
+       "verify"
+      ]
+     ],
+     "fit": {
+      "checks": [
+       {
+        "school": "庆熙大学",
+        "field": "language",
+        "gold": "不符合",
+        "actual": "不符合（要求 TOPIK 5级以上，你的 TOPIK 3级）",
+        "ok": true,
+        "reason": "一致"
+       },
+       {
+        "school": "崇实大学",
+        "field": "language",
+        "gold": "符合",
+        "actual": "符合（要求 TOPIK 3级以上，你的 TOPIK 3级）",
+        "ok": true,
+        "reason": "一致"
+       }
+      ],
+      "manual": []
+     }
+    },
+    {
+     "id": "B03",
+     "category": "profile",
+     "input": "TOPIK 4级，GPA 3.0/4.0，本科专业计算机，申请经营学硕士可以吗？",
+     "supplements": {
+      "generated": 5,
+      "removed": 0,
+      "by_reason": {
+       "无依据": 0,
+       "解析失败": 0,
+       "其他": 0
+      }
+     },
+     "profile": {
+      "gpa": "3.0/4.0",
+      "language_score": "TOPIK 4",
+      "major": "计算机"
+     },
+     "error": null,
+     "latency_s": 4.667,
+     "model_calls": 3,
+     "answer": "你的画像：GPA 3.0/4.0（学校记录未提供 GPA 要求，未作判断）；语言成绩 TOPIK 4；本科专业 计算机；GMAT/GRE 未提供\n以下为各校公开要求的符合度（由系统根据学校记录判断，仅供参考，请以最新简章为准）：\n\n庆熙大学 经营大学院（2026学年度后期）\n  语言：不符合（要求 TOPIK 5级以上，你的 TOPIK 4级）｜原文：TOPIK 5级以上（仅限外国人）\n  本科专业：未限制专业｜原文：4年制大学毕业（预定）者，未限制专业\n  GMAT/GRE：官网未提及\n  工作经验：报考资格中未要求工作经验\n  截止状态：一般硕士1次（报名 2026-04-13 起） 截止 2026-05-15，已截止（以最新简章为准）；一般硕士2次（报名 2026-05-22 起） 截止 2026-06-05，已截止（以最新简章为准）；外国人（国际班）1次（报名 2026-04-29 起） 截止 2026-05-21，已截止（以最新简章为准）\n  补充说明：语言要求 TOPIK 5级以上（仅限外国人），你的 TOPIK 4级未达到该要求。\n  出处：https://khmba.khu.ac.kr/khmba_kor/user/bbs/BMSR00040/view.do?boardId=532435&menuNo=10800152（数据整理日期 2026-10-29）\n\n仁济大学 经营大学院（2026学年度后期）\n  语言：官网未说明｜原文：官网未说明（核实日期 2026-10-29）\n  本科专业：未限制专业｜原文：与所修专业无关均可报考\n  GMAT/GRE：官网未说明（核实日期 2026-10-29）\n  工作经验：报考资格中未要求工作经验\n  截止状态：报名 2026-06-22 起 截止 2026-07-17，已截止（以最新简章为准）\n  补充说明：官网未说明语言与 GMAT/GRE 要求，无法据此比较；背景不限专业，符合该条件。\n  出处：https://mba.inje.ac.kr/mba/info/notice.do?mode=download&articleNo=75480&attachNo=40633（数据整理日期 2026-10-29）\n\n成均馆大学 SKK GSB Full-Time MBA\n  语言：无法判断，以简章为准（记录未列出 TOPIK 级别要求）｜原文：TOEFL、TOEIC、TOEIC Speaking、OPIc、TEPS、IELTS 中选其一；母语为英语或在100%英语授课的大学（院）取得学位者可免\n  本科专业：未限制专业｜原文：4年制大学毕业以上（学士）或同等学历者，未限制专业\n  GMAT/GRE：选择性提交（GMAT或GRE成绩单），提交优秀成绩者在书面评审中加分\n  工作经验：报考资格中未要求工作经验\n  截止状态：报名 2026-10-01 起（入学学期以官网为准） 截止 2026-11-06，未截止（距截止 7 天）\n  补充说明：语言需 TOEFL/TOEIC/IELTS 等英语成绩之一，你目前仅有 TOPIK 4级，不属于其列出的语言类型。\n  出处：https://gsb.skku.edu/gsb/Full-time_MBA/Admissions.do（数据整理日期 2026-10-29）\n\n国民大学 经营大学院（2027学年度前期）\n  语言：官网未说明｜原文：官网未说明（核实日期 2026-10-29）\n  本科专业：未限制专业｜原文：学士学位取得（预定）者及依法令认定具备同等资格者，未限制专业\n  GMAT/GRE：官网未说明（核实日期 2026-10-29）\n  工作经验：报考资格中未要求工作经验\n  截止状态：2027学年度前期（报名 2026-10-19 起，17:00 截止） 截止 2026-11-13，未截止（距截止 14 天）\n  补充说明：官网未说明语言与 GMAT/GRE 要求，无法比较；学士背景未限专业，符合该条件。\n  出处：https://mba.kookmin.ac.kr/mba/main/notice.do?mode=view&articleNo=5940485（数据整理日期 2026-10-29）\n\n崇实大学 一般大学院·硕士（2027学年度前期；各学科要求不同，以所申请学科为准）\n  语言：符合（要求 TOPIK 3级以上，你的 TOPIK 4级）｜原文：外国人特别录取：TOPIK 3级以上，或英语能力成绩可替代（具体分数以简章为准）；入学后毕业需 TOPIK 4级以上；部分学科对外国人另有 TOPIK 要求\n  本科专业：未限制专业｜原文：国内外4年制正规大学学士学位取得（预定）者，未限制本科专业；跨专业者入学后可能需修先修课或补学分\n  GMAT/GRE：官网未提及\n  工作经验：报考资格中未要求工作经验\n  截止状态：2027学年度前期（报名 2026-10-06 10:00 起，16:00 截止） 截止 2026-10-16，已截止（以最新简章为准）\n  补充说明：外国人特别录取要求 TOPIK 3级以上，你的 TOPIK 4级符合；入学后毕业需 TOPIK 4级以上。\n  出处：https://mba.ssu.ac.kr/（数据整理日期 2026-10-29）",
+     "trace": [
+      "router",
+      "router:llm",
+      "profile_extractor",
+      "profile_extractor:llm",
+      "school_matcher",
+      "school_matcher:llm",
+      "verify",
+      "verify:skipped"
+     ],
+     "path": [
+      "router",
+      "profile_extractor",
+      "school_matcher",
+      "verify"
+     ],
+     "route": {
+      "ok": true,
+      "reason": "一致"
+     },
+     "contains": {
+      "ok": true,
+      "missing_groups": [],
+      "forbidden_hits": []
+     },
+     "forbidden_hits": [],
+     "expected_paths": [
+      [
+       "router",
+       "profile_extractor",
+       "school_matcher",
+       "verify"
+      ]
+     ],
+     "fit": {
+      "checks": [
+       {
+        "school": "庆熙大学",
+        "field": "language",
+        "gold": "不符合",
+        "actual": "不符合（要求 TOPIK 5级以上，你的 TOPIK 4级）",
+        "ok": true,
+        "reason": "一致"
+       },
+       {
+        "school": "崇实大学",
+        "field": "language",
+        "gold": "符合",
+        "actual": "符合（要求 TOPIK 3级以上，你的 TOPIK 4级）",
+        "ok": true,
+        "reason": "一致"
+       }
+      ],
+      "manual": [
+       {
+        "school": "仁济大学",
+        "field": "major",
+        "gold": "与专业无关均可报考",
+        "actual": "未限制专业",
+        "reason": "标准判断不是四类结果之一，需人工检查"
+       }
+      ]
+     }
+    },
+    {
+     "id": "B04",
+     "category": "profile",
+     "input": "我没有TOPIK成绩，只有雅思6.5，GPA 3.4/4.0，本科经济学，请看看符合哪些学校的要求。",
+     "supplements": {
+      "generated": 5,
+      "removed": 0,
+      "by_reason": {
+       "无依据": 0,
+       "解析失败": 0,
+       "其他": 0
+      }
+     },
+     "profile": {
+      "gpa": "3.4/4.0",
+      "language_score": "IELTS 6.5",
+      "major": "经济学"
+     },
+     "error": null,
+     "latency_s": 4.669,
+     "model_calls": 3,
+     "answer": "你的画像：GPA 3.4/4.0（学校记录未提供 GPA 要求，未作判断）；语言成绩 IELTS 6.5；本科专业 经济学；GMAT/GRE 未提供\n以下为各校公开要求的符合度（由系统根据学校记录判断，仅供参考，请以最新简章为准）：\n\n庆熙大学 经营大学院（2026学年度后期）\n  语言：无法判断（要求 TOPIK 5级以上，未提供 TOPIK 成绩）｜原文：TOPIK 5级以上（仅限外国人）\n  本科专业：未限制专业｜原文：4年制大学毕业（预定）者，未限制专业\n  GMAT/GRE：官网未提及\n  工作经验：报考资格中未要求工作经验\n  截止状态：一般硕士1次（报名 2026-04-13 起） 截止 2026-05-15，已截止（以最新简章为准）；一般硕士2次（报名 2026-05-22 起） 截止 2026-06-05，已截止（以最新简章为准）；外国人（国际班）1次（报名 2026-04-29 起） 截止 2026-05-21，已截止（以最新简章为准）\n  补充说明：语言要求 TOPIK 5级以上（仅限外国人），你提供的是 IELTS 6.5，记录未说明是否可替代，需以简章为准。\n  出处：https://khmba.khu.ac.kr/khmba_kor/user/bbs/BMSR00040/view.do?boardId=532435&menuNo=10800152（数据整理日期 2026-10-29）\n\n仁济大学 经营大学院（2026学年度后期）\n  语言：官网未说明｜原文：官网未说明（核实日期 2026-10-29）\n  本科专业：未限制专业｜原文：与所修专业无关均可报考\n  GMAT/GRE：官网未说明（核实日期 2026-10-29）\n  工作经验：报考资格中未要求工作经验\n  截止状态：报名 2026-06-22 起 截止 2026-07-17，已截止（以最新简章为准）\n  补充说明：官网未说明语言及GMAT/GRE要求，报考专业不限，你的经济学背景符合其无专业限制的规定，其余条件以简章为准。\n  出处：https://mba.inje.ac.kr/mba/info/notice.do?mode=download&articleNo=75480&attachNo=40633（数据整理日期 2026-10-29）\n\n成均馆大学 SKK GSB Full-Time MBA\n  语言：无法判断，以简章为准（记录未给出 IELTS 的具体分数要求）｜原文：TOEFL、TOEIC、TOEIC Speaking、OPIc、TEPS、IELTS 中选其一；母语为英语或在100%英语授课的大学（院）取得学位者可免\n  本科专业：未限制专业｜原文：4年制大学毕业以上（学士）或同等学历者，未限制专业\n  GMAT/GRE：选择性提交（GMAT或GRE成绩单），提交优秀成绩者在书面评审中加分\n  工作经验：报考资格中未要求工作经验\n  截止状态：报名 2026-10-01 起（入学学期以官网为准） 截止 2026-11-06，未截止（距截止 7 天）\n  补充说明：语言可选TOEFL、IELTS等，你的IELTS 6.5可用于提交，但记录未给出IELTS具体分数，以简章为准；GMAT/GRE为选择性提交。\n  出处：https://gsb.skku.edu/gsb/Full-time_MBA/Admissions.do（数据整理日期 2026-10-29）\n\n国民大学 经营大学院（2027学年度前期）\n  语言：官网未说明｜原文：官网未说明（核实日期 2026-10-29）\n  本科专业：未限制专业｜原文：学士学位取得（预定）者及依法令认定具备同等资格者，未限制专业\n  GMAT/GRE：官网未说明（核实日期 2026-10-29）\n  工作经验：报考资格中未要求工作经验\n  截止状态：2027学年度前期（报名 2026-10-19 起，17:00 截止） 截止 2026-11-13，未截止（距截止 14 天）\n  补充说明：学士学位取得（预定）者即可报考，未限制专业，你的经济学背景符合；语言及GMAT/GRE官网未说明。\n  出处：https://mba.kookmin.ac.kr/mba/main/notice.do?mode=view&articleNo=5940485（数据整理日期 2026-10-29）\n\n崇实大学 一般大学院·硕士（2027学年度前期；各学科要求不同，以所申请学科为准）\n  语言：无法判断，以简章为准（记录未给出 IELTS 的具体分数要求）｜原文：外国人特别录取：TOPIK 3级以上，或英语能力成绩可替代（具体分数以简章为准）；入学后毕业需 TOPIK 4级以上；部分学科对外国人另有 TOPIK 要求\n  本科专业：未限制专业｜原文：国内外4年制正规大学学士学位取得（预定）者，未限制本科专业；跨专业者入学后可能需修先修课或补学分\n  GMAT/GRE：官网未提及\n  工作经验：报考资格中未要求工作经验\n  截止状态：2027学年度前期（报名 2026-10-06 10:00 起，16:00 截止） 截止 2026-10-16，已截止（以最新简章为准）\n  补充说明：外国人可用TOPIK 3级以上或英语能力成绩替代，你的IELTS 6.5可能适用，具体分数以简章为准；各学科要求不同。\n  出处：https://mba.ssu.ac.kr/（数据整理日期 2026-10-29）",
+     "trace": [
+      "router",
+      "router:llm",
+      "profile_extractor",
+      "profile_extractor:llm",
+      "school_matcher",
+      "school_matcher:llm",
+      "verify",
+      "verify:skipped"
+     ],
+     "path": [
+      "router",
+      "profile_extractor",
+      "school_matcher",
+      "verify"
+     ],
+     "route": {
+      "ok": true,
+      "reason": "一致"
+     },
+     "contains": {
+      "ok": true,
+      "missing_groups": [],
+      "forbidden_hits": []
+     },
+     "forbidden_hits": [],
+     "expected_paths": [
+      [
+       "router",
+       "profile_extractor",
+       "school_matcher",
+       "verify"
+      ]
+     ],
+     "fit": {
+      "checks": [
+       {
+        "school": "庆熙大学",
+        "field": "language",
+        "gold": "不得判为符合",
+        "actual": "无法判断（要求 TOPIK 5级以上，未提供 TOPIK 成绩）",
+        "ok": true,
+        "reason": "一致"
+       },
+       {
+        "school": "崇实大学",
+        "field": "language",
+        "gold": "无法判断，以简章为准",
+        "actual": "无法判断，以简章为准（记录未给出 IELTS 的具体分数要求）",
+        "ok": true,
+        "reason": "一致"
+       }
+      ],
+      "manual": []
+     }
+    },
+    {
+     "id": "B05",
+     "category": "profile",
+     "input": "我的托福95分，GPA 3.5/4.0，本科会计，想申请崇实大学，我的英语成绩够吗？",
+     "supplements": {
+      "generated": 5,
+      "removed": 0,
+      "by_reason": {
+       "无依据": 0,
+       "解析失败": 0,
+       "其他": 0
+      }
+     },
+     "profile": {
+      "gpa": "3.5/4.0",
+      "language_score": "TOEFL 95",
+      "major": "会计"
+     },
+     "error": null,
+     "latency_s": 5.773,
+     "model_calls": 3,
+     "answer": "你的画像：GPA 3.5/4.0（学校记录未提供 GPA 要求，未作判断）；语言成绩 TOEFL 95；本科专业 会计；GMAT/GRE 未提供\n以下为各校公开要求的符合度（由系统根据学校记录判断，仅供参考，请以最新简章为准）：\n\n庆熙大学 经营大学院（2026学年度后期）\n  语言：无法判断（要求 TOPIK 5级以上，未提供 TOPIK 成绩）｜原文：TOPIK 5级以上（仅限外国人）\n  本科专业：未限制专业｜原文：4年制大学毕业（预定）者，未限制专业\n  GMAT/GRE：官网未提及\n  工作经验：报考资格中未要求工作经验\n  截止状态：一般硕士1次（报名 2026-04-13 起） 截止 2026-05-15，已截止（以最新简章为准）；一般硕士2次（报名 2026-05-22 起） 截止 2026-06-05，已截止（以最新简章为准）；外国人（国际班）1次（报名 2026-04-29 起） 截止 2026-05-21，已截止（以最新简章为准）\n  补充说明：报考资格未限制本科专业，你的会计专业符合；外国人国际班要求TOPIK 5级以上，你的成绩记录中未提供TOPIK，需以简章为准核实。\n  出处：https://khmba.khu.ac.kr/khmba_kor/user/bbs/BMSR00040/view.do?boardId=532435&menuNo=10800152（数据整理日期 2026-10-29）\n\n仁济大学 经营大学院（2026学年度后期）\n  语言：官网未说明｜原文：官网未说明（核实日期 2026-10-29）\n  本科专业：未限制专业｜原文：与所修专业无关均可报考\n  GMAT/GRE：官网未说明（核实日期 2026-10-29）\n  工作经验：报考资格中未要求工作经验\n  截止状态：报名 2026-06-22 起 截止 2026-07-17，已截止（以最新简章为准）\n  补充说明：与所修专业无关均可报考，你的会计专业符合；官网未说明语言及GMAT/GRE要求，需以简章为准确认。\n  出处：https://mba.inje.ac.kr/mba/info/notice.do?mode=download&articleNo=75480&attachNo=40633（数据整理日期 2026-10-29）\n\n成均馆大学 SKK GSB Full-Time MBA\n  语言：无法判断，以简章为准（记录未给出 TOEFL 的具体分数要求）｜原文：TOEFL、TOEIC、TOEIC Speaking、OPIc、TEPS、IELTS 中选其一；母语为英语或在100%英语授课的大学（院）取得学位者可免\n  本科专业：未限制专业｜原文：4年制大学毕业以上（学士）或同等学历者，未限制专业\n  GMAT/GRE：选择性提交（GMAT或GRE成绩单），提交优秀成绩者在书面评审中加分\n  工作经验：报考资格中未要求工作经验\n  截止状态：报名 2026-10-01 起（入学学期以官网为准） 截止 2026-11-06，未截止（距截止 7 天）\n  补充说明：未限制本科专业，你的会计专业符合；语言可选TOEFL等，但记录未给出TOEFL具体分数要求，你的TOEFL 95能否达标需以简章为准。\n  出处：https://gsb.skku.edu/gsb/Full-time_MBA/Admissions.do（数据整理日期 2026-10-29）\n\n国民大学 经营大学院（2027学年度前期）\n  语言：官网未说明｜原文：官网未说明（核实日期 2026-10-29）\n  本科专业：未限制专业｜原文：学士学位取得（预定）者及依法令认定具备同等资格者，未限制专业\n  GMAT/GRE：官网未说明（核实日期 2026-10-29）\n  工作经验：报考资格中未要求工作经验\n  截止状态：2027学年度前期（报名 2026-10-19 起，17:00 截止） 截止 2026-11-13，未截止（距截止 14 天）\n  补充说明：学士学位取得者未限制专业，你的会计专业符合；官网未说明语言及GMAT/GRE要求，需以官网为准确认。\n  出处：https://mba.kookmin.ac.kr/mba/main/notice.do?mode=view&articleNo=5940485（数据整理日期 2026-10-29）\n\n崇实大学 一般大学院·硕士（2027学年度前期；各学科要求不同，以所申请学科为准）\n  语言：无法判断，以简章为准（记录未给出 TOEFL 的具体分数要求）｜原文：外国人特别录取：TOPIK 3级以上，或英语能力成绩可替代（具体分数以简章为准）；入学后毕业需 TOPIK 4级以上；部分学科对外国人另有 TOPIK 要求\n  本科专业：未限制专业｜原文：国内外4年制正规大学学士学位取得（预定）者，未限制本科专业；跨专业者入学后可能需修先修课或补学分\n  GMAT/GRE：官网未提及\n  工作经验：报考资格中未要求工作经验\n  截止状态：2027学年度前期（报名 2026-10-06 10:00 起，16:00 截止） 截止 2026-10-16，已截止（以最新简章为准）\n  补充说明：未限制本科专业，你的会计专业符合；外国人特别录取可用英语能力成绩替代TOPIK，具体分数以简章为准，需核实各学科对外国人的额外要求。\n  出处：https://mba.ssu.ac.kr/（数据整理日期 2026-10-29）",
+     "trace": [
+      "router",
+      "router:llm",
+      "profile_extractor",
+      "profile_extractor:llm",
+      "school_matcher",
+      "school_matcher:llm",
+      "verify",
+      "verify:skipped"
+     ],
+     "path": [
+      "router",
+      "profile_extractor",
+      "school_matcher",
+      "verify"
+     ],
+     "route": {
+      "ok": true,
+      "reason": "一致"
+     },
+     "contains": {
+      "ok": true,
+      "missing_groups": [],
+      "forbidden_hits": []
+     },
+     "forbidden_hits": [],
+     "expected_paths": [
+      [
+       "router",
+       "profile_extractor",
+       "school_matcher",
+       "verify"
+      ]
+     ],
+     "fit": {
+      "checks": [
+       {
+        "school": "崇实大学",
+        "field": "language",
+        "gold": "无法判断，以简章为准",
+        "actual": "无法判断，以简章为准（记录未给出 TOEFL 的具体分数要求）",
+        "ok": true,
+        "reason": "一致"
+       }
+      ],
+      "manual": []
+     }
+    },
+    {
+     "id": "B06",
+     "category": "profile",
+     "input": "GPA 90/100，TOPIK 5级，本科国际贸易，想申请经营学硕士，请评估。",
+     "supplements": {
+      "generated": 5,
+      "removed": 0,
+      "by_reason": {
+       "无依据": 0,
+       "解析失败": 0,
+       "其他": 0
+      }
+     },
+     "profile": {
+      "gpa": "90/100",
+      "language_score": "TOPIK 5级",
+      "major": "国际贸易"
+     },
+     "error": null,
+     "latency_s": 4.464,
+     "model_calls": 3,
+     "answer": "你的画像：GPA 90/100（学校记录未提供 GPA 要求，未作判断）；语言成绩 TOPIK 5级；本科专业 国际贸易；GMAT/GRE 未提供\n以下为各校公开要求的符合度（由系统根据学校记录判断，仅供参考，请以最新简章为准）：\n\n庆熙大学 经营大学院（2026学年度后期）\n  语言：符合（要求 TOPIK 5级以上，你的 TOPIK 5级）｜原文：TOPIK 5级以上（仅限外国人）\n  本科专业：未限制专业｜原文：4年制大学毕业（预定）者，未限制专业\n  GMAT/GRE：官网未提及\n  工作经验：报考资格中未要求工作经验\n  截止状态：一般硕士1次（报名 2026-04-13 起） 截止 2026-05-15，已截止（以最新简章为准）；一般硕士2次（报名 2026-05-22 起） 截止 2026-06-05，已截止（以最新简章为准）；外国人（国际班）1次（报名 2026-04-29 起） 截止 2026-05-21，已截止（以最新简章为准）\n  补充说明：语言要求TOPIK 5级以上（仅限外国人），你的TOPIK 5级符合该公开要求；本科专业未限制。\n  出处：https://khmba.khu.ac.kr/khmba_kor/user/bbs/BMSR00040/view.do?boardId=532435&menuNo=10800152（数据整理日期 2026-10-29）\n\n仁济大学 经营大学院（2026学年度后期）\n  语言：官网未说明｜原文：官网未说明（核实日期 2026-10-29）\n  本科专业：未限制专业｜原文：与所修专业无关均可报考\n  GMAT/GRE：官网未说明（核实日期 2026-10-29）\n  工作经验：报考资格中未要求工作经验\n  截止状态：报名 2026-06-22 起 截止 2026-07-17，已截止（以最新简章为准）\n  补充说明：官网未说明语言要求，资料中无法判断语言条件；本科专业与所修专业无关均可报考，你的国际贸易背景符合。\n  出处：https://mba.inje.ac.kr/mba/info/notice.do?mode=download&articleNo=75480&attachNo=40633（数据整理日期 2026-10-29）\n\n成均馆大学 SKK GSB Full-Time MBA\n  语言：无法判断，以简章为准（记录未列出 TOPIK 级别要求）｜原文：TOEFL、TOEIC、TOEIC Speaking、OPIc、TEPS、IELTS 中选其一；母语为英语或在100%英语授课的大学（院）取得学位者可免\n  本科专业：未限制专业｜原文：4年制大学毕业以上（学士）或同等学历者，未限制专业\n  GMAT/GRE：选择性提交（GMAT或GRE成绩单），提交优秀成绩者在书面评审中加分\n  工作经验：报考资格中未要求工作经验\n  截止状态：报名 2026-10-01 起（入学学期以官网为准） 截止 2026-11-06，未截止（距截止 7 天）\n  补充说明：语言需TOEFL、IELTS等英语成绩之一，你提供的是TOPIK成绩，资料未列明TOPIK是否可替代，需以简章为准；GMAT/GRE为选择性提交。\n  出处：https://gsb.skku.edu/gsb/Full-time_MBA/Admissions.do（数据整理日期 2026-10-29）\n\n国民大学 经营大学院（2027学年度前期）\n  语言：官网未说明｜原文：官网未说明（核实日期 2026-10-29）\n  本科专业：未限制专业｜原文：学士学位取得（预定）者及依法令认定具备同等资格者，未限制专业\n  GMAT/GRE：官网未说明（核实日期 2026-10-29）\n  工作经验：报考资格中未要求工作经验\n  截止状态：2027学年度前期（报名 2026-10-19 起，17:00 截止） 截止 2026-11-13，未截止（距截止 14 天）\n  补充说明：官网未说明语言及GMAT/GRE要求，资料中无法判断；学历要求为学士学位，未限制专业，你的国际贸易背景符合。\n  出处：https://mba.kookmin.ac.kr/mba/main/notice.do?mode=view&articleNo=5940485（数据整理日期 2026-10-29）\n\n崇实大学 一般大学院·硕士（2027学年度前期；各学科要求不同，以所申请学科为准）\n  语言：符合（要求 TOPIK 3级以上，你的 TOPIK 5级）｜原文：外国人特别录取：TOPIK 3级以上，或英语能力成绩可替代（具体分数以简章为准）；入学后毕业需 TOPIK 4级以上；部分学科对外国人另有 TOPIK 要求\n  本科专业：未限制专业｜原文：国内外4年制正规大学学士学位取得（预定）者，未限制本科专业；跨专业者入学后可能需修先修课或补学分\n  GMAT/GRE：官网未提及\n  工作经验：报考资格中未要求工作经验\n  截止状态：2027学年度前期（报名 2026-10-06 10:00 起，16:00 截止） 截止 2026-10-16，已截止（以最新简章为准）\n  补充说明：外国人特别录取要求TOPIK 3级以上，你的TOPIK 5级符合该公开要求；本科专业未限制，跨专业者入学后可能需补修课程。\n  出处：https://mba.ssu.ac.kr/（数据整理日期 2026-10-29）",
+     "trace": [
+      "router",
+      "router:llm",
+      "profile_extractor",
+      "profile_extractor:llm",
+      "school_matcher",
+      "school_matcher:llm",
+      "verify",
+      "verify:skipped"
+     ],
+     "path": [
+      "router",
+      "profile_extractor",
+      "school_matcher",
+      "verify"
+     ],
+     "route": {
+      "ok": true,
+      "reason": "一致"
+     },
+     "contains": {
+      "ok": true,
+      "missing_groups": [],
+      "forbidden_hits": []
+     },
+     "forbidden_hits": [],
+     "expected_paths": [
+      [
+       "router",
+       "profile_extractor",
+       "school_matcher",
+       "verify"
+      ]
+     ],
+     "fit": {
+      "checks": [
+       {
+        "school": "庆熙大学",
+        "field": "language",
+        "gold": "符合",
+        "actual": "符合（要求 TOPIK 5级以上，你的 TOPIK 5级）",
+        "ok": true,
+        "reason": "一致"
+       },
+       {
+        "school": "崇实大学",
+        "field": "language",
+        "gold": "符合",
+        "actual": "符合（要求 TOPIK 3级以上，你的 TOPIK 5级）",
+        "ok": true,
+        "reason": "一致"
+       }
+      ],
+      "manual": []
+     }
+    },
+    {
+     "id": "B07",
+     "category": "profile",
+     "input": "TOPIK 2级，GPA 3.8/4.5，本科管理学，想申请经营学硕士，请评估。",
+     "supplements": {
+      "generated": 5,
+      "removed": 0,
+      "by_reason": {
+       "无依据": 0,
+       "解析失败": 0,
+       "其他": 0
+      }
+     },
+     "profile": {
+      "gpa": "3.8/4.5",
+      "language_score": "TOPIK 2",
+      "major": "管理学"
+     },
+     "error": null,
+     "latency_s": 4.889,
+     "model_calls": 3,
+     "answer": "你的画像：GPA 3.8/4.5（学校记录未提供 GPA 要求，未作判断）；语言成绩 TOPIK 2；本科专业 管理学；GMAT/GRE 未提供\n以下为各校公开要求的符合度（由系统根据学校记录判断，仅供参考，请以最新简章为准）：\n\n庆熙大学 经营大学院（2026学年度后期）\n  语言：不符合（要求 TOPIK 5级以上，你的 TOPIK 2级）｜原文：TOPIK 5级以上（仅限外国人）\n  本科专业：未限制专业｜原文：4年制大学毕业（预定）者，未限制专业\n  GMAT/GRE：官网未提及\n  工作经验：报考资格中未要求工作经验\n  截止状态：一般硕士1次（报名 2026-04-13 起） 截止 2026-05-15，已截止（以最新简章为准）；一般硕士2次（报名 2026-05-22 起） 截止 2026-06-05，已截止（以最新简章为准）；外国人（国际班）1次（报名 2026-04-29 起） 截止 2026-05-21，已截止（以最新简章为准）\n  补充说明：语言要求TOPIK 5级以上（仅限外国人），你的TOPIK 2级未达到；本科专业未限制。\n  出处：https://khmba.khu.ac.kr/khmba_kor/user/bbs/BMSR00040/view.do?boardId=532435&menuNo=10800152（数据整理日期 2026-10-29）\n\n仁济大学 经营大学院（2026学年度后期）\n  语言：官网未说明｜原文：官网未说明（核实日期 2026-10-29）\n  本科专业：未限制专业｜原文：与所修专业无关均可报考\n  GMAT/GRE：官网未说明（核实日期 2026-10-29）\n  工作经验：报考资格中未要求工作经验\n  截止状态：报名 2026-06-22 起 截止 2026-07-17，已截止（以最新简章为准）\n  补充说明：官网未说明语言及GMAT/GRE要求，本科专业未限制，无工作经验要求，可按简章进一步确认。\n  出处：https://mba.inje.ac.kr/mba/info/notice.do?mode=download&articleNo=75480&attachNo=40633（数据整理日期 2026-10-29）\n\n成均馆大学 SKK GSB Full-Time MBA\n  语言：无法判断，以简章为准（记录未列出 TOPIK 级别要求）｜原文：TOEFL、TOEIC、TOEIC Speaking、OPIc、TEPS、IELTS 中选其一；母语为英语或在100%英语授课的大学（院）取得学位者可免\n  本科专业：未限制专业｜原文：4年制大学毕业以上（学士）或同等学历者，未限制专业\n  GMAT/GRE：选择性提交（GMAT或GRE成绩单），提交优秀成绩者在书面评审中加分\n  工作经验：报考资格中未要求工作经验\n  截止状态：报名 2026-10-01 起（入学学期以官网为准） 截止 2026-11-06，未截止（距截止 7 天）\n  补充说明：语言需TOEFL等英语成绩之一，TOPIK未列入，需以简章确认；GMAT/GRE为选择性提交，优秀成绩可加分。\n  出处：https://gsb.skku.edu/gsb/Full-time_MBA/Admissions.do（数据整理日期 2026-10-29）\n\n国民大学 经营大学院（2027学年度前期）\n  语言：官网未说明｜原文：官网未说明（核实日期 2026-10-29）\n  本科专业：未限制专业｜原文：学士学位取得（预定）者及依法令认定具备同等资格者，未限制专业\n  GMAT/GRE：官网未说明（核实日期 2026-10-29）\n  工作经验：报考资格中未要求工作经验\n  截止状态：2027学年度前期（报名 2026-10-19 起，17:00 截止） 截止 2026-11-13，未截止（距截止 14 天）\n  补充说明：官网未说明语言及GMAT/GRE要求，本科专业未限制，无工作经验要求，可按简章进一步确认。\n  出处：https://mba.kookmin.ac.kr/mba/main/notice.do?mode=view&articleNo=5940485（数据整理日期 2026-10-29）\n\n崇实大学 一般大学院·硕士（2027学年度前期；各学科要求不同，以所申请学科为准）\n  语言：不符合（要求 TOPIK 3级以上，你的 TOPIK 2级）｜原文：外国人特别录取：TOPIK 3级以上，或英语能力成绩可替代（具体分数以简章为准）；入学后毕业需 TOPIK 4级以上；部分学科对外国人另有 TOPIK 要求\n  本科专业：未限制专业｜原文：国内外4年制正规大学学士学位取得（预定）者，未限制本科专业；跨专业者入学后可能需修先修课或补学分\n  GMAT/GRE：官网未提及\n  工作经验：报考资格中未要求工作经验\n  截止状态：2027学年度前期（报名 2026-10-06 10:00 起，16:00 截止） 截止 2026-10-16，已截止（以最新简章为准）\n  补充说明：外国人特别录取要求TOPIK 3级以上，你的TOPIK 2级未达到；本科专业未限制。\n  出处：https://mba.ssu.ac.kr/（数据整理日期 2026-10-29）",
+     "trace": [
+      "router",
+      "router:llm",
+      "profile_extractor",
+      "profile_extractor:llm",
+      "school_matcher",
+      "school_matcher:llm",
+      "verify",
+      "verify:skipped"
+     ],
+     "path": [
+      "router",
+      "profile_extractor",
+      "school_matcher",
+      "verify"
+     ],
+     "route": {
+      "ok": true,
+      "reason": "一致"
+     },
+     "contains": {
+      "ok": true,
+      "missing_groups": [],
+      "forbidden_hits": []
+     },
+     "forbidden_hits": [],
+     "expected_paths": [
+      [
+       "router",
+       "profile_extractor",
+       "school_matcher",
+       "verify"
+      ]
+     ],
+     "fit": {
+      "checks": [
+       {
+        "school": "庆熙大学",
+        "field": "language",
+        "gold": "不符合",
+        "actual": "不符合（要求 TOPIK 5级以上，你的 TOPIK 2级）",
+        "ok": true,
+        "reason": "一致"
+       },
+       {
+        "school": "崇实大学",
+        "field": "language",
+        "gold": "不符合",
+        "actual": "不符合（要求 TOPIK 3级以上，你的 TOPIK 2级）",
+        "ok": true,
+        "reason": "一致"
+       }
+      ],
+      "manual": []
+     }
+    },
+    {
+     "id": "C01",
+     "category": "timeline",
+     "input": "我想申请国民大学经营大学院，请帮我按截止日期倒推准备计划。",
+     "eval_date": "2026-10-30",
+     "supplements": null,
+     "profile": {},
+     "error": null,
+     "latency_s": 0.779,
+     "model_calls": 1,
+     "answer": "[占位] 今天是 2026-10-30。以下为检索到的申请轮次信息，完整的时间规划功能待接入大模型：\n- 国民大学 经营大学院（2027学年度前期）：2027学年度前期（报名 2026-10-19 起，17:00 截止） 截止 2026-11-13，未截止（距截止 14 天）（出处：https://mba.kookmin.ac.kr/mba/main/notice.do?mode=view&articleNo=5940485，截至 2026-10-29）",
+     "trace": [
+      "router",
+      "router:llm",
+      "requirement_retriever",
+      "timeline_planner",
+      "verify",
+      "verify:skipped"
+     ],
+     "path": [
+      "router",
+      "requirement_retriever",
+      "timeline_planner",
+      "verify"
+     ],
+     "route": {
+      "ok": true,
+      "reason": "一致"
+     },
+     "contains": {
+      "ok": true,
+      "missing_groups": [],
+      "forbidden_hits": []
+     },
+     "forbidden_hits": [],
+     "expected_paths": [
+      [
+       "router",
+       "requirement_retriever",
+       "timeline_planner",
+       "verify"
+      ]
+     ],
+     "fact_ok": true
+    },
+    {
+     "id": "C02",
+     "category": "timeline",
+     "input": "我想申请庆熙大学，请帮我规划申请时间。",
+     "eval_date": "2026-10-30",
+     "supplements": null,
+     "profile": {},
+     "error": null,
+     "latency_s": 1.067,
+     "model_calls": 1,
+     "answer": "[占位] 今天是 2026-10-30。以下为检索到的申请轮次信息，完整的时间规划功能待接入大模型：\n- 庆熙大学 经营大学院（2026学年度后期）：一般硕士1次（报名 2026-04-13 起） 截止 2026-05-15，已截止（以最新简章为准）；一般硕士2次（报名 2026-05-22 起） 截止 2026-06-05，已截止（以最新简章为准）；外国人（国际班）1次（报名 2026-04-29 起） 截止 2026-05-21，已截止（以最新简章为准）（出处：https://khmba.khu.ac.kr/khmba_kor/user/bbs/BMSR00040/view.do?boardId=532435&menuNo=10800152，截至 2026-10-29）\n  注意：资料中的轮次均已截止，暂无可申请轮次，请查阅最新简章确认下一轮日期。",
+     "trace": [
+      "router",
+      "router:llm",
+      "requirement_retriever",
+      "timeline_planner",
+      "verify",
+      "verify:skipped"
+     ],
+     "path": [
+      "router",
+      "requirement_retriever",
+      "timeline_planner",
+      "verify"
+     ],
+     "route": {
+      "ok": true,
+      "reason": "一致"
+     },
+     "contains": {
+      "ok": true,
+      "missing_groups": [],
+      "forbidden_hits": []
+     },
+     "forbidden_hits": [],
+     "expected_paths": [
+      [
+       "router",
+       "requirement_retriever",
+       "timeline_planner",
+       "verify"
+      ]
+     ],
+     "fact_ok": true
+    },
+    {
+     "id": "C03",
+     "category": "timeline",
+     "input": "帮我规划崇实大学硕士的申请时间。",
+     "eval_date": "2026-10-30",
+     "supplements": null,
+     "profile": {},
+     "error": null,
+     "latency_s": 1.415,
+     "model_calls": 1,
+     "answer": "[占位] 今天是 2026-10-30。以下为检索到的申请轮次信息，完整的时间规划功能待接入大模型：\n- 崇实大学 一般大学院·硕士（2027学年度前期；各学科要求不同，以所申请学科为准）：2027学年度前期（报名 2026-10-06 10:00 起，16:00 截止） 截止 2026-10-16，已截止（以最新简章为准）（出处：https://mba.ssu.ac.kr/，截至 2026-10-29）\n  注意：资料中的轮次均已截止，暂无可申请轮次，请查阅最新简章确认下一轮日期。",
+     "trace": [
+      "router",
+      "router:llm",
+      "requirement_retriever",
+      "timeline_planner",
+      "verify",
+      "verify:skipped"
+     ],
+     "path": [
+      "router",
+      "requirement_retriever",
+      "timeline_planner",
+      "verify"
+     ],
+     "route": {
+      "ok": true,
+      "reason": "一致"
+     },
+     "contains": {
+      "ok": true,
+      "missing_groups": [],
+      "forbidden_hits": []
+     },
+     "forbidden_hits": [],
+     "expected_paths": [
+      [
+       "router",
+       "requirement_retriever",
+       "timeline_planner",
+       "verify"
+      ]
+     ],
+     "fact_ok": true
+    },
+    {
+     "id": "D01",
+     "category": "review",
+     "input": "请点评下面这段学习计划：\n我本科学习经营学，对数据驱动的市场营销很感兴趣。大三时在一家电商公司实习三个月，负责整理用户购买数据，并协助制作月度销售报告，发现老客户复购率低于预期。我希望通过硕士阶段的学习，系统掌握市场分析方法，将来从事电商运营分析工作。我认为贵校的课程很适合我。",
+     "supplements": null,
+     "profile": {},
+     "error": null,
+     "latency_s": 1.09,
+     "model_calls": 1,
+     "answer": "文书内容较短（约 126 字），无法给出有效反馈。请粘贴完整的段落或全文（建议至少 150 字）后再发给我。",
+     "trace": [
+      "router",
+      "router:llm",
+      "doc_reviewer",
+      "doc_reviewer:too_short"
+     ],
+     "path": [
+      "router",
+      "doc_reviewer"
+     ],
+     "route": {
+      "ok": true,
+      "reason": "一致"
+     },
+     "contains": {
+      "ok": false,
+      "missing_groups": [
+       [
+        "结构"
+       ],
+       [
+        "针对性"
+       ],
+       [
+        "具体"
+       ]
+      ],
+      "forbidden_hits": []
+     },
+     "forbidden_hits": [],
+     "expected_paths": [
+      [
+       "router",
+       "doc_reviewer"
+      ]
+     ]
+    },
+    {
+     "id": "D02",
+     "category": "review",
+     "input": "请点评我的文书：我想读经营学硕士。",
+     "supplements": null,
+     "profile": {},
+     "error": null,
+     "latency_s": 1.028,
+     "model_calls": 1,
+     "answer": "文书内容较短（约 9 字），无法给出有效反馈。请粘贴完整的段落或全文（建议至少 150 字）后再发给我。",
+     "trace": [
+      "router",
+      "router:llm",
+      "doc_reviewer",
+      "doc_reviewer:too_short"
+     ],
+     "path": [
+      "router",
+      "doc_reviewer"
+     ],
+     "route": {
+      "ok": true,
+      "reason": "一致"
+     },
+     "contains": {
+      "ok": false,
+      "missing_groups": [
+       [
+        "补充",
+        "太短",
+        "更多"
+       ]
+      ],
+      "forbidden_hits": []
+     },
+     "forbidden_hits": [],
+     "expected_paths": [
+      [
+       "router",
+       "doc_reviewer"
+      ]
+     ]
+    },
+    {
+     "id": "D03",
+     "category": "review",
+     "input": "帮我看看我的简历写得怎么样。",
+     "supplements": null,
+     "profile": {},
+     "error": null,
+     "latency_s": 0.832,
+     "model_calls": 1,
+     "answer": "文书内容较短（约 14 字），无法给出有效反馈。请粘贴完整的段落或全文（建议至少 150 字）后再发给我。",
+     "trace": [
+      "router",
+      "router:llm",
+      "doc_reviewer",
+      "doc_reviewer:too_short"
+     ],
+     "path": [
+      "router",
+      "doc_reviewer"
+     ],
+     "route": {
+      "ok": true,
+      "reason": "一致"
+     },
+     "contains": {
+      "ok": true,
+      "missing_groups": [],
+      "forbidden_hits": []
+     },
+     "forbidden_hits": [],
+     "expected_paths": [
+      [
+       "router",
+       "doc_reviewer"
+      ],
+      [
+       "router",
+       "clarify"
+      ]
+     ]
+    },
+    {
+     "id": "E01",
+     "category": "unclear",
+     "input": "我想申请经营学硕士，该怎么准备？",
+     "supplements": null,
+     "profile": {},
+     "error": null,
+     "latency_s": 2.673,
+     "model_calls": 2,
+     "answer": "为了给出选校建议，还需要你补充以下信息：GPA（及满分制）、语言成绩（雅思/托福/TOPIK）、本科专业。",
+     "trace": [
+      "router",
+      "router:llm",
+      "profile_extractor",
+      "profile_extractor:llm",
+      "clarify"
+     ],
+     "path": [
+      "router",
+      "profile_extractor",
+      "clarify"
+     ],
+     "route": {
+      "ok": true,
+      "reason": "一致"
+     },
+     "contains": {
+      "ok": true,
+      "missing_groups": [],
+      "forbidden_hits": []
+     },
+     "forbidden_hits": [],
+     "expected_paths": [
+      [
+       "router",
+       "clarify"
+      ],
+      [
+       "router",
+       "profile_extractor",
+       "clarify"
+      ]
+     ]
+    },
+    {
+     "id": "E02",
+     "category": "unclear",
+     "input": "帮我推荐学校。",
+     "supplements": null,
+     "profile": {},
+     "error": null,
+     "latency_s": 2.603,
+     "model_calls": 2,
+     "answer": "为了给出选校建议，还需要你补充以下信息：GPA（及满分制）、语言成绩（雅思/托福/TOPIK）、本科专业。",
+     "trace": [
+      "router",
+      "router:llm",
+      "profile_extractor",
+      "profile_extractor:llm",
+      "clarify"
+     ],
+     "path": [
+      "router",
+      "profile_extractor",
+      "clarify"
+     ],
+     "route": {
+      "ok": true,
+      "reason": "一致"
+     },
+     "contains": {
+      "ok": true,
+      "missing_groups": [],
+      "forbidden_hits": []
+     },
+     "forbidden_hits": [],
+     "expected_paths": [
+      [
+       "router",
+       "profile_extractor",
+       "clarify"
+      ]
+     ]
+    },
+    {
+     "id": "E03",
+     "category": "unclear",
+     "input": "我GPA 3.5/4.0，想申请，请看看。",
+     "supplements": null,
+     "profile": {
+      "gpa": "3.5/4.0"
+     },
+     "error": null,
+     "latency_s": 2.064,
+     "model_calls": 2,
+     "answer": "为了给出选校建议，还需要你补充以下信息：语言成绩（雅思/托福/TOPIK）、本科专业。",
+     "trace": [
+      "router",
+      "router:llm",
+      "profile_extractor",
+      "profile_extractor:llm",
+      "clarify"
+     ],
+     "path": [
+      "router",
+      "profile_extractor",
+      "clarify"
+     ],
+     "route": {
+      "ok": true,
+      "reason": "一致"
+     },
+     "contains": {
+      "ok": true,
+      "missing_groups": [],
+      "forbidden_hits": []
+     },
+     "forbidden_hits": [],
+     "expected_paths": [
+      [
+       "router",
+       "profile_extractor",
+       "clarify"
+      ]
+     ]
+    },
+    {
+     "id": "E04",
+     "category": "unclear",
+     "input": "这个怎么弄？",
+     "supplements": null,
+     "profile": {},
+     "error": null,
+     "latency_s": 1.133,
+     "model_calls": 1,
+     "answer": "能再具体说说你的需求吗？例如：选校定位、查询某校申请要求、制定申请时间规划，或点评文书。",
+     "trace": [
+      "router",
+      "router:llm",
+      "clarify"
+     ],
+     "path": [
+      "router",
+      "clarify"
+     ],
+     "route": {
+      "ok": true,
+      "reason": "一致"
+     },
+     "contains": {
+      "ok": true,
+      "missing_groups": [],
+      "forbidden_hits": []
+     },
+     "forbidden_hits": [],
+     "expected_paths": [
+      [
+       "router",
+       "clarify"
+      ]
+     ]
+    },
+    {
+     "id": "F01",
+     "category": "no_answer",
+     "input": "首尔大学经营大学院的报名截止日期是哪天？",
+     "supplements": null,
+     "profile": {},
+     "error": null,
+     "latency_s": 1.1,
+     "model_calls": 1,
+     "answer": "抱歉，这个问题我暂时无法从可靠来源确认。建议直接查阅目标学校项目的官方网站或联系招生办公室，以获取最新、准确的信息。",
+     "trace": [
+      "router",
+      "router:llm",
+      "requirement_retriever",
+      "fallback"
+     ],
+     "path": [
+      "router",
+      "requirement_retriever",
+      "fallback"
+     ],
+     "route": {
+      "ok": true,
+      "reason": "一致"
+     },
+     "contains": {
+      "ok": true,
+      "missing_groups": [],
+      "forbidden_hits": []
+     },
+     "forbidden_hits": [],
+     "expected_paths": [
+      [
+       "router",
+       "requirement_retriever",
+       "fallback"
+      ]
+     ]
+    },
+    {
+     "id": "F02",
+     "category": "no_answer",
+     "input": "延世大学经营专门大学院的报名截止日期是哪天？",
+     "supplements": null,
+     "profile": {},
+     "error": null,
+     "latency_s": 1.13,
+     "model_calls": 1,
+     "answer": "抱歉，这个问题我暂时无法从可靠来源确认。建议直接查阅目标学校项目的官方网站或联系招生办公室，以获取最新、准确的信息。",
+     "trace": [
+      "router",
+      "router:llm",
+      "requirement_retriever",
+      "fallback"
+     ],
+     "path": [
+      "router",
+      "requirement_retriever",
+      "fallback"
+     ],
+     "route": {
+      "ok": true,
+      "reason": "一致"
+     },
+     "contains": {
+      "ok": true,
+      "missing_groups": [],
+      "forbidden_hits": []
+     },
+     "forbidden_hits": [],
+     "expected_paths": [
+      [
+       "router",
+       "requirement_retriever",
+       "fallback"
+      ]
+     ]
+    },
+    {
+     "id": "F03",
+     "category": "no_answer",
+     "input": "高丽大学经营大学院对GMAT有什么要求？",
+     "supplements": null,
+     "profile": {},
+     "error": null,
+     "latency_s": 2.649,
+     "model_calls": 1,
+     "answer": "抱歉，这个问题我暂时无法从可靠来源确认。建议直接查阅目标学校项目的官方网站或联系招生办公室，以获取最新、准确的信息。",
+     "trace": [
+      "router",
+      "router:llm",
+      "requirement_retriever",
+      "fallback"
+     ],
+     "path": [
+      "router",
+      "requirement_retriever",
+      "fallback"
+     ],
+     "route": {
+      "ok": true,
+      "reason": "一致"
+     },
+     "contains": {
+      "ok": true,
+      "missing_groups": [],
+      "forbidden_hits": []
+     },
+     "forbidden_hits": [],
+     "expected_paths": [
+      [
+       "router",
+       "requirement_retriever",
+       "fallback"
+      ]
+     ]
+    },
+    {
+     "id": "F04",
+     "category": "no_answer",
+     "input": "庆熙大学经营大学院的学费是多少？",
+     "supplements": null,
+     "profile": {},
+     "error": null,
+     "latency_s": 0.909,
+     "model_calls": 1,
+     "answer": "根据检索到的资料：\n庆熙大学 经营大学院（2026学年度后期）\n  申请轮次（今天 2026-10-30）：一般硕士1次（报名 2026-04-13 起） 截止 2026-05-15，已截止（以最新简章为准）；一般硕士2次（报名 2026-05-22 起） 截止 2026-06-05，已截止（以最新简章为准）；外国人（国际班）1次（报名 2026-04-29 起） 截止 2026-05-21，已截止（以最新简章为准）\n  GMAT/GRE：资料中未提及，请以最新简章为准\n  语言：TOPIK 5级以上（仅限外国人）\n  背景要求：4年制大学毕业（预定）者，未限制专业\n  文书：官网未说明（核实日期 2026-10-29）\n  推荐信：官网未说明（核实日期 2026-10-29）\n  工作经验：报考资格中未要求工作经验\n  出处：https://khmba.khu.ac.kr/khmba_kor/user/bbs/BMSR00040/view.do?boardId=532435&menuNo=10800152（截至 2026-10-29）",
+     "trace": [
+      "router",
+      "router:llm",
+      "requirement_retriever",
+      "verify",
+      "verify:skipped"
+     ],
+     "path": [
+      "router",
+      "requirement_retriever",
+      "verify"
+     ],
+     "route": {
+      "ok": true,
+      "reason": "一致"
+     },
+     "contains": {
+      "ok": true,
+      "missing_groups": [],
+      "forbidden_hits": []
+     },
+     "forbidden_hits": [],
+     "expected_paths": [
+      [
+       "router",
+       "requirement_retriever",
+       "fallback"
+      ],
+      [
+       "router",
+       "requirement_retriever",
+       "verify"
+      ]
+     ]
+    },
+    {
+     "id": "F05",
+     "category": "no_answer",
+     "input": "我能被庆熙大学录取吗？大概有多大把握？",
+     "supplements": null,
+     "profile": {},
+     "error": null,
+     "latency_s": 0.861,
+     "model_calls": 1,
+     "answer": "根据检索到的资料：\n庆熙大学 经营大学院（2026学年度后期）\n  申请轮次（今天 2026-10-30）：一般硕士1次（报名 2026-04-13 起） 截止 2026-05-15，已截止（以最新简章为准）；一般硕士2次（报名 2026-05-22 起） 截止 2026-06-05，已截止（以最新简章为准）；外国人（国际班）1次（报名 2026-04-29 起） 截止 2026-05-21，已截止（以最新简章为准）\n  GMAT/GRE：资料中未提及，请以最新简章为准\n  语言：TOPIK 5级以上（仅限外国人）\n  背景要求：4年制大学毕业（预定）者，未限制专业\n  文书：官网未说明（核实日期 2026-10-29）\n  推荐信：官网未说明（核实日期 2026-10-29）\n  工作经验：报考资格中未要求工作经验\n  出处：https://khmba.khu.ac.kr/khmba_kor/user/bbs/BMSR00040/view.do?boardId=532435&menuNo=10800152（截至 2026-10-29）",
+     "trace": [
+      "router",
+      "router:llm",
+      "requirement_retriever",
+      "verify",
+      "verify:skipped"
+     ],
+     "path": [
+      "router",
+      "requirement_retriever",
+      "verify"
+     ],
+     "route": {
+      "ok": false,
+      "reason": "实际 ['router', 'requirement_retriever', 'verify']，预期 [['router', 'profile_extractor', 'clarify'], ['router', 'requirement_retriever', 'fallback'], ['router', 'clarify']]"
+     },
+     "contains": {
+      "ok": true,
+      "missing_groups": [],
+      "forbidden_hits": []
+     },
+     "forbidden_hits": [],
+     "expected_paths": [
+      [
+       "router",
+       "profile_extractor",
+       "clarify"
+      ],
+      [
+       "router",
+       "requirement_retriever",
+       "fallback"
+      ],
+      [
+       "router",
+       "clarify"
+      ]
+     ]
+    },
+    {
+     "id": "G01",
+     "category": "chitchat",
+     "input": "你好，你是谁？",
+     "supplements": null,
+     "profile": {},
+     "error": null,
+     "latency_s": 1.022,
+     "model_calls": 1,
+     "answer": "你好！我是 AI 经营学硕士留学申请顾问，可以帮你做选校定位、查询申请要求、规划时间线和点评文书。",
+     "trace": [
+      "router",
+      "router:llm"
+     ],
+     "path": [
+      "router"
+     ],
+     "route": {
+      "ok": true,
+      "reason": "一致"
+     },
+     "contains": {
+      "ok": true,
+      "missing_groups": [],
+      "forbidden_hits": []
+     },
+     "forbidden_hits": [],
+     "expected_paths": [
+      [
+       "router"
+      ]
+     ]
+    },
+    {
+     "id": "G02",
+     "category": "chitchat",
+     "input": "今天天气怎么样？",
+     "supplements": null,
+     "profile": {},
+     "error": null,
+     "latency_s": 1.055,
+     "model_calls": 1,
+     "answer": "能再具体说说你的需求吗？例如：选校定位、查询某校申请要求、制定申请时间规划，或点评文书。",
+     "trace": [
+      "router",
+      "router:llm",
+      "clarify"
+     ],
+     "path": [
+      "router",
+      "clarify"
+     ],
+     "route": {
+      "ok": false,
+      "reason": "实际 ['router', 'clarify']，预期 [['router']]"
+     },
+     "contains": {
+      "ok": true,
+      "missing_groups": [],
+      "forbidden_hits": []
+     },
+     "forbidden_hits": [],
+     "expected_paths": [
+      [
+       "router"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "run": 3,
+   "metrics": {
+    "routing_accuracy": 0.9117647058823529,
+    "fact_accuracy": 1.0,
+    "hallucination_rate": 0.0,
+    "hallucination_rate_F": 0.0,
+    "fit_accuracy": 1.0,
+    "fit_auto_checked": 15,
+    "fit_manual_pending": 1,
+    "avg_latency_s": 2.0248529411764706,
+    "avg_model_calls": 1.4705882352941178,
+    "error_rate": 0.0,
+    "n_items": 34,
+    "supplement_answers": 7,
+    "supplement_removal_answers": 0,
+    "supplements_generated": 35,
+    "supplements_removed": 0,
+    "supplement_removal_rate": 0.0,
+    "removed_no_evidence": 0,
+    "removed_parse_error": 0,
+    "removed_other": 0,
+    "b0_declined": null
+   },
+   "manual_fit_checks": [
+    {
+     "id": "B03",
+     "school": "仁济大学",
+     "field": "major",
+     "gold": "与专业无关均可报考",
+     "actual": "未限制专业",
+     "reason": "标准判断不是四类结果之一，需人工检查"
+    }
+   ],
+   "items": [
+    {
+     "id": "A01",
+     "category": "qa",
+     "input": "庆熙大学经营大学院一般硕士第一次的报名截止日期是哪天？",
+     "eval_date": "2026-10-30",
+     "supplements": null,
+     "profile": {},
+     "error": null,
+     "latency_s": 1.207,
+     "model_calls": 1,
+     "answer": "根据检索到的资料：\n庆熙大学 经营大学院（2026学年度后期）\n  申请轮次（今天 2026-10-30）：一般硕士1次（报名 2026-04-13 起） 截止 2026-05-15，已截止（以最新简章为准）；一般硕士2次（报名 2026-05-22 起） 截止 2026-06-05，已截止（以最新简章为准）；外国人（国际班）1次（报名 2026-04-29 起） 截止 2026-05-21，已截止（以最新简章为准）\n  GMAT/GRE：资料中未提及，请以最新简章为准\n  语言：TOPIK 5级以上（仅限外国人）\n  背景要求：4年制大学毕业（预定）者，未限制专业\n  文书：官网未说明（核实日期 2026-10-29）\n  推荐信：官网未说明（核实日期 2026-10-29）\n  工作经验：报考资格中未要求工作经验\n  出处：https://khmba.khu.ac.kr/khmba_kor/user/bbs/BMSR00040/view.do?boardId=532435&menuNo=10800152（截至 2026-10-29）",
+     "trace": [
+      "router",
+      "router:llm",
+      "requirement_retriever",
+      "verify",
+      "verify:skipped"
+     ],
+     "path": [
+      "router",
+      "requirement_retriever",
+      "verify"
+     ],
+     "route": {
+      "ok": true,
+      "reason": "一致"
+     },
+     "contains": {
+      "ok": true,
+      "missing_groups": [],
+      "forbidden_hits": []
+     },
+     "forbidden_hits": [],
+     "expected_paths": [
+      [
+       "router",
+       "requirement_retriever",
+       "verify"
+      ]
+     ],
+     "fact_ok": true
+    },
+    {
+     "id": "A02",
+     "category": "qa",
+     "input": "庆熙大学外国人（国际班）第一次的报名截止日期是哪天？",
+     "eval_date": "2026-10-30",
+     "supplements": null,
+     "profile": {},
+     "error": null,
+     "latency_s": 0.896,
+     "model_calls": 1,
+     "answer": "根据检索到的资料：\n庆熙大学 经营大学院（2026学年度后期）\n  申请轮次（今天 2026-10-30）：一般硕士1次（报名 2026-04-13 起） 截止 2026-05-15，已截止（以最新简章为准）；一般硕士2次（报名 2026-05-22 起） 截止 2026-06-05，已截止（以最新简章为准）；外国人（国际班）1次（报名 2026-04-29 起） 截止 2026-05-21，已截止（以最新简章为准）\n  GMAT/GRE：资料中未提及，请以最新简章为准\n  语言：TOPIK 5级以上（仅限外国人）\n  背景要求：4年制大学毕业（预定）者，未限制专业\n  文书：官网未说明（核实日期 2026-10-29）\n  推荐信：官网未说明（核实日期 2026-10-29）\n  工作经验：报考资格中未要求工作经验\n  出处：https://khmba.khu.ac.kr/khmba_kor/user/bbs/BMSR00040/view.do?boardId=532435&menuNo=10800152（截至 2026-10-29）",
+     "trace": [
+      "router",
+      "router:llm",
+      "requirement_retriever",
+      "verify",
+      "verify:skipped"
+     ],
+     "path": [
+      "router",
+      "requirement_retriever",
+      "verify"
+     ],
+     "route": {
+      "ok": true,
+      "reason": "一致"
+     },
+     "contains": {
+      "ok": true,
+      "missing_groups": [],
+      "forbidden_hits": []
+     },
+     "forbidden_hits": [],
+     "expected_paths": [
+      [
+       "router",
+       "requirement_retriever",
+       "verify"
+      ]
+     ],
+     "fact_ok": true
+    },
+    {
+     "id": "A03",
+     "category": "qa",
+     "input": "仁济大学经营大学院的报名截止日期是什么时候？",
+     "eval_date": "2026-10-30",
+     "supplements": null,
+     "profile": {},
+     "error": null,
+     "latency_s": 0.989,
+     "model_calls": 1,
+     "answer": "根据检索到的资料：\n仁济大学 经营大学院（2026学年度后期）\n  申请轮次（今天 2026-10-30）：报名 2026-06-22 起 截止 2026-07-17，已截止（以最新简章为准）\n  GMAT/GRE：官网未说明（核实日期 2026-10-29）（请以最新简章为准）\n  语言：官网未说明（核实日期 2026-10-29）\n  背景要求：与所修专业无关均可报考\n  文书：官网未说明（核实日期 2026-10-29）\n  推荐信：官网未说明（核实日期 2026-10-29）\n  工作经验：报考资格中未要求工作经验\n  出处：https://mba.inje.ac.kr/mba/info/notice.do?mode=download&articleNo=75480&attachNo=40633（截至 2026-10-29）",
+     "trace": [
+      "router",
+      "router:llm",
+      "requirement_retriever",
+      "verify",
+      "verify:skipped"
+     ],
+     "path": [
+      "router",
+      "requirement_retriever",
+      "verify"
+     ],
+     "route": {
+      "ok": true,
+      "reason": "一致"
+     },
+     "contains": {
+      "ok": true,
+      "missing_groups": [],
+      "forbidden_hits": []
+     },
+     "forbidden_hits": [],
+     "expected_paths": [
+      [
+       "router",
+       "requirement_retriever",
+       "verify"
+      ]
+     ],
+     "fact_ok": true
+    },
+    {
+     "id": "A04",
+     "category": "qa",
+     "input": "国民大学经营大学院2027学年度前期什么时候截止报名？",
+     "eval_date": "2026-10-30",
+     "supplements": null,
+     "profile": {},
+     "error": null,
+     "latency_s": 0.921,
+     "model_calls": 1,
+     "answer": "根据检索到的资料：\n国民大学 经营大学院（2027学年度前期）\n  申请轮次（今天 2026-10-30）：2027学年度前期（报名 2026-10-19 起，17:00 截止） 截止 2026-11-13，未截止（距截止 14 天）\n  GMAT/GRE：官网未说明（核实日期 2026-10-29）（请以最新简章为准）\n  语言：官网未说明（核实日期 2026-10-29）\n  背景要求：学士学位取得（预定）者及依法令认定具备同等资格者，未限制专业\n  文书：官网未说明（核实日期 2026-10-29）\n  推荐信：官网未说明（核实日期 2026-10-29）\n  工作经验：报考资格中未要求工作经验\n  出处：https://mba.kookmin.ac.kr/mba/main/notice.do?mode=view&articleNo=5940485（截至 2026-10-29）",
+     "trace": [
+      "router",
+      "router:llm",
+      "requirement_retriever",
+      "verify",
+      "verify:skipped"
+     ],
+     "path": [
+      "router",
+      "requirement_retriever",
+      "verify"
+     ],
+     "route": {
+      "ok": true,
+      "reason": "一致"
+     },
+     "contains": {
+      "ok": true,
+      "missing_groups": [],
+      "forbidden_hits": []
+     },
+     "forbidden_hits": [],
+     "expected_paths": [
+      [
+       "router",
+       "requirement_retriever",
+       "verify"
+      ]
+     ],
+     "fact_ok": true
+    },
+    {
+     "id": "A05",
+     "category": "qa",
+     "input": "崇实大学硕士的报名截止时间是什么时候？",
+     "eval_date": "2026-10-30",
+     "supplements": null,
+     "profile": {},
+     "error": null,
+     "latency_s": 1.058,
+     "model_calls": 1,
+     "answer": "根据检索到的资料：\n崇实大学 一般大学院·硕士（2027学年度前期；各学科要求不同，以所申请学科为准）\n  申请轮次（今天 2026-10-30）：2027学年度前期（报名 2026-10-06 10:00 起，16:00 截止） 截止 2026-10-16，已截止（以最新简章为准）\n  GMAT/GRE：资料中未提及，请以最新简章为准\n  语言：外国人特别录取：TOPIK 3级以上，或英语能力成绩可替代（具体分数以简章为准）；入学后毕业需 TOPIK 4级以上；部分学科对外国人另有 TOPIK 要求\n  背景要求：国内外4年制正规大学学士学位取得（预定）者，未限制本科专业；跨专业者入学后可能需修先修课或补学分\n  文书：官网未说明（博士需学业计划书）\n  推荐信：硕士不需提交（简章规定仅博士提交1封）\n  工作经验：报考资格中未要求工作经验\n  出处：https://mba.ssu.ac.kr/（截至 2026-10-29）",
+     "trace": [
+      "router",
+      "router:llm",
+      "requirement_retriever",
+      "verify",
+      "verify:skipped"
+     ],
+     "path": [
+      "router",
+      "requirement_retriever",
+      "verify"
+     ],
+     "route": {
+      "ok": true,
+      "reason": "一致"
+     },
+     "contains": {
+      "ok": true,
+      "missing_groups": [],
+      "forbidden_hits": []
+     },
+     "forbidden_hits": [],
+     "expected_paths": [
+      [
+       "router",
+       "requirement_retriever",
+       "verify"
+      ]
+     ],
+     "fact_ok": true
+    },
+    {
+     "id": "A06",
+     "category": "qa",
+     "input": "崇实大学硕士需要提交推荐信吗？",
+     "supplements": null,
+     "profile": {},
+     "error": null,
+     "latency_s": 1.007,
+     "model_calls": 1,
+     "answer": "根据检索到的资料：\n崇实大学 一般大学院·硕士（2027学年度前期；各学科要求不同，以所申请学科为准）\n  申请轮次（今天 2026-10-30）：2027学年度前期（报名 2026-10-06 10:00 起，16:00 截止） 截止 2026-10-16，已截止（以最新简章为准）\n  GMAT/GRE：资料中未提及，请以最新简章为准\n  语言：外国人特别录取：TOPIK 3级以上，或英语能力成绩可替代（具体分数以简章为准）；入学后毕业需 TOPIK 4级以上；部分学科对外国人另有 TOPIK 要求\n  背景要求：国内外4年制正规大学学士学位取得（预定）者，未限制本科专业；跨专业者入学后可能需修先修课或补学分\n  文书：官网未说明（博士需学业计划书）\n  推荐信：硕士不需提交（简章规定仅博士提交1封）\n  工作经验：报考资格中未要求工作经验\n  出处：https://mba.ssu.ac.kr/（截至 2026-10-29）",
+     "trace": [
+      "router",
+      "router:llm",
+      "requirement_retriever",
+      "verify",
+      "verify:skipped"
+     ],
+     "path": [
+      "router",
+      "requirement_retriever",
+      "verify"
+     ],
+     "route": {
+      "ok": true,
+      "reason": "一致"
+     },
+     "contains": {
+      "ok": true,
+      "missing_groups": [],
+      "forbidden_hits": []
+     },
+     "forbidden_hits": [],
+     "expected_paths": [
+      [
+       "router",
+       "requirement_retriever",
+       "verify"
+      ]
+     ],
+     "fact_ok": true
+    },
+    {
+     "id": "A07",
+     "category": "qa",
+     "input": "庆熙大学对外国人的韩语成绩有什么要求？",
+     "supplements": null,
+     "profile": {},
+     "error": null,
+     "latency_s": 1.155,
+     "model_calls": 1,
+     "answer": "根据检索到的资料：\n庆熙大学 经营大学院（2026学年度后期）\n  申请轮次（今天 2026-10-30）：一般硕士1次（报名 2026-04-13 起） 截止 2026-05-15，已截止（以最新简章为准）；一般硕士2次（报名 2026-05-22 起） 截止 2026-06-05，已截止（以最新简章为准）；外国人（国际班）1次（报名 2026-04-29 起） 截止 2026-05-21，已截止（以最新简章为准）\n  GMAT/GRE：资料中未提及，请以最新简章为准\n  语言：TOPIK 5级以上（仅限外国人）\n  背景要求：4年制大学毕业（预定）者，未限制专业\n  文书：官网未说明（核实日期 2026-10-29）\n  推荐信：官网未说明（核实日期 2026-10-29）\n  工作经验：报考资格中未要求工作经验\n  出处：https://khmba.khu.ac.kr/khmba_kor/user/bbs/BMSR00040/view.do?boardId=532435&menuNo=10800152（截至 2026-10-29）",
+     "trace": [
+      "router",
+      "router:llm",
+      "requirement_retriever",
+      "verify",
+      "verify:skipped"
+     ],
+     "path": [
+      "router",
+      "requirement_retriever",
+      "verify"
+     ],
+     "route": {
+      "ok": true,
+      "reason": "一致"
+     },
+     "contains": {
+      "ok": true,
+      "missing_groups": [],
+      "forbidden_hits": []
+     },
+     "forbidden_hits": [],
+     "expected_paths": [
+      [
+       "router",
+       "requirement_retriever",
+       "verify"
+      ]
+     ],
+     "fact_ok": true
+    },
+    {
+     "id": "A08",
+     "category": "qa",
+     "input": "崇实大学是否要求提交GMAT或GRE成绩？",
+     "supplements": null,
+     "profile": {},
+     "error": null,
+     "latency_s": 0.898,
+     "model_calls": 1,
+     "answer": "根据检索到的资料：\n- 崇实大学 一般大学院·硕士（2027学年度前期；各学科要求不同，以所申请学科为准）：GMAT/GRE 资料中未提及，请以最新简章为准（出处：https://mba.ssu.ac.kr/，截至 2026-10-29）",
+     "trace": [
+      "router",
+      "router:llm",
+      "requirement_retriever",
+      "verify",
+      "verify:skipped"
+     ],
+     "path": [
+      "router",
+      "requirement_retriever",
+      "verify"
+     ],
+     "route": {
+      "ok": true,
+      "reason": "一致"
+     },
+     "contains": {
+      "ok": true,
+      "missing_groups": [],
+      "forbidden_hits": []
+     },
+     "forbidden_hits": [],
+     "expected_paths": [
+      [
+       "router",
+       "requirement_retriever",
+       "verify"
+      ]
+     ],
+     "fact_ok": true
+    },
+    {
+     "id": "A09",
+     "category": "qa",
+     "input": "仁济大学对本科专业有限制吗？",
+     "supplements": null,
+     "profile": {},
+     "error": null,
+     "latency_s": 0.969,
+     "model_calls": 1,
+     "answer": "根据检索到的资料：\n仁济大学 经营大学院（2026学年度后期）\n  申请轮次（今天 2026-10-30）：报名 2026-06-22 起 截止 2026-07-17，已截止（以最新简章为准）\n  GMAT/GRE：官网未说明（核实日期 2026-10-29）（请以最新简章为准）\n  语言：官网未说明（核实日期 2026-10-29）\n  背景要求：与所修专业无关均可报考\n  文书：官网未说明（核实日期 2026-10-29）\n  推荐信：官网未说明（核实日期 2026-10-29）\n  工作经验：报考资格中未要求工作经验\n  出处：https://mba.inje.ac.kr/mba/info/notice.do?mode=download&articleNo=75480&attachNo=40633（截至 2026-10-29）",
+     "trace": [
+      "router",
+      "router:llm",
+      "requirement_retriever",
+      "verify",
+      "verify:skipped"
+     ],
+     "path": [
+      "router",
+      "requirement_retriever",
+      "verify"
+     ],
+     "route": {
+      "ok": true,
+      "reason": "一致"
+     },
+     "contains": {
+      "ok": true,
+      "missing_groups": [],
+      "forbidden_hits": []
+     },
+     "forbidden_hits": [],
+     "expected_paths": [
+      [
+       "router",
+       "requirement_retriever",
+       "verify"
+      ]
+     ],
+     "fact_ok": true
+    },
+    {
+     "id": "A10",
+     "category": "qa",
+     "input": "国民大学经营大学院要求申请者有工作经验吗？",
+     "supplements": null,
+     "profile": {},
+     "error": null,
+     "latency_s": 1.098,
+     "model_calls": 1,
+     "answer": "根据检索到的资料：\n- 国民大学 经营大学院（2027学年度前期）：工作经验 报考资格中未要求工作经验（出处：https://mba.kookmin.ac.kr/mba/main/notice.do?mode=view&articleNo=5940485，截至 2026-10-29）",
+     "trace": [
+      "router",
+      "router:llm",
+      "requirement_retriever",
+      "verify",
+      "verify:skipped"
+     ],
+     "path": [
+      "router",
+      "requirement_retriever",
+      "verify"
+     ],
+     "route": {
+      "ok": true,
+      "reason": "一致"
+     },
+     "contains": {
+      "ok": true,
+      "missing_groups": [],
+      "forbidden_hits": []
+     },
+     "forbidden_hits": [],
+     "expected_paths": [
+      [
+       "router",
+       "requirement_retriever",
+       "verify"
+      ]
+     ],
+     "fact_ok": true
+    },
+    {
+     "id": "B01",
+     "category": "profile",
+     "input": "我是外国留学生，TOPIK 6级，GPA 3.6/4.5，本科专业是经营学，想申请经营学硕士，请看看哪些学校符合要求。",
+     "supplements": {
+      "generated": 5,
+      "removed": 0,
+      "by_reason": {
+       "无依据": 0,
+       "解析失败": 0,
+       "其他": 0
+      }
+     },
+     "profile": {
+      "gpa": "3.6/4.5",
+      "language_score": "TOPIK 6",
+      "major": "经营学"
+     },
+     "error": null,
+     "latency_s": 5.502,
+     "model_calls": 3,
+     "answer": "你的画像：GPA 3.6/4.5（学校记录未提供 GPA 要求，未作判断）；语言成绩 TOPIK 6；本科专业 经营学；GMAT/GRE 未提供\n以下为各校公开要求的符合度（由系统根据学校记录判断，仅供参考，请以最新简章为准）：\n\n庆熙大学 经营大学院（2026学年度后期）\n  语言：符合（要求 TOPIK 5级以上，你的 TOPIK 6级）｜原文：TOPIK 5级以上（仅限外国人）\n  本科专业：未限制专业｜原文：4年制大学毕业（预定）者，未限制专业\n  GMAT/GRE：官网未提及\n  工作经验：报考资格中未要求工作经验\n  截止状态：一般硕士1次（报名 2026-04-13 起） 截止 2026-05-15，已截止（以最新简章为准）；一般硕士2次（报名 2026-05-22 起） 截止 2026-06-05，已截止（以最新简章为准）；外国人（国际班）1次（报名 2026-04-29 起） 截止 2026-05-21，已截止（以最新简章为准）\n  补充说明：语言要求TOPIK 5级以上，你的TOPIK 6级符合；本科专业未限制，GMAT/GRE官网未提及，以简章为准。\n  出处：https://khmba.khu.ac.kr/khmba_kor/user/bbs/BMSR00040/view.do?boardId=532435&menuNo=10800152（数据整理日期 2026-10-29）\n\n仁济大学 经营大学院（2026学年度后期）\n  语言：官网未说明｜原文：官网未说明（核实日期 2026-10-29）\n  本科专业：未限制专业｜原文：与所修专业无关均可报考\n  GMAT/GRE：官网未说明（核实日期 2026-10-29）\n  工作经验：报考资格中未要求工作经验\n  截止状态：报名 2026-06-22 起 截止 2026-07-17，已截止（以最新简章为准）\n  补充说明：官网未说明语言及GMAT/GRE要求，报考资格对专业无限制，建议以最新简章为准确认。\n  出处：https://mba.inje.ac.kr/mba/info/notice.do?mode=download&articleNo=75480&attachNo=40633（数据整理日期 2026-10-29）\n\n成均馆大学 SKK GSB Full-Time MBA\n  语言：无法判断，以简章为准（记录未列出 TOPIK 级别要求）｜原文：TOEFL、TOEIC、TOEIC Speaking、OPIc、TEPS、IELTS 中选其一；母语为英语或在100%英语授课的大学（院）取得学位者可免\n  本科专业：未限制专业｜原文：4年制大学毕业以上（学士）或同等学历者，未限制专业\n  GMAT/GRE：选择性提交（GMAT或GRE成绩单），提交优秀成绩者在书面评审中加分\n  工作经验：报考资格中未要求工作经验\n  截止状态：报名 2026-10-01 起（入学学期以官网为准） 截止 2026-11-06，未截止（距截止 7 天）\n  补充说明：语言需TOEFL、TOEIC、IELTS等英语成绩之一，记录未列TOPIK要求；GMAT/GRE为选择性提交，优秀成绩书面评审加分。\n  出处：https://gsb.skku.edu/gsb/Full-time_MBA/Admissions.do（数据整理日期 2026-10-29）\n\n国民大学 经营大学院（2027学年度前期）\n  语言：官网未说明｜原文：官网未说明（核实日期 2026-10-29）\n  本科专业：未限制专业｜原文：学士学位取得（预定）者及依法令认定具备同等资格者，未限制专业\n  GMAT/GRE：官网未说明（核实日期 2026-10-29）\n  工作经验：报考资格中未要求工作经验\n  截止状态：2027学年度前期（报名 2026-10-19 起，17:00 截止） 截止 2026-11-13，未截止（距截止 14 天）\n  补充说明：官网未说明语言和GMAT/GRE要求，学位要求未限制本科专业，报考资格中无工作经验要求。\n  出处：https://mba.kookmin.ac.kr/mba/main/notice.do?mode=view&articleNo=5940485（数据整理日期 2026-10-29）\n\n崇实大学 一般大学院·硕士（2027学年度前期；各学科要求不同，以所申请学科为准）\n  语言：符合（要求 TOPIK 3级以上，你的 TOPIK 6级）｜原文：外国人特别录取：TOPIK 3级以上，或英语能力成绩可替代（具体分数以简章为准）；入学后毕业需 TOPIK 4级以上；部分学科对外国人另有 TOPIK 要求\n  本科专业：未限制专业｜原文：国内外4年制正规大学学士学位取得（预定）者，未限制本科专业；跨专业者入学后可能需修先修课或补学分\n  GMAT/GRE：官网未提及\n  工作经验：报考资格中未要求工作经验\n  截止状态：2027学年度前期（报名 2026-10-06 10:00 起，16:00 截止） 截止 2026-10-16，已截止（以最新简章为准）\n  补充说明：外国人特别录取要求TOPIK 3级以上，你的TOPIK 6级符合；入学后毕业需TOPIK 4级以上，具体以所申请学科简章为准。\n  出处：https://mba.ssu.ac.kr/（数据整理日期 2026-10-29）",
+     "trace": [
+      "router",
+      "router:llm",
+      "profile_extractor",
+      "profile_extractor:llm",
+      "school_matcher",
+      "school_matcher:llm",
+      "verify",
+      "verify:skipped"
+     ],
+     "path": [
+      "router",
+      "profile_extractor",
+      "school_matcher",
+      "verify"
+     ],
+     "route": {
+      "ok": true,
+      "reason": "一致"
+     },
+     "contains": {
+      "ok": true,
+      "missing_groups": [],
+      "forbidden_hits": []
+     },
+     "forbidden_hits": [],
+     "expected_paths": [
+      [
+       "router",
+       "profile_extractor",
+       "school_matcher",
+       "verify"
+      ]
+     ],
+     "fit": {
+      "checks": [
+       {
+        "school": "庆熙大学",
+        "field": "language",
+        "gold": "符合",
+        "actual": "符合（要求 TOPIK 5级以上，你的 TOPIK 6级）",
+        "ok": true,
+        "reason": "一致"
+       },
+       {
+        "school": "崇实大学",
+        "field": "language",
+        "gold": "符合",
+        "actual": "符合（要求 TOPIK 3级以上，你的 TOPIK 6级）",
+        "ok": true,
+        "reason": "一致"
+       },
+       {
+        "school": "仁济大学",
+        "field": "language",
+        "gold": "官网未说明",
+        "actual": "官网未说明",
+        "ok": true,
+        "reason": "一致"
+       },
+       {
+        "school": "国民大学",
+        "field": "language",
+        "gold": "官网未说明",
+        "actual": "官网未说明",
+        "ok": true,
+        "reason": "一致"
+       }
+      ],
+      "manual": []
+     }
+    },
+    {
+     "id": "B02",
+     "category": "profile",
+     "input": "我的TOPIK是3级，GPA 3.2/4.0，本科读的英语文学，想申请经营学硕士，哪些学校符合？",
+     "supplements": {
+      "generated": 5,
+      "removed": 0,
+      "by_reason": {
+       "无依据": 0,
+       "解析失败": 0,
+       "其他": 0
+      }
+     },
+     "profile": {
+      "gpa": "3.2/4.0",
+      "language_score": "TOPIK 3",
+      "major": "英语文学"
+     },
+     "error": null,
+     "latency_s": 4.263,
+     "model_calls": 3,
+     "answer": "你的画像：GPA 3.2/4.0（学校记录未提供 GPA 要求，未作判断）；语言成绩 TOPIK 3；本科专业 英语文学；GMAT/GRE 未提供\n以下为各校公开要求的符合度（由系统根据学校记录判断，仅供参考，请以最新简章为准）：\n\n庆熙大学 经营大学院（2026学年度后期）\n  语言：不符合（要求 TOPIK 5级以上，你的 TOPIK 3级）｜原文：TOPIK 5级以上（仅限外国人）\n  本科专业：未限制专业｜原文：4年制大学毕业（预定）者，未限制专业\n  GMAT/GRE：官网未提及\n  工作经验：报考资格中未要求工作经验\n  截止状态：一般硕士1次（报名 2026-04-13 起） 截止 2026-05-15，已截止（以最新简章为准）；一般硕士2次（报名 2026-05-22 起） 截止 2026-06-05，已截止（以最新简章为准）；外国人（国际班）1次（报名 2026-04-29 起） 截止 2026-05-21，已截止（以最新简章为准）\n  补充说明：语言要求 TOPIK 5级以上（仅限外国人），你的 TOPIK 3级未达到该要求。\n  出处：https://khmba.khu.ac.kr/khmba_kor/user/bbs/BMSR00040/view.do?boardId=532435&menuNo=10800152（数据整理日期 2026-10-29）\n\n仁济大学 经营大学院（2026学年度后期）\n  语言：官网未说明｜原文：官网未说明（核实日期 2026-10-29）\n  本科专业：未限制专业｜原文：与所修专业无关均可报考\n  GMAT/GRE：官网未说明（核实日期 2026-10-29）\n  工作经验：报考资格中未要求工作经验\n  截止状态：报名 2026-06-22 起 截止 2026-07-17，已截止（以最新简章为准）\n  补充说明：官网未说明语言与 GMAT/GRE 要求，本科专业不限，无工作经验要求，可对照简章核实其他条件。\n  出处：https://mba.inje.ac.kr/mba/info/notice.do?mode=download&articleNo=75480&attachNo=40633（数据整理日期 2026-10-29）\n\n成均馆大学 SKK GSB Full-Time MBA\n  语言：无法判断，以简章为准（记录未列出 TOPIK 级别要求）｜原文：TOEFL、TOEIC、TOEIC Speaking、OPIc、TEPS、IELTS 中选其一；母语为英语或在100%英语授课的大学（院）取得学位者可免\n  本科专业：未限制专业｜原文：4年制大学毕业以上（学士）或同等学历者，未限制专业\n  GMAT/GRE：选择性提交（GMAT或GRE成绩单），提交优秀成绩者在书面评审中加分\n  工作经验：报考资格中未要求工作经验\n  截止状态：报名 2026-10-01 起（入学学期以官网为准） 截止 2026-11-06，未截止（距截止 7 天）\n  补充说明：语言需 TOEFL/TOEIC/IELTS 等之一，GMAT/GRE 为选择性提交；你的英语文学专业背景与不限专业条件相符。\n  出处：https://gsb.skku.edu/gsb/Full-time_MBA/Admissions.do（数据整理日期 2026-10-29）\n\n国民大学 经营大学院（2027学年度前期）\n  语言：官网未说明｜原文：官网未说明（核实日期 2026-10-29）\n  本科专业：未限制专业｜原文：学士学位取得（预定）者及依法令认定具备同等资格者，未限制专业\n  GMAT/GRE：官网未说明（核实日期 2026-10-29）\n  工作经验：报考资格中未要求工作经验\n  截止状态：2027学年度前期（报名 2026-10-19 起，17:00 截止） 截止 2026-11-13，未截止（距截止 14 天）\n  补充说明：官网未说明语言与 GMAT/GRE 要求，本科专业不限，无工作经验要求，具体条件可参考简章。\n  出处：https://mba.kookmin.ac.kr/mba/main/notice.do?mode=view&articleNo=5940485（数据整理日期 2026-10-29）\n\n崇实大学 一般大学院·硕士（2027学年度前期；各学科要求不同，以所申请学科为准）\n  语言：符合（要求 TOPIK 3级以上，你的 TOPIK 3级）｜原文：外国人特别录取：TOPIK 3级以上，或英语能力成绩可替代（具体分数以简章为准）；入学后毕业需 TOPIK 4级以上；部分学科对外国人另有 TOPIK 要求\n  本科专业：未限制专业｜原文：国内外4年制正规大学学士学位取得（预定）者，未限制本科专业；跨专业者入学后可能需修先修课或补学分\n  GMAT/GRE：官网未提及\n  工作经验：报考资格中未要求工作经验\n  截止状态：2027学年度前期（报名 2026-10-06 10:00 起，16:00 截止） 截止 2026-10-16，已截止（以最新简章为准）\n  补充说明：外国人特别录取要求 TOPIK 3级以上，你的 TOPIK 3级符合；本科专业不限，GMAT/GRE 官网未提及。\n  出处：https://mba.ssu.ac.kr/（数据整理日期 2026-10-29）",
+     "trace": [
+      "router",
+      "router:llm",
+      "profile_extractor",
+      "profile_extractor:llm",
+      "school_matcher",
+      "school_matcher:llm",
+      "verify",
+      "verify:skipped"
+     ],
+     "path": [
+      "router",
+      "profile_extractor",
+      "school_matcher",
+      "verify"
+     ],
+     "route": {
+      "ok": true,
+      "reason": "一致"
+     },
+     "contains": {
+      "ok": true,
+      "missing_groups": [],
+      "forbidden_hits": []
+     },
+     "forbidden_hits": [],
+     "expected_paths": [
+      [
+       "router",
+       "profile_extractor",
+       "school_matcher",
+       "verify"
+      ]
+     ],
+     "fit": {
+      "checks": [
+       {
+        "school": "庆熙大学",
+        "field": "language",
+        "gold": "不符合",
+        "actual": "不符合（要求 TOPIK 5级以上，你的 TOPIK 3级）",
+        "ok": true,
+        "reason": "一致"
+       },
+       {
+        "school": "崇实大学",
+        "field": "language",
+        "gold": "符合",
+        "actual": "符合（要求 TOPIK 3级以上，你的 TOPIK 3级）",
+        "ok": true,
+        "reason": "一致"
+       }
+      ],
+      "manual": []
+     }
+    },
+    {
+     "id": "B03",
+     "category": "profile",
+     "input": "TOPIK 4级，GPA 3.0/4.0，本科专业计算机，申请经营学硕士可以吗？",
+     "supplements": {
+      "generated": 5,
+      "removed": 0,
+      "by_reason": {
+       "无依据": 0,
+       "解析失败": 0,
+       "其他": 0
+      }
+     },
+     "profile": {
+      "gpa": "3.0/4.0",
+      "language_score": "TOPIK 4",
+      "major": "计算机"
+     },
+     "error": null,
+     "latency_s": 4.919,
+     "model_calls": 3,
+     "answer": "你的画像：GPA 3.0/4.0（学校记录未提供 GPA 要求，未作判断）；语言成绩 TOPIK 4；本科专业 计算机；GMAT/GRE 未提供\n以下为各校公开要求的符合度（由系统根据学校记录判断，仅供参考，请以最新简章为准）：\n\n庆熙大学 经营大学院（2026学年度后期）\n  语言：不符合（要求 TOPIK 5级以上，你的 TOPIK 4级）｜原文：TOPIK 5级以上（仅限外国人）\n  本科专业：未限制专业｜原文：4年制大学毕业（预定）者，未限制专业\n  GMAT/GRE：官网未提及\n  工作经验：报考资格中未要求工作经验\n  截止状态：一般硕士1次（报名 2026-04-13 起） 截止 2026-05-15，已截止（以最新简章为准）；一般硕士2次（报名 2026-05-22 起） 截止 2026-06-05，已截止（以最新简章为准）；外国人（国际班）1次（报名 2026-04-29 起） 截止 2026-05-21，已截止（以最新简章为准）\n  补充说明：语言要求TOPIK 5级以上（仅限外国人），你的TOPIK 4级未达到该要求；本科专业未限制。\n  出处：https://khmba.khu.ac.kr/khmba_kor/user/bbs/BMSR00040/view.do?boardId=532435&menuNo=10800152（数据整理日期 2026-10-29）\n\n仁济大学 经营大学院（2026学年度后期）\n  语言：官网未说明｜原文：官网未说明（核实日期 2026-10-29）\n  本科专业：未限制专业｜原文：与所修专业无关均可报考\n  GMAT/GRE：官网未说明（核实日期 2026-10-29）\n  工作经验：报考资格中未要求工作经验\n  截止状态：报名 2026-06-22 起 截止 2026-07-17，已截止（以最新简章为准）\n  补充说明：官网未说明语言与GMAT/GRE要求，本科专业未限制，报考资格中无工作经验要求，仍需以简章为准。\n  出处：https://mba.inje.ac.kr/mba/info/notice.do?mode=download&articleNo=75480&attachNo=40633（数据整理日期 2026-10-29）\n\n成均馆大学 SKK GSB Full-Time MBA\n  语言：无法判断，以简章为准（记录未列出 TOPIK 级别要求）｜原文：TOEFL、TOEIC、TOEIC Speaking、OPIc、TEPS、IELTS 中选其一；母语为英语或在100%英语授课的大学（院）取得学位者可免\n  本科专业：未限制专业｜原文：4年制大学毕业以上（学士）或同等学历者，未限制专业\n  GMAT/GRE：选择性提交（GMAT或GRE成绩单），提交优秀成绩者在书面评审中加分\n  工作经验：报考资格中未要求工作经验\n  截止状态：报名 2026-10-01 起（入学学期以官网为准） 截止 2026-11-06，未截止（距截止 7 天）\n  补充说明：语言可在TOEFL、TOEIC、IELTS等英语成绩中选一，无TOPIK要求；GMAT/GRE为选择性提交，本科专业未限制。\n  出处：https://gsb.skku.edu/gsb/Full-time_MBA/Admissions.do（数据整理日期 2026-10-29）\n\n国民大学 经营大学院（2027学年度前期）\n  语言：官网未说明｜原文：官网未说明（核实日期 2026-10-29）\n  本科专业：未限制专业｜原文：学士学位取得（预定）者及依法令认定具备同等资格者，未限制专业\n  GMAT/GRE：官网未说明（核实日期 2026-10-29）\n  工作经验：报考资格中未要求工作经验\n  截止状态：2027学年度前期（报名 2026-10-19 起，17:00 截止） 截止 2026-11-13，未截止（距截止 14 天）\n  补充说明：官网未说明语言与GMAT/GRE要求，学士学位取得者未限制专业，报考资格中无工作经验要求。\n  出处：https://mba.kookmin.ac.kr/mba/main/notice.do?mode=view&articleNo=5940485（数据整理日期 2026-10-29）\n\n崇实大学 一般大学院·硕士（2027学年度前期；各学科要求不同，以所申请学科为准）\n  语言：符合（要求 TOPIK 3级以上，你的 TOPIK 4级）｜原文：外国人特别录取：TOPIK 3级以上，或英语能力成绩可替代（具体分数以简章为准）；入学后毕业需 TOPIK 4级以上；部分学科对外国人另有 TOPIK 要求\n  本科专业：未限制专业｜原文：国内外4年制正规大学学士学位取得（预定）者，未限制本科专业；跨专业者入学后可能需修先修课或补学分\n  GMAT/GRE：官网未提及\n  工作经验：报考资格中未要求工作经验\n  截止状态：2027学年度前期（报名 2026-10-06 10:00 起，16:00 截止） 截止 2026-10-16，已截止（以最新简章为准）\n  补充说明：外国人特别录取要求TOPIK 3级以上，你的TOPIK 4级符合；入学后毕业需TOPIK 4级以上，各学科另有要求需以简章为准。\n  出处：https://mba.ssu.ac.kr/（数据整理日期 2026-10-29）",
+     "trace": [
+      "router",
+      "router:llm",
+      "profile_extractor",
+      "profile_extractor:llm",
+      "school_matcher",
+      "school_matcher:llm",
+      "verify",
+      "verify:skipped"
+     ],
+     "path": [
+      "router",
+      "profile_extractor",
+      "school_matcher",
+      "verify"
+     ],
+     "route": {
+      "ok": true,
+      "reason": "一致"
+     },
+     "contains": {
+      "ok": true,
+      "missing_groups": [],
+      "forbidden_hits": []
+     },
+     "forbidden_hits": [],
+     "expected_paths": [
+      [
+       "router",
+       "profile_extractor",
+       "school_matcher",
+       "verify"
+      ]
+     ],
+     "fit": {
+      "checks": [
+       {
+        "school": "庆熙大学",
+        "field": "language",
+        "gold": "不符合",
+        "actual": "不符合（要求 TOPIK 5级以上，你的 TOPIK 4级）",
+        "ok": true,
+        "reason": "一致"
+       },
+       {
+        "school": "崇实大学",
+        "field": "language",
+        "gold": "符合",
+        "actual": "符合（要求 TOPIK 3级以上，你的 TOPIK 4级）",
+        "ok": true,
+        "reason": "一致"
+       }
+      ],
+      "manual": [
+       {
+        "school": "仁济大学",
+        "field": "major",
+        "gold": "与专业无关均可报考",
+        "actual": "未限制专业",
+        "reason": "标准判断不是四类结果之一，需人工检查"
+       }
+      ]
+     }
+    },
+    {
+     "id": "B04",
+     "category": "profile",
+     "input": "我没有TOPIK成绩，只有雅思6.5，GPA 3.4/4.0，本科经济学，请看看符合哪些学校的要求。",
+     "supplements": {
+      "generated": 5,
+      "removed": 0,
+      "by_reason": {
+       "无依据": 0,
+       "解析失败": 0,
+       "其他": 0
+      }
+     },
+     "profile": {
+      "gpa": "3.4/4.0",
+      "language_score": "IELTS 6.5",
+      "major": "经济学"
+     },
+     "error": null,
+     "latency_s": 5.361,
+     "model_calls": 3,
+     "answer": "你的画像：GPA 3.4/4.0（学校记录未提供 GPA 要求，未作判断）；语言成绩 IELTS 6.5；本科专业 经济学；GMAT/GRE 未提供\n以下为各校公开要求的符合度（由系统根据学校记录判断，仅供参考，请以最新简章为准）：\n\n庆熙大学 经营大学院（2026学年度后期）\n  语言：无法判断（要求 TOPIK 5级以上，未提供 TOPIK 成绩）｜原文：TOPIK 5级以上（仅限外国人）\n  本科专业：未限制专业｜原文：4年制大学毕业（预定）者，未限制专业\n  GMAT/GRE：官网未提及\n  工作经验：报考资格中未要求工作经验\n  截止状态：一般硕士1次（报名 2026-04-13 起） 截止 2026-05-15，已截止（以最新简章为准）；一般硕士2次（报名 2026-05-22 起） 截止 2026-06-05，已截止（以最新简章为准）；外国人（国际班）1次（报名 2026-04-29 起） 截止 2026-05-21，已截止（以最新简章为准）\n  补充说明：语言要求TOPIK 5级以上（仅限外国人），你的成绩为IELTS 6.5，记录未说明两者换算，无法判断是否符合。\n  出处：https://khmba.khu.ac.kr/khmba_kor/user/bbs/BMSR00040/view.do?boardId=532435&menuNo=10800152（数据整理日期 2026-10-29）\n\n仁济大学 经营大学院（2026学年度后期）\n  语言：官网未说明｜原文：官网未说明（核实日期 2026-10-29）\n  本科专业：未限制专业｜原文：与所修专业无关均可报考\n  GMAT/GRE：官网未说明（核实日期 2026-10-29）\n  工作经验：报考资格中未要求工作经验\n  截止状态：报名 2026-06-22 起 截止 2026-07-17，已截止（以最新简章为准）\n  补充说明：官网未说明语言与GMAT/GRE要求，报考资格仅提及与所修专业无关均可报考，你的经济学背景可参考简章确认。\n  出处：https://mba.inje.ac.kr/mba/info/notice.do?mode=download&articleNo=75480&attachNo=40633（数据整理日期 2026-10-29）\n\n成均馆大学 SKK GSB Full-Time MBA\n  语言：无法判断，以简章为准（记录未给出 IELTS 的具体分数要求）｜原文：TOEFL、TOEIC、TOEIC Speaking、OPIc、TEPS、IELTS 中选其一；母语为英语或在100%英语授课的大学（院）取得学位者可免\n  本科专业：未限制专业｜原文：4年制大学毕业以上（学士）或同等学历者，未限制专业\n  GMAT/GRE：选择性提交（GMAT或GRE成绩单），提交优秀成绩者在书面评审中加分\n  工作经验：报考资格中未要求工作经验\n  截止状态：报名 2026-10-01 起（入学学期以官网为准） 截止 2026-11-06，未截止（距截止 7 天）\n  补充说明：语言可选TOEFL、IELTS等，你的IELTS 6.5可用于申请，具体分数标准以简章为准；GMAT/GRE为选择性提交，提交优秀成绩可加分。\n  出处：https://gsb.skku.edu/gsb/Full-time_MBA/Admissions.do（数据整理日期 2026-10-29）\n\n国民大学 经营大学院（2027学年度前期）\n  语言：官网未说明｜原文：官网未说明（核实日期 2026-10-29）\n  本科专业：未限制专业｜原文：学士学位取得（预定）者及依法令认定具备同等资格者，未限制专业\n  GMAT/GRE：官网未说明（核实日期 2026-10-29）\n  工作经验：报考资格中未要求工作经验\n  截止状态：2027学年度前期（报名 2026-10-19 起，17:00 截止） 截止 2026-11-13，未截止（距截止 14 天）\n  补充说明：学历要求为学士学位（未限制专业），官网未说明语言、GMAT/GRE及文书、推荐信要求，具体以简章为准。\n  出处：https://mba.kookmin.ac.kr/mba/main/notice.do?mode=view&articleNo=5940485（数据整理日期 2026-10-29）\n\n崇实大学 一般大学院·硕士（2027学年度前期；各学科要求不同，以所申请学科为准）\n  语言：无法判断，以简章为准（记录未给出 IELTS 的具体分数要求）｜原文：外国人特别录取：TOPIK 3级以上，或英语能力成绩可替代（具体分数以简章为准）；入学后毕业需 TOPIK 4级以上；部分学科对外国人另有 TOPIK 要求\n  本科专业：未限制专业｜原文：国内外4年制正规大学学士学位取得（预定）者，未限制本科专业；跨专业者入学后可能需修先修课或补学分\n  GMAT/GRE：官网未提及\n  工作经验：报考资格中未要求工作经验\n  截止状态：2027学年度前期（报名 2026-10-06 10:00 起，16:00 截止） 截止 2026-10-16，已截止（以最新简章为准）\n  补充说明：语言可由英语能力成绩替代TOPIK，具体分数以简章为准；官网未说明文书要求，硕士不需提交推荐信。\n  出处：https://mba.ssu.ac.kr/（数据整理日期 2026-10-29）",
+     "trace": [
+      "router",
+      "router:llm",
+      "profile_extractor",
+      "profile_extractor:llm",
+      "school_matcher",
+      "school_matcher:llm",
+      "verify",
+      "verify:skipped"
+     ],
+     "path": [
+      "router",
+      "profile_extractor",
+      "school_matcher",
+      "verify"
+     ],
+     "route": {
+      "ok": true,
+      "reason": "一致"
+     },
+     "contains": {
+      "ok": true,
+      "missing_groups": [],
+      "forbidden_hits": []
+     },
+     "forbidden_hits": [],
+     "expected_paths": [
+      [
+       "router",
+       "profile_extractor",
+       "school_matcher",
+       "verify"
+      ]
+     ],
+     "fit": {
+      "checks": [
+       {
+        "school": "庆熙大学",
+        "field": "language",
+        "gold": "不得判为符合",
+        "actual": "无法判断（要求 TOPIK 5级以上，未提供 TOPIK 成绩）",
+        "ok": true,
+        "reason": "一致"
+       },
+       {
+        "school": "崇实大学",
+        "field": "language",
+        "gold": "无法判断，以简章为准",
+        "actual": "无法判断，以简章为准（记录未给出 IELTS 的具体分数要求）",
+        "ok": true,
+        "reason": "一致"
+       }
+      ],
+      "manual": []
+     }
+    },
+    {
+     "id": "B05",
+     "category": "profile",
+     "input": "我的托福95分，GPA 3.5/4.0，本科会计，想申请崇实大学，我的英语成绩够吗？",
+     "supplements": {
+      "generated": 5,
+      "removed": 0,
+      "by_reason": {
+       "无依据": 0,
+       "解析失败": 0,
+       "其他": 0
+      }
+     },
+     "profile": {
+      "gpa": "3.5/4.0",
+      "language_score": "TOEFL 95",
+      "major": "会计"
+     },
+     "error": null,
+     "latency_s": 6.254,
+     "model_calls": 3,
+     "answer": "你的画像：GPA 3.5/4.0（学校记录未提供 GPA 要求，未作判断）；语言成绩 TOEFL 95；本科专业 会计；GMAT/GRE 未提供\n以下为各校公开要求的符合度（由系统根据学校记录判断，仅供参考，请以最新简章为准）：\n\n庆熙大学 经营大学院（2026学年度后期）\n  语言：无法判断（要求 TOPIK 5级以上，未提供 TOPIK 成绩）｜原文：TOPIK 5级以上（仅限外国人）\n  本科专业：未限制专业｜原文：4年制大学毕业（预定）者，未限制专业\n  GMAT/GRE：官网未提及\n  工作经验：报考资格中未要求工作经验\n  截止状态：一般硕士1次（报名 2026-04-13 起） 截止 2026-05-15，已截止（以最新简章为准）；一般硕士2次（报名 2026-05-22 起） 截止 2026-06-05，已截止（以最新简章为准）；外国人（国际班）1次（报名 2026-04-29 起） 截止 2026-05-21，已截止（以最新简章为准）\n  补充说明：报名截止已过。语言要求TOPIK 5级以上且仅限外国人，你的记录为TOEFL，资料未说明是否可替代，需以简章为准。\n  出处：https://khmba.khu.ac.kr/khmba_kor/user/bbs/BMSR00040/view.do?boardId=532435&menuNo=10800152（数据整理日期 2026-10-29）\n\n仁济大学 经营大学院（2026学年度后期）\n  语言：官网未说明｜原文：官网未说明（核实日期 2026-10-29）\n  本科专业：未限制专业｜原文：与所修专业无关均可报考\n  GMAT/GRE：官网未说明（核实日期 2026-10-29）\n  工作经验：报考资格中未要求工作经验\n  截止状态：报名 2026-06-22 起 截止 2026-07-17，已截止（以最新简章为准）\n  补充说明：资料对语言、GMAT/GRE、文书、推荐信均未说明，无法据此比较，需以官网为准。\n  出处：https://mba.inje.ac.kr/mba/info/notice.do?mode=download&articleNo=75480&attachNo=40633（数据整理日期 2026-10-29）\n\n成均馆大学 SKK GSB Full-Time MBA\n  语言：无法判断，以简章为准（记录未给出 TOEFL 的具体分数要求）｜原文：TOEFL、TOEIC、TOEIC Speaking、OPIc、TEPS、IELTS 中选其一；母语为英语或在100%英语授课的大学（院）取得学位者可免\n  本科专业：未限制专业｜原文：4年制大学毕业以上（学士）或同等学历者，未限制专业\n  GMAT/GRE：选择性提交（GMAT或GRE成绩单），提交优秀成绩者在书面评审中加分\n  工作经验：报考资格中未要求工作经验\n  截止状态：报名 2026-10-01 起（入学学期以官网为准） 截止 2026-11-06，未截止（距截止 7 天）\n  补充说明：语言可用TOEFL等成绩，但资料未给出TOEFL具体分数要求，你的TOEFL 95是否达标需以简章为准。GMAT/GRE为选择性提交。\n  出处：https://gsb.skku.edu/gsb/Full-time_MBA/Admissions.do（数据整理日期 2026-10-29）\n\n国民大学 经营大学院（2027学年度前期）\n  语言：官网未说明｜原文：官网未说明（核实日期 2026-10-29）\n  本科专业：未限制专业｜原文：学士学位取得（预定）者及依法令认定具备同等资格者，未限制专业\n  GMAT/GRE：官网未说明（核实日期 2026-10-29）\n  工作经验：报考资格中未要求工作经验\n  截止状态：2027学年度前期（报名 2026-10-19 起，17:00 截止） 截止 2026-11-13，未截止（距截止 14 天）\n  补充说明：资料对语言、GMAT/GRE、文书、推荐信均未说明，无法据此比较，需以官网为准。\n  出处：https://mba.kookmin.ac.kr/mba/main/notice.do?mode=view&articleNo=5940485（数据整理日期 2026-10-29）\n\n崇实大学 一般大学院·硕士（2027学年度前期；各学科要求不同，以所申请学科为准）\n  语言：无法判断，以简章为准（记录未给出 TOEFL 的具体分数要求）｜原文：外国人特别录取：TOPIK 3级以上，或英语能力成绩可替代（具体分数以简章为准）；入学后毕业需 TOPIK 4级以上；部分学科对外国人另有 TOPIK 要求\n  本科专业：未限制专业｜原文：国内外4年制正规大学学士学位取得（预定）者，未限制本科专业；跨专业者入学后可能需修先修课或补学分\n  GMAT/GRE：官网未提及\n  工作经验：报考资格中未要求工作经验\n  截止状态：2027学年度前期（报名 2026-10-06 10:00 起，16:00 截止） 截止 2026-10-16，已截止（以最新简章为准）\n  补充说明：语言可用英语能力成绩替代，资料未给出具体分数，你的TOEFL 95是否达标需以简章为准；报名截止已过。\n  出处：https://mba.ssu.ac.kr/（数据整理日期 2026-10-29）",
+     "trace": [
+      "router",
+      "router:llm",
+      "profile_extractor",
+      "profile_extractor:llm",
+      "school_matcher",
+      "school_matcher:llm",
+      "verify",
+      "verify:skipped"
+     ],
+     "path": [
+      "router",
+      "profile_extractor",
+      "school_matcher",
+      "verify"
+     ],
+     "route": {
+      "ok": true,
+      "reason": "一致"
+     },
+     "contains": {
+      "ok": true,
+      "missing_groups": [],
+      "forbidden_hits": []
+     },
+     "forbidden_hits": [],
+     "expected_paths": [
+      [
+       "router",
+       "profile_extractor",
+       "school_matcher",
+       "verify"
+      ]
+     ],
+     "fit": {
+      "checks": [
+       {
+        "school": "崇实大学",
+        "field": "language",
+        "gold": "无法判断，以简章为准",
+        "actual": "无法判断，以简章为准（记录未给出 TOEFL 的具体分数要求）",
+        "ok": true,
+        "reason": "一致"
+       }
+      ],
+      "manual": []
+     }
+    },
+    {
+     "id": "B06",
+     "category": "profile",
+     "input": "GPA 90/100，TOPIK 5级，本科国际贸易，想申请经营学硕士，请评估。",
+     "supplements": {
+      "generated": 5,
+      "removed": 0,
+      "by_reason": {
+       "无依据": 0,
+       "解析失败": 0,
+       "其他": 0
+      }
+     },
+     "profile": {
+      "gpa": "90/100",
+      "language_score": "TOPIK 5级",
+      "major": "国际贸易"
+     },
+     "error": null,
+     "latency_s": 4.803,
+     "model_calls": 3,
+     "answer": "你的画像：GPA 90/100（学校记录未提供 GPA 要求，未作判断）；语言成绩 TOPIK 5级；本科专业 国际贸易；GMAT/GRE 未提供\n以下为各校公开要求的符合度（由系统根据学校记录判断，仅供参考，请以最新简章为准）：\n\n庆熙大学 经营大学院（2026学年度后期）\n  语言：符合（要求 TOPIK 5级以上，你的 TOPIK 5级）｜原文：TOPIK 5级以上（仅限外国人）\n  本科专业：未限制专业｜原文：4年制大学毕业（预定）者，未限制专业\n  GMAT/GRE：官网未提及\n  工作经验：报考资格中未要求工作经验\n  截止状态：一般硕士1次（报名 2026-04-13 起） 截止 2026-05-15，已截止（以最新简章为准）；一般硕士2次（报名 2026-05-22 起） 截止 2026-06-05，已截止（以最新简章为准）；外国人（国际班）1次（报名 2026-04-29 起） 截止 2026-05-21，已截止（以最新简章为准）\n  补充说明：你的 TOPIK 5级符合其 TOPIK 5级以上的语言要求；本科专业未限制，GMAT/GRE 官网未提及。\n  出处：https://khmba.khu.ac.kr/khmba_kor/user/bbs/BMSR00040/view.do?boardId=532435&menuNo=10800152（数据整理日期 2026-10-29）\n\n仁济大学 经营大学院（2026学年度后期）\n  语言：官网未说明｜原文：官网未说明（核实日期 2026-10-29）\n  本科专业：未限制专业｜原文：与所修专业无关均可报考\n  GMAT/GRE：官网未说明（核实日期 2026-10-29）\n  工作经验：报考资格中未要求工作经验\n  截止状态：报名 2026-06-22 起 截止 2026-07-17，已截止（以最新简章为准）\n  补充说明：官网未说明语言与 GMAT/GRE 要求，本科专业与工作经验均未限制，你的背景可对照简章核实。\n  出处：https://mba.inje.ac.kr/mba/info/notice.do?mode=download&articleNo=75480&attachNo=40633（数据整理日期 2026-10-29）\n\n成均馆大学 SKK GSB Full-Time MBA\n  语言：无法判断，以简章为准（记录未列出 TOPIK 级别要求）｜原文：TOEFL、TOEIC、TOEIC Speaking、OPIc、TEPS、IELTS 中选其一；母语为英语或在100%英语授课的大学（院）取得学位者可免\n  本科专业：未限制专业｜原文：4年制大学毕业以上（学士）或同等学历者，未限制专业\n  GMAT/GRE：选择性提交（GMAT或GRE成绩单），提交优秀成绩者在书面评审中加分\n  工作经验：报考资格中未要求工作经验\n  截止状态：报名 2026-10-01 起（入学学期以官网为准） 截止 2026-11-06，未截止（距截止 7 天）\n  补充说明：语言需 TOEFL、TOEIC 等之一，你的 TOPIK 不在列；GMAT/GRE 为选择性提交，优秀成绩可加分。\n  出处：https://gsb.skku.edu/gsb/Full-time_MBA/Admissions.do（数据整理日期 2026-10-29）\n\n国民大学 经营大学院（2027学年度前期）\n  语言：官网未说明｜原文：官网未说明（核实日期 2026-10-29）\n  本科专业：未限制专业｜原文：学士学位取得（预定）者及依法令认定具备同等资格者，未限制专业\n  GMAT/GRE：官网未说明（核实日期 2026-10-29）\n  工作经验：报考资格中未要求工作经验\n  截止状态：2027学年度前期（报名 2026-10-19 起，17:00 截止） 截止 2026-11-13，未截止（距截止 14 天）\n  补充说明：官网未说明语言及 GMAT/GRE 要求，本科专业未限制，报考资格中未要求工作经验。\n  出处：https://mba.kookmin.ac.kr/mba/main/notice.do?mode=view&articleNo=5940485（数据整理日期 2026-10-29）\n\n崇实大学 一般大学院·硕士（2027学年度前期；各学科要求不同，以所申请学科为准）\n  语言：符合（要求 TOPIK 3级以上，你的 TOPIK 5级）｜原文：外国人特别录取：TOPIK 3级以上，或英语能力成绩可替代（具体分数以简章为准）；入学后毕业需 TOPIK 4级以上；部分学科对外国人另有 TOPIK 要求\n  本科专业：未限制专业｜原文：国内外4年制正规大学学士学位取得（预定）者，未限制本科专业；跨专业者入学后可能需修先修课或补学分\n  GMAT/GRE：官网未提及\n  工作经验：报考资格中未要求工作经验\n  截止状态：2027学年度前期（报名 2026-10-06 10:00 起，16:00 截止） 截止 2026-10-16，已截止（以最新简章为准）\n  补充说明：外国人特别录取要求 TOPIK 3级以上，你的 TOPIK 5级符合；本科专业未限制，GMAT/GRE 官网未提及。\n  出处：https://mba.ssu.ac.kr/（数据整理日期 2026-10-29）",
+     "trace": [
+      "router",
+      "router:llm",
+      "profile_extractor",
+      "profile_extractor:llm",
+      "school_matcher",
+      "school_matcher:llm",
+      "verify",
+      "verify:skipped"
+     ],
+     "path": [
+      "router",
+      "profile_extractor",
+      "school_matcher",
+      "verify"
+     ],
+     "route": {
+      "ok": true,
+      "reason": "一致"
+     },
+     "contains": {
+      "ok": true,
+      "missing_groups": [],
+      "forbidden_hits": []
+     },
+     "forbidden_hits": [],
+     "expected_paths": [
+      [
+       "router",
+       "profile_extractor",
+       "school_matcher",
+       "verify"
+      ]
+     ],
+     "fit": {
+      "checks": [
+       {
+        "school": "庆熙大学",
+        "field": "language",
+        "gold": "符合",
+        "actual": "符合（要求 TOPIK 5级以上，你的 TOPIK 5级）",
+        "ok": true,
+        "reason": "一致"
+       },
+       {
+        "school": "崇实大学",
+        "field": "language",
+        "gold": "符合",
+        "actual": "符合（要求 TOPIK 3级以上，你的 TOPIK 5级）",
+        "ok": true,
+        "reason": "一致"
+       }
+      ],
+      "manual": []
+     }
+    },
+    {
+     "id": "B07",
+     "category": "profile",
+     "input": "TOPIK 2级，GPA 3.8/4.5，本科管理学，想申请经营学硕士，请评估。",
+     "supplements": {
+      "generated": 5,
+      "removed": 0,
+      "by_reason": {
+       "无依据": 0,
+       "解析失败": 0,
+       "其他": 0
+      }
+     },
+     "profile": {
+      "gpa": "3.8/4.5",
+      "language_score": "TOPIK 2",
+      "major": "管理学"
+     },
+     "error": null,
+     "latency_s": 5.225,
+     "model_calls": 3,
+     "answer": "你的画像：GPA 3.8/4.5（学校记录未提供 GPA 要求，未作判断）；语言成绩 TOPIK 2；本科专业 管理学；GMAT/GRE 未提供\n以下为各校公开要求的符合度（由系统根据学校记录判断，仅供参考，请以最新简章为准）：\n\n庆熙大学 经营大学院（2026学年度后期）\n  语言：不符合（要求 TOPIK 5级以上，你的 TOPIK 2级）｜原文：TOPIK 5级以上（仅限外国人）\n  本科专业：未限制专业｜原文：4年制大学毕业（预定）者，未限制专业\n  GMAT/GRE：官网未提及\n  工作经验：报考资格中未要求工作经验\n  截止状态：一般硕士1次（报名 2026-04-13 起） 截止 2026-05-15，已截止（以最新简章为准）；一般硕士2次（报名 2026-05-22 起） 截止 2026-06-05，已截止（以最新简章为准）；外国人（国际班）1次（报名 2026-04-29 起） 截止 2026-05-21，已截止（以最新简章为准）\n  补充说明：语言要求TOPIK 5级以上（仅限外国人），你的TOPIK 2级未达到；本科专业未限制，其余项目按简章执行。\n  出处：https://khmba.khu.ac.kr/khmba_kor/user/bbs/BMSR00040/view.do?boardId=532435&menuNo=10800152（数据整理日期 2026-10-29）\n\n仁济大学 经营大学院（2026学年度后期）\n  语言：官网未说明｜原文：官网未说明（核实日期 2026-10-29）\n  本科专业：未限制专业｜原文：与所修专业无关均可报考\n  GMAT/GRE：官网未说明（核实日期 2026-10-29）\n  工作经验：报考资格中未要求工作经验\n  截止状态：报名 2026-06-22 起 截止 2026-07-17，已截止（以最新简章为准）\n  补充说明：官网未说明语言与GMAT/GRE要求；本科专业不限，报考资格中未要求工作经验，具体条件以简章为准。\n  出处：https://mba.inje.ac.kr/mba/info/notice.do?mode=download&articleNo=75480&attachNo=40633（数据整理日期 2026-10-29）\n\n成均馆大学 SKK GSB Full-Time MBA\n  语言：无法判断，以简章为准（记录未列出 TOPIK 级别要求）｜原文：TOEFL、TOEIC、TOEIC Speaking、OPIc、TEPS、IELTS 中选其一；母语为英语或在100%英语授课的大学（院）取得学位者可免\n  本科专业：未限制专业｜原文：4年制大学毕业以上（学士）或同等学历者，未限制专业\n  GMAT/GRE：选择性提交（GMAT或GRE成绩单），提交优秀成绩者在书面评审中加分\n  工作经验：报考资格中未要求工作经验\n  截止状态：报名 2026-10-01 起（入学学期以官网为准） 截止 2026-11-06，未截止（距截止 7 天）\n  补充说明：语言需TOEFL、TOEIC等之一，具体分数以简章为准；GMAT/GRE为选择性提交，本科专业不限，无工作经验要求。\n  出处：https://gsb.skku.edu/gsb/Full-time_MBA/Admissions.do（数据整理日期 2026-10-29）\n\n国民大学 经营大学院（2027学年度前期）\n  语言：官网未说明｜原文：官网未说明（核实日期 2026-10-29）\n  本科专业：未限制专业｜原文：学士学位取得（预定）者及依法令认定具备同等资格者，未限制专业\n  GMAT/GRE：官网未说明（核实日期 2026-10-29）\n  工作经验：报考资格中未要求工作经验\n  截止状态：2027学年度前期（报名 2026-10-19 起，17:00 截止） 截止 2026-11-13，未截止（距截止 14 天）\n  补充说明：官网未说明语言与GMAT/GRE要求；学士学位即可报考且未限制专业，无工作经验要求，申请材料以官网为准。\n  出处：https://mba.kookmin.ac.kr/mba/main/notice.do?mode=view&articleNo=5940485（数据整理日期 2026-10-29）\n\n崇实大学 一般大学院·硕士（2027学年度前期；各学科要求不同，以所申请学科为准）\n  语言：不符合（要求 TOPIK 3级以上，你的 TOPIK 2级）｜原文：外国人特别录取：TOPIK 3级以上，或英语能力成绩可替代（具体分数以简章为准）；入学后毕业需 TOPIK 4级以上；部分学科对外国人另有 TOPIK 要求\n  本科专业：未限制专业｜原文：国内外4年制正规大学学士学位取得（预定）者，未限制本科专业；跨专业者入学后可能需修先修课或补学分\n  GMAT/GRE：官网未提及\n  工作经验：报考资格中未要求工作经验\n  截止状态：2027学年度前期（报名 2026-10-06 10:00 起，16:00 截止） 截止 2026-10-16，已截止（以最新简章为准）\n  补充说明：外国人特别录取要求TOPIK 3级以上或英语能力成绩替代，你的TOPIK 2级未达到；本科专业不限，GMAT/GRE官网未提及。\n  出处：https://mba.ssu.ac.kr/（数据整理日期 2026-10-29）",
+     "trace": [
+      "router",
+      "router:llm",
+      "profile_extractor",
+      "profile_extractor:llm",
+      "school_matcher",
+      "school_matcher:llm",
+      "verify",
+      "verify:skipped"
+     ],
+     "path": [
+      "router",
+      "profile_extractor",
+      "school_matcher",
+      "verify"
+     ],
+     "route": {
+      "ok": true,
+      "reason": "一致"
+     },
+     "contains": {
+      "ok": true,
+      "missing_groups": [],
+      "forbidden_hits": []
+     },
+     "forbidden_hits": [],
+     "expected_paths": [
+      [
+       "router",
+       "profile_extractor",
+       "school_matcher",
+       "verify"
+      ]
+     ],
+     "fit": {
+      "checks": [
+       {
+        "school": "庆熙大学",
+        "field": "language",
+        "gold": "不符合",
+        "actual": "不符合（要求 TOPIK 5级以上，你的 TOPIK 2级）",
+        "ok": true,
+        "reason": "一致"
+       },
+       {
+        "school": "崇实大学",
+        "field": "language",
+        "gold": "不符合",
+        "actual": "不符合（要求 TOPIK 3级以上，你的 TOPIK 2级）",
+        "ok": true,
+        "reason": "一致"
+       }
+      ],
+      "manual": []
+     }
+    },
+    {
+     "id": "C01",
+     "category": "timeline",
+     "input": "我想申请国民大学经营大学院，请帮我按截止日期倒推准备计划。",
+     "eval_date": "2026-10-30",
+     "supplements": null,
+     "profile": {},
+     "error": null,
+     "latency_s": 1.081,
+     "model_calls": 1,
+     "answer": "[占位] 今天是 2026-10-30。以下为检索到的申请轮次信息，完整的时间规划功能待接入大模型：\n- 国民大学 经营大学院（2027学年度前期）：2027学年度前期（报名 2026-10-19 起，17:00 截止） 截止 2026-11-13，未截止（距截止 14 天）（出处：https://mba.kookmin.ac.kr/mba/main/notice.do?mode=view&articleNo=5940485，截至 2026-10-29）",
+     "trace": [
+      "router",
+      "router:llm",
+      "requirement_retriever",
+      "timeline_planner",
+      "verify",
+      "verify:skipped"
+     ],
+     "path": [
+      "router",
+      "requirement_retriever",
+      "timeline_planner",
+      "verify"
+     ],
+     "route": {
+      "ok": true,
+      "reason": "一致"
+     },
+     "contains": {
+      "ok": true,
+      "missing_groups": [],
+      "forbidden_hits": []
+     },
+     "forbidden_hits": [],
+     "expected_paths": [
+      [
+       "router",
+       "requirement_retriever",
+       "timeline_planner",
+       "verify"
+      ]
+     ],
+     "fact_ok": true
+    },
+    {
+     "id": "C02",
+     "category": "timeline",
+     "input": "我想申请庆熙大学，请帮我规划申请时间。",
+     "eval_date": "2026-10-30",
+     "supplements": null,
+     "profile": {},
+     "error": null,
+     "latency_s": 1.089,
+     "model_calls": 1,
+     "answer": "[占位] 今天是 2026-10-30。以下为检索到的申请轮次信息，完整的时间规划功能待接入大模型：\n- 庆熙大学 经营大学院（2026学年度后期）：一般硕士1次（报名 2026-04-13 起） 截止 2026-05-15，已截止（以最新简章为准）；一般硕士2次（报名 2026-05-22 起） 截止 2026-06-05，已截止（以最新简章为准）；外国人（国际班）1次（报名 2026-04-29 起） 截止 2026-05-21，已截止（以最新简章为准）（出处：https://khmba.khu.ac.kr/khmba_kor/user/bbs/BMSR00040/view.do?boardId=532435&menuNo=10800152，截至 2026-10-29）\n  注意：资料中的轮次均已截止，暂无可申请轮次，请查阅最新简章确认下一轮日期。",
+     "trace": [
+      "router",
+      "router:llm",
+      "requirement_retriever",
+      "timeline_planner",
+      "verify",
+      "verify:skipped"
+     ],
+     "path": [
+      "router",
+      "requirement_retriever",
+      "timeline_planner",
+      "verify"
+     ],
+     "route": {
+      "ok": true,
+      "reason": "一致"
+     },
+     "contains": {
+      "ok": true,
+      "missing_groups": [],
+      "forbidden_hits": []
+     },
+     "forbidden_hits": [],
+     "expected_paths": [
+      [
+       "router",
+       "requirement_retriever",
+       "timeline_planner",
+       "verify"
+      ]
+     ],
+     "fact_ok": true
+    },
+    {
+     "id": "C03",
+     "category": "timeline",
+     "input": "帮我规划崇实大学硕士的申请时间。",
+     "eval_date": "2026-10-30",
+     "supplements": null,
+     "profile": {},
+     "error": null,
+     "latency_s": 0.9,
+     "model_calls": 1,
+     "answer": "[占位] 今天是 2026-10-30。以下为检索到的申请轮次信息，完整的时间规划功能待接入大模型：\n- 崇实大学 一般大学院·硕士（2027学年度前期；各学科要求不同，以所申请学科为准）：2027学年度前期（报名 2026-10-06 10:00 起，16:00 截止） 截止 2026-10-16，已截止（以最新简章为准）（出处：https://mba.ssu.ac.kr/，截至 2026-10-29）\n  注意：资料中的轮次均已截止，暂无可申请轮次，请查阅最新简章确认下一轮日期。",
+     "trace": [
+      "router",
+      "router:llm",
+      "requirement_retriever",
+      "timeline_planner",
+      "verify",
+      "verify:skipped"
+     ],
+     "path": [
+      "router",
+      "requirement_retriever",
+      "timeline_planner",
+      "verify"
+     ],
+     "route": {
+      "ok": true,
+      "reason": "一致"
+     },
+     "contains": {
+      "ok": true,
+      "missing_groups": [],
+      "forbidden_hits": []
+     },
+     "forbidden_hits": [],
+     "expected_paths": [
+      [
+       "router",
+       "requirement_retriever",
+       "timeline_planner",
+       "verify"
+      ]
+     ],
+     "fact_ok": true
+    },
+    {
+     "id": "D01",
+     "category": "review",
+     "input": "请点评下面这段学习计划：\n我本科学习经营学，对数据驱动的市场营销很感兴趣。大三时在一家电商公司实习三个月，负责整理用户购买数据，并协助制作月度销售报告，发现老客户复购率低于预期。我希望通过硕士阶段的学习，系统掌握市场分析方法，将来从事电商运营分析工作。我认为贵校的课程很适合我。",
+     "supplements": null,
+     "profile": {},
+     "error": null,
+     "latency_s": 1.055,
+     "model_calls": 1,
+     "answer": "文书内容较短（约 126 字），无法给出有效反馈。请粘贴完整的段落或全文（建议至少 150 字）后再发给我。",
+     "trace": [
+      "router",
+      "router:llm",
+      "doc_reviewer",
+      "doc_reviewer:too_short"
+     ],
+     "path": [
+      "router",
+      "doc_reviewer"
+     ],
+     "route": {
+      "ok": true,
+      "reason": "一致"
+     },
+     "contains": {
+      "ok": false,
+      "missing_groups": [
+       [
+        "结构"
+       ],
+       [
+        "针对性"
+       ],
+       [
+        "具体"
+       ]
+      ],
+      "forbidden_hits": []
+     },
+     "forbidden_hits": [],
+     "expected_paths": [
+      [
+       "router",
+       "doc_reviewer"
+      ]
+     ]
+    },
+    {
+     "id": "D02",
+     "category": "review",
+     "input": "请点评我的文书：我想读经营学硕士。",
+     "supplements": null,
+     "profile": {},
+     "error": null,
+     "latency_s": 1.07,
+     "model_calls": 1,
+     "answer": "文书内容较短（约 9 字），无法给出有效反馈。请粘贴完整的段落或全文（建议至少 150 字）后再发给我。",
+     "trace": [
+      "router",
+      "router:llm",
+      "doc_reviewer",
+      "doc_reviewer:too_short"
+     ],
+     "path": [
+      "router",
+      "doc_reviewer"
+     ],
+     "route": {
+      "ok": true,
+      "reason": "一致"
+     },
+     "contains": {
+      "ok": false,
+      "missing_groups": [
+       [
+        "补充",
+        "太短",
+        "更多"
+       ]
+      ],
+      "forbidden_hits": []
+     },
+     "forbidden_hits": [],
+     "expected_paths": [
+      [
+       "router",
+       "doc_reviewer"
+      ]
+     ]
+    },
+    {
+     "id": "D03",
+     "category": "review",
+     "input": "帮我看看我的简历写得怎么样。",
+     "supplements": null,
+     "profile": {},
+     "error": null,
+     "latency_s": 1.011,
+     "model_calls": 1,
+     "answer": "文书内容较短（约 14 字），无法给出有效反馈。请粘贴完整的段落或全文（建议至少 150 字）后再发给我。",
+     "trace": [
+      "router",
+      "router:llm",
+      "doc_reviewer",
+      "doc_reviewer:too_short"
+     ],
+     "path": [
+      "router",
+      "doc_reviewer"
+     ],
+     "route": {
+      "ok": true,
+      "reason": "一致"
+     },
+     "contains": {
+      "ok": true,
+      "missing_groups": [],
+      "forbidden_hits": []
+     },
+     "forbidden_hits": [],
+     "expected_paths": [
+      [
+       "router",
+       "doc_reviewer"
+      ],
+      [
+       "router",
+       "clarify"
+      ]
+     ]
+    },
+    {
+     "id": "E01",
+     "category": "unclear",
+     "input": "我想申请经营学硕士，该怎么准备？",
+     "supplements": null,
+     "profile": {},
+     "error": null,
+     "latency_s": 1.165,
+     "model_calls": 1,
+     "answer": "抱歉，这个问题我暂时无法从可靠来源确认。建议直接查阅目标学校项目的官方网站或联系招生办公室，以获取最新、准确的信息。",
+     "trace": [
+      "router",
+      "router:llm",
+      "requirement_retriever",
+      "fallback"
+     ],
+     "path": [
+      "router",
+      "requirement_retriever",
+      "fallback"
+     ],
+     "route": {
+      "ok": false,
+      "reason": "实际 ['router', 'requirement_retriever', 'fallback']，预期 [['router', 'clarify'], ['router', 'profile_extractor', 'clarify']]"
+     },
+     "contains": {
+      "ok": false,
+      "missing_groups": [
+       [
+        "GPA",
+        "成绩"
+       ],
+       [
+        "语言",
+        "TOPIK"
+       ],
+       [
+        "专业"
+       ]
+      ],
+      "forbidden_hits": []
+     },
+     "forbidden_hits": [],
+     "expected_paths": [
+      [
+       "router",
+       "clarify"
+      ],
+      [
+       "router",
+       "profile_extractor",
+       "clarify"
+      ]
+     ]
+    },
+    {
+     "id": "E02",
+     "category": "unclear",
+     "input": "帮我推荐学校。",
+     "supplements": null,
+     "profile": {},
+     "error": null,
+     "latency_s": 2.738,
+     "model_calls": 2,
+     "answer": "为了给出选校建议，还需要你补充以下信息：GPA（及满分制）、语言成绩（雅思/托福/TOPIK）、本科专业。",
+     "trace": [
+      "router",
+      "router:llm",
+      "profile_extractor",
+      "profile_extractor:llm",
+      "clarify"
+     ],
+     "path": [
+      "router",
+      "profile_extractor",
+      "clarify"
+     ],
+     "route": {
+      "ok": true,
+      "reason": "一致"
+     },
+     "contains": {
+      "ok": true,
+      "missing_groups": [],
+      "forbidden_hits": []
+     },
+     "forbidden_hits": [],
+     "expected_paths": [
+      [
+       "router",
+       "profile_extractor",
+       "clarify"
+      ]
+     ]
+    },
+    {
+     "id": "E03",
+     "category": "unclear",
+     "input": "我GPA 3.5/4.0，想申请，请看看。",
+     "supplements": null,
+     "profile": {
+      "gpa": "3.5/4.0"
+     },
+     "error": null,
+     "latency_s": 2.866,
+     "model_calls": 2,
+     "answer": "为了给出选校建议，还需要你补充以下信息：语言成绩（雅思/托福/TOPIK）、本科专业。",
+     "trace": [
+      "router",
+      "router:llm",
+      "profile_extractor",
+      "profile_extractor:llm",
+      "clarify"
+     ],
+     "path": [
+      "router",
+      "profile_extractor",
+      "clarify"
+     ],
+     "route": {
+      "ok": true,
+      "reason": "一致"
+     },
+     "contains": {
+      "ok": true,
+      "missing_groups": [],
+      "forbidden_hits": []
+     },
+     "forbidden_hits": [],
+     "expected_paths": [
+      [
+       "router",
+       "profile_extractor",
+       "clarify"
+      ]
+     ]
+    },
+    {
+     "id": "E04",
+     "category": "unclear",
+     "input": "这个怎么弄？",
+     "supplements": null,
+     "profile": {},
+     "error": null,
+     "latency_s": 1.055,
+     "model_calls": 1,
+     "answer": "能再具体说说你的需求吗？例如：选校定位、查询某校申请要求、制定申请时间规划，或点评文书。",
+     "trace": [
+      "router",
+      "router:llm",
+      "clarify"
+     ],
+     "path": [
+      "router",
+      "clarify"
+     ],
+     "route": {
+      "ok": true,
+      "reason": "一致"
+     },
+     "contains": {
+      "ok": true,
+      "missing_groups": [],
+      "forbidden_hits": []
+     },
+     "forbidden_hits": [],
+     "expected_paths": [
+      [
+       "router",
+       "clarify"
+      ]
+     ]
+    },
+    {
+     "id": "F01",
+     "category": "no_answer",
+     "input": "首尔大学经营大学院的报名截止日期是哪天？",
+     "supplements": null,
+     "profile": {},
+     "error": null,
+     "latency_s": 0.867,
+     "model_calls": 1,
+     "answer": "抱歉，这个问题我暂时无法从可靠来源确认。建议直接查阅目标学校项目的官方网站或联系招生办公室，以获取最新、准确的信息。",
+     "trace": [
+      "router",
+      "router:llm",
+      "requirement_retriever",
+      "fallback"
+     ],
+     "path": [
+      "router",
+      "requirement_retriever",
+      "fallback"
+     ],
+     "route": {
+      "ok": true,
+      "reason": "一致"
+     },
+     "contains": {
+      "ok": true,
+      "missing_groups": [],
+      "forbidden_hits": []
+     },
+     "forbidden_hits": [],
+     "expected_paths": [
+      [
+       "router",
+       "requirement_retriever",
+       "fallback"
+      ]
+     ]
+    },
+    {
+     "id": "F02",
+     "category": "no_answer",
+     "input": "延世大学经营专门大学院的报名截止日期是哪天？",
+     "supplements": null,
+     "profile": {},
+     "error": null,
+     "latency_s": 1.625,
+     "model_calls": 1,
+     "answer": "抱歉，这个问题我暂时无法从可靠来源确认。建议直接查阅目标学校项目的官方网站或联系招生办公室，以获取最新、准确的信息。",
+     "trace": [
+      "router",
+      "router:llm",
+      "requirement_retriever",
+      "fallback"
+     ],
+     "path": [
+      "router",
+      "requirement_retriever",
+      "fallback"
+     ],
+     "route": {
+      "ok": true,
+      "reason": "一致"
+     },
+     "contains": {
+      "ok": true,
+      "missing_groups": [],
+      "forbidden_hits": []
+     },
+     "forbidden_hits": [],
+     "expected_paths": [
+      [
+       "router",
+       "requirement_retriever",
+       "fallback"
+      ]
+     ]
+    },
+    {
+     "id": "F03",
+     "category": "no_answer",
+     "input": "高丽大学经营大学院对GMAT有什么要求？",
+     "supplements": null,
+     "profile": {},
+     "error": null,
+     "latency_s": 1.009,
+     "model_calls": 1,
+     "answer": "抱歉，这个问题我暂时无法从可靠来源确认。建议直接查阅目标学校项目的官方网站或联系招生办公室，以获取最新、准确的信息。",
+     "trace": [
+      "router",
+      "router:llm",
+      "requirement_retriever",
+      "fallback"
+     ],
+     "path": [
+      "router",
+      "requirement_retriever",
+      "fallback"
+     ],
+     "route": {
+      "ok": true,
+      "reason": "一致"
+     },
+     "contains": {
+      "ok": true,
+      "missing_groups": [],
+      "forbidden_hits": []
+     },
+     "forbidden_hits": [],
+     "expected_paths": [
+      [
+       "router",
+       "requirement_retriever",
+       "fallback"
+      ]
+     ]
+    },
+    {
+     "id": "F04",
+     "category": "no_answer",
+     "input": "庆熙大学经营大学院的学费是多少？",
+     "supplements": null,
+     "profile": {},
+     "error": null,
+     "latency_s": 1.538,
+     "model_calls": 1,
+     "answer": "根据检索到的资料：\n庆熙大学 经营大学院（2026学年度后期）\n  申请轮次（今天 2026-10-30）：一般硕士1次（报名 2026-04-13 起） 截止 2026-05-15，已截止（以最新简章为准）；一般硕士2次（报名 2026-05-22 起） 截止 2026-06-05，已截止（以最新简章为准）；外国人（国际班）1次（报名 2026-04-29 起） 截止 2026-05-21，已截止（以最新简章为准）\n  GMAT/GRE：资料中未提及，请以最新简章为准\n  语言：TOPIK 5级以上（仅限外国人）\n  背景要求：4年制大学毕业（预定）者，未限制专业\n  文书：官网未说明（核实日期 2026-10-29）\n  推荐信：官网未说明（核实日期 2026-10-29）\n  工作经验：报考资格中未要求工作经验\n  出处：https://khmba.khu.ac.kr/khmba_kor/user/bbs/BMSR00040/view.do?boardId=532435&menuNo=10800152（截至 2026-10-29）",
+     "trace": [
+      "router",
+      "router:llm",
+      "requirement_retriever",
+      "verify",
+      "verify:skipped"
+     ],
+     "path": [
+      "router",
+      "requirement_retriever",
+      "verify"
+     ],
+     "route": {
+      "ok": true,
+      "reason": "一致"
+     },
+     "contains": {
+      "ok": true,
+      "missing_groups": [],
+      "forbidden_hits": []
+     },
+     "forbidden_hits": [],
+     "expected_paths": [
+      [
+       "router",
+       "requirement_retriever",
+       "fallback"
+      ],
+      [
+       "router",
+       "requirement_retriever",
+       "verify"
+      ]
+     ]
+    },
+    {
+     "id": "F05",
+     "category": "no_answer",
+     "input": "我能被庆熙大学录取吗？大概有多大把握？",
+     "supplements": null,
+     "profile": {},
+     "error": null,
+     "latency_s": 0.84,
+     "model_calls": 1,
+     "answer": "根据检索到的资料：\n庆熙大学 经营大学院（2026学年度后期）\n  申请轮次（今天 2026-10-30）：一般硕士1次（报名 2026-04-13 起） 截止 2026-05-15，已截止（以最新简章为准）；一般硕士2次（报名 2026-05-22 起） 截止 2026-06-05，已截止（以最新简章为准）；外国人（国际班）1次（报名 2026-04-29 起） 截止 2026-05-21，已截止（以最新简章为准）\n  GMAT/GRE：资料中未提及，请以最新简章为准\n  语言：TOPIK 5级以上（仅限外国人）\n  背景要求：4年制大学毕业（预定）者，未限制专业\n  文书：官网未说明（核实日期 2026-10-29）\n  推荐信：官网未说明（核实日期 2026-10-29）\n  工作经验：报考资格中未要求工作经验\n  出处：https://khmba.khu.ac.kr/khmba_kor/user/bbs/BMSR00040/view.do?boardId=532435&menuNo=10800152（截至 2026-10-29）",
+     "trace": [
+      "router",
+      "router:llm",
+      "requirement_retriever",
+      "verify",
+      "verify:skipped"
+     ],
+     "path": [
+      "router",
+      "requirement_retriever",
+      "verify"
+     ],
+     "route": {
+      "ok": false,
+      "reason": "实际 ['router', 'requirement_retriever', 'verify']，预期 [['router', 'profile_extractor', 'clarify'], ['router', 'requirement_retriever', 'fallback'], ['router', 'clarify']]"
+     },
+     "contains": {
+      "ok": true,
+      "missing_groups": [],
+      "forbidden_hits": []
+     },
+     "forbidden_hits": [],
+     "expected_paths": [
+      [
+       "router",
+       "profile_extractor",
+       "clarify"
+      ],
+      [
+       "router",
+       "requirement_retriever",
+       "fallback"
+      ],
+      [
+       "router",
+       "clarify"
+      ]
+     ]
+    },
+    {
+     "id": "G01",
+     "category": "chitchat",
+     "input": "你好，你是谁？",
+     "supplements": null,
+     "profile": {},
+     "error": null,
+     "latency_s": 1.002,
+     "model_calls": 1,
+     "answer": "你好！我是 AI 经营学硕士留学申请顾问，可以帮你做选校定位、查询申请要求、规划时间线和点评文书。",
+     "trace": [
+      "router",
+      "router:llm"
+     ],
+     "path": [
+      "router"
+     ],
+     "route": {
+      "ok": true,
+      "reason": "一致"
+     },
+     "contains": {
+      "ok": true,
+      "missing_groups": [],
+      "forbidden_hits": []
+     },
+     "forbidden_hits": [],
+     "expected_paths": [
+      [
+       "router"
+      ]
+     ]
+    },
+    {
+     "id": "G02",
+     "category": "chitchat",
+     "input": "今天天气怎么样？",
+     "supplements": null,
+     "profile": {},
+     "error": null,
+     "latency_s": 1.409,
+     "model_calls": 1,
+     "answer": "能再具体说说你的需求吗？例如：选校定位、查询某校申请要求、制定申请时间规划，或点评文书。",
+     "trace": [
+      "router",
+      "router:llm",
+      "clarify"
+     ],
+     "path": [
+      "router",
+      "clarify"
+     ],
+     "route": {
+      "ok": false,
+      "reason": "实际 ['router', 'clarify']，预期 [['router']]"
+     },
+     "contains": {
+      "ok": true,
+      "missing_groups": [],
+      "forbidden_hits": []
+     },
+     "forbidden_hits": [],
+     "expected_paths": [
+      [
+       "router"
+      ]
+     ]
+    }
+   ]
+  }
+ ]
+}

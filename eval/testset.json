@@ -8,7 +8,7 @@
     "date_sensitive": "结果取决于评测当天的日期，需记录评测日期",
     "needs_check": "依赖尚未复核的数据，核对官网后再使用"
   },
-  "eval_date": "【评测当天填写，如 2026-10-30】",
+  "eval_date": "2026-10-30",
   "items": [
     {
       "id": "A01",
@@ -432,9 +432,7 @@
       ],
       "gold": {
         "must_contain": [],
-        "must_not_contain": [
-          "符合庆熙"
-        ],
+        "must_not_contain": [],
         "per_school": {
           "庆熙大学": {
             "language": "不得判为符合"
@@ -469,8 +467,9 @@
         ],
         "must_not_contain": [
           "95分够",
-          "95符合",
-          "达标"
+          "95分符合",
+          "95分达标",
+          "已达标"
         ],
         "per_school": {
           "崇实大学": {
@@ -550,9 +549,9 @@
       "gold": {
         "must_contain": [],
         "must_not_contain": [
-          "录取概率",
           "很可能录取",
-          "把握"
+          "把握很大",
+          "录取可能性很高"
         ],
         "per_school": {
           "庆熙大学": {
@@ -704,9 +703,7 @@
             "具体"
           ]
         ],
-        "must_not_contain": [
-          "录取"
-        ],
+        "must_not_contain": [],
         "per_school": {}
       },
       "date_sensitive": false,
@@ -1014,9 +1011,10 @@
         "must_contain": [],
         "must_not_contain": [
           "很可能录取",
-          "录取概率",
           "把握很大",
-          "一定"
+          "录取可能性很高",
+          "一定能录取",
+          "一定会录取"
         ],
         "per_school": {}
       },

@@ -4,6 +4,7 @@
     .venv/bin/python eval/run_eval.py --config full
     .venv/bin/python eval/run_eval.py --config b0 --repeat 3
     .venv/bin/python eval/run_eval.py --config no_verify --limit 5 --include-unchecked
+    .venv/bin/python eval/run_eval.py --report   # 读取各配置最新结果，生成 failures.md 和 manual_review.md
 
 配置：
     full       完整系统（LangGraph 工作流）
@@ -17,7 +18,7 @@
     符合度判断正确率 B 类：per_school 中能自动判定的项与回答里该校的判断一致的比例；不能自动判定的写入结果文件供人工检查
     平均延迟、平均模型调用次数、异常率
 
-结果写入 eval/results/<配置>_<时间>.json。需要真实模型时读取 ANTHROPIC_API_KEY（环境变量、.env 或 st.secrets）；
+结果写入 eval/results/<配置>_<时间>.json，每题记录触发的禁用词（forbidden_hits）。需要真实模型时读取 ANTHROPIC_API_KEY（环境变量、.env 或 st.secrets）；
 脚本只显示是否配置了密钥，不输出密钥本身。
 """
 
@@ -275,6 +276,7 @@ def run_item(config: str, item: dict, app: Any, real_llm: Any, today: str) -> di
             answer = final_answer(result)
             trace = result.get("trace", [])
             record["supplements"] = supplement_removal(trace, generated, result.get("draft", ""))
+            record["profile"] = result.get("profile") or {}
         record["error"] = None
     except Exception as e:  # 只记录异常类型，异常内容可能包含请求细节
         answer, record["error"] = "", type(e).__name__
@@ -292,6 +294,8 @@ def run_item(config: str, item: dict, app: Any, real_llm: Any, today: str) -> di
     prefix = item["id"][0]
     record["route"] = judge_route(item, record["path"]) if config != "b0" else {"ok": None, "reason": "b0 不计"}
     record["contains"] = judge_contains(answer, item["gold"])
+    record["forbidden_hits"] = record["contains"]["forbidden_hits"]
+    record["expected_paths"] = expected_paths(item)
     if prefix in FACT_PREFIXES:
         record["fact_ok"] = record["contains"]["ok"]
     if prefix == FIT_PREFIX:
@@ -388,13 +392,167 @@ def print_summary(config: str, runs: list[dict], avg: dict) -> None:
         print("".join(str(c).ljust(w) for c, w in zip(row, width)))
 
 
+# ---------------------------------------------------------------------------
+# 报告：failures.md、manual_review.md
+# ---------------------------------------------------------------------------
+
+VERIFY_FAIL_ENTRIES = (
+    "verify:llm_unsupported_claims(", "verify:dates_not_in_sources", "verify:negation_not_in_sources",
+    "verify:admission_claim", "verify:llm_error", "verify:llm_parse_error", "verify:no_sources", "verify:empty_draft",
+)
+CLASS_ROUTE, CLASS_RETRIEVAL, CLASS_PROFILE, CLASS_VERIFY, CLASS_OTHER = (
+    "路由错误", "检索遗漏", "画像抽取错误", "verify 误判", "其他",
+)
+
+
+def failed_checks(rec: dict) -> list[str]:
+    """该题未通过的判定项；空列表表示通过。"""
+    out = []
+    if rec.get("error"):
+        out.append(f"运行异常（{rec['error']}）")
+    if rec["route"]["ok"] is False:
+        out.append("路由")
+    missing = rec["contains"]["missing_groups"]
+    if missing:
+        out.append("缺少必含词：" + "；".join("/".join(grp) for grp in missing))
+    if rec.get("forbidden_hits"):
+        out.append("触发禁用词：" + "、".join(rec["forbidden_hits"]))
+    for c in (rec.get("fit") or {}).get("checks", []):
+        if c["ok"] is False:
+            out.append(f"符合度 {c['school']}·{c['field']}：标准「{c['gold']}」，实际「{c['actual'] or '未找到'}」")
+    return out
+
+
+def classify(rec: dict) -> list[str]:
+    """初步分类（规则推断，需要人工确认）。"""
+    if rec.get("error") or rec.get("path") is None:  # 运行异常；b0 不走图，无路由、检索、画像环节
+        return [CLASS_OTHER]
+    trace = rec.get("trace") or []
+    path = rec.get("path") or []
+    classes = []
+    if rec["route"]["ok"] is False:
+        verify_failed = any(t.startswith(VERIFY_FAIL_ENTRIES) for t in trace)
+        expected_has_clarify = any("clarify" in p for p in rec.get("expected_paths", []))
+        if verify_failed and ("fallback" in path or path.count("verify") > 1):
+            classes.append(CLASS_VERIFY)
+        elif "profile_extractor" in path and "clarify" in path and not expected_has_clarify:
+            classes.append(CLASS_PROFILE)
+        else:
+            classes.append(CLASS_ROUTE)
+    elif rec["contains"]["missing_groups"] and rec["id"][0] in FACT_PREFIXES:
+        classes.append(CLASS_RETRIEVAL)
+    if any(c["ok"] is False for c in (rec.get("fit") or {}).get("checks", [])) and not classes:
+        classes.append(CLASS_PROFILE if not (rec.get("profile") or {}).get("language_score") else CLASS_OTHER)
+    if not classes:
+        classes.append(CLASS_OTHER)
+    return classes
+
+
+def latest_results(results_dir: Path) -> dict[str, dict]:
+    out = {}
+    for config in CONFIGS:
+        files = sorted(results_dir.glob(f"{config}_*.json"))
+        if files:
+            out[config] = {"file": files[-1].name, **json.loads(files[-1].read_text(encoding="utf-8"))}
+    return out
+
+
+def md_cell(text: Any) -> str:
+    return str(text).replace("|", "\\|").replace("\n", " ")
+
+
+def write_report(results_dir: Path) -> list[Path]:
+    results = latest_results(results_dir)
+    fail_lines = [
+        "# 评测失败题目",
+        "",
+        "> 分类是根据路径和 trace 用规则推断的**初步分类，需要人工确认**。",
+        "",
+    ]
+    forbidden_lines = ["## 触发禁用词的题", "", "需人工判断是真幻觉还是误触发。", ""]
+    manual_lines = ["# 需要人工检查的清单", ""]
+    fit_manual, b0_answers = [], []
+    for config, data in results.items():
+        fail_lines += [f"## {config}（{data['file']}）", ""]
+        any_fail = False
+        for run in data["runs"]:
+            for rec in run["items"]:
+                checks = failed_checks(rec)
+                if not checks:
+                    continue
+                any_fail = True
+                expected = " 或 ".join(" → ".join(p) for p in rec.get("expected_paths", [])) or "—"
+                actual = " → ".join(rec["path"]) if rec.get("path") is not None else "—（不走图）"
+                fail_lines += [
+                    f"### {rec['id']}（第 {run['run']} 次）",
+                    f"- 输入：{rec['input']}",
+                    f"- 期望路径：{expected}",
+                    f"- 实际路径：{actual}",
+                    f"- 失败的判定项：{'；'.join(checks)}",
+                    f"- 原因（路由判定）：{rec['route']['reason']}",
+                    f"- 初步分类：{'、'.join(classify(rec))}（初步分类，需要人工确认）",
+                    "",
+                ]
+                if rec.get("forbidden_hits"):
+                    forbidden_lines += [
+                        f"### {config} · {rec['id']}（第 {run['run']} 次）",
+                        f"- 输入：{rec['input']}",
+                        f"- 触发的禁用词：{'、'.join(rec['forbidden_hits'])}",
+                        f"- 回答：{rec['answer']}",
+                        "",
+                    ]
+            fit_manual += [(config, run["run"], m) for m in run.get("manual_fit_checks", [])]
+            if config == "b0":
+                b0_answers += [(run["run"], rec) for rec in run["items"]]
+        if not any_fail:
+            fail_lines += ["无失败题目。", ""]
+    if len(forbidden_lines) == 4:
+        forbidden_lines.append("无。")
+
+    manual_lines += ["## 1. 自动判定不了的符合度项", ""]
+    if fit_manual:
+        manual_lines += ["| 配置 | 次 | 题目 | 学校 | 字段 | 标准判断 | 回答中的判断 | 原因 |", "|---|---|---|---|---|---|---|---|"]
+        manual_lines += [
+            f"| {c} | {n} | {m['id']} | {m['school']} | {m['field']} | {md_cell(m['gold'])} | "
+            f"{md_cell(m['actual'] or '—')} | {md_cell(m['reason'])} |"
+            for c, n, m in fit_manual
+        ]
+    else:
+        manual_lines.append("无。")
+    manual_lines += ["", "## 2. 触发禁用词的题", "", "见 failures.md 中“触发禁用词的题”一节。", "", "## 3. b0 的回答", ""]
+    for n, rec in b0_answers:
+        declined = rec.get("declined") or {}
+        manual_lines += [
+            f"### {rec['id']}（第 {n} 次）",
+            f"- 输入：{rec['input']}",
+            f"- 关键词判断表示无法回答：{'是（' + '、'.join(declined.get('hits', [])) + '）' if declined.get('ok') else '否'}",
+            f"- 回答：{rec['answer']}",
+            "",
+        ]
+    if not b0_answers:
+        manual_lines.append("没有 b0 结果。")
+
+    results_dir.mkdir(parents=True, exist_ok=True)
+    failures_path, manual_path = results_dir / "failures.md", results_dir / "manual_review.md"
+    failures_path.write_text("\n".join(fail_lines + forbidden_lines) + "\n", encoding="utf-8")
+    manual_path.write_text("\n".join(manual_lines) + "\n", encoding="utf-8")
+    return [failures_path, manual_path]
+
+
 def main(argv: Optional[list[str]] = None) -> int:
     parser = argparse.ArgumentParser(description="在 eval/testset.json 上评测")
-    parser.add_argument("--config", choices=CONFIGS, required=True)
+    parser.add_argument("--config", choices=CONFIGS)
     parser.add_argument("--repeat", type=int, default=1, help="重复运行次数")
     parser.add_argument("--limit", type=int, default=None, help="只跑前 K 题（在跳过 needs_check 之后计数）")
     parser.add_argument("--include-unchecked", action="store_true", help="包含 needs_check 为 true 的题目")
+    parser.add_argument("--report", action="store_true", help="不运行评测，读取各配置最新结果生成 failures.md 等报告")
     args = parser.parse_args(argv)
+    if args.report:
+        for path in write_report(RESULTS_DIR):
+            print(f"已写入：{path}")
+        return 0
+    if args.config is None:
+        parser.error("需要 --config 或 --report")
 
     print(api_key_hint())
     real_llm = get_llm()
