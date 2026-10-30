@@ -240,7 +240,7 @@ def test_schools_json_format():
 def test_real_data_retrieval():
     result = g.run("成均馆大学的申请要求是什么？")
     assert result["trace"] == ["router", "requirement_retriever", "verify"]
-    assert result["sources"] == ["https://gsb.skku.edu/gsb/Full-time_MBA/Admissions.do"]
+    assert result["sources"] == ["https://gsb.skku.edu/en/Full-time_MBA/Admissions.do"]
 
 
 def test_real_data_school_list():

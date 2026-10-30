@@ -1,5 +1,8 @@
 """app.py（Streamlit 界面）与 export_graph.py 测试。用 AppTest 无头运行，不调用真实模型。"""
 
+import re
+from pathlib import Path
+
 import pytest
 import streamlit as st
 from streamlit.testing.v1 import AppTest
@@ -62,8 +65,8 @@ def test_chat_turn_and_sidebar():
     assert [m.avatar for m in at.chat_message] == ["user", "assistant"]
     assert "选择性提交" in at.chat_message[1].markdown[0].value
     sidebar = "\n".join(str(e.value) for e in [*at.sidebar.code, *at.sidebar.markdown])
-    assert "router → requirement_retriever → verify" in sidebar
-    assert "https://gsb.skku.edu/gsb/Full-time_MBA/Admissions.do（整理日期 2026-10-29）" in sidebar
+    assert "1. `router`\n2. `requirement_retriever`\n3. `verify`" in sidebar
+    assert "[成均馆大学](https://gsb.skku.edu/en/Full-time_MBA/Admissions.do)（整理日期 2026-10-29）" in sidebar
     assert "数据整理日期：** 2026-10-29" in sidebar
 
 
@@ -71,14 +74,11 @@ def test_node_path_filters_internal_entries():
     at = start()
     at.session_state["last_result"] = {"trace": ["router", "router:llm", "requirement_retriever", "verify", "verify:llm_pass"]}
     at.run()
-    codes = [c.value for c in at.sidebar.code]
-    assert codes == [
-        "router → requirement_retriever → verify",
-        "router → router:llm → requirement_retriever → verify → verify:llm_pass",
-    ]
+    path = [m.value for m in at.sidebar.markdown if m.value.startswith("1. ")]
+    assert path == ["1. `router`\n2. `requirement_retriever`\n3. `verify`"]
     expander = at.sidebar.expander[0]
     assert expander.label == "完整 trace"
-    assert [c.value for c in expander.code] == [codes[1]]
+    assert [c.value for c in expander.code] == ["router → router:llm → requirement_retriever → verify → verify:llm_pass"]
 
 
 def test_profile_persists_across_turns():
@@ -157,3 +157,94 @@ def test_export_png_success(monkeypatch, tmp_path):
     written = export_graph.export(tmp_path)
     assert written == [tmp_path / "graph.mmd", tmp_path / "graph.png"]
     assert (tmp_path / "graph.png").read_bytes() == b"\x89PNG fake"
+
+
+# ---------------------------------------------------------------------------
+# 显示：出处链接、换行、节点路径
+# ---------------------------------------------------------------------------
+
+LINK_RE = re.compile(r"\[((?:\\.|[^\]\\])*)\]\(([^)\s]*)\)")
+NON_ASCII_RE = re.compile(r"[^\x00-\x7f]")
+
+
+def rendered_markdown(at: AppTest) -> list[str]:
+    return [str(m.value) for m in at.markdown] + [
+        str(m.value) for msg in at.chat_message for m in msg.markdown
+    ] + [str(m.value) for m in at.sidebar.markdown]
+
+
+def check_links(texts: list[str]) -> int:
+    """每个链接的网址部分只含 ASCII（无中文、无全角标点）；链接之外不再有裸网址。返回链接数。"""
+    count = 0
+    for text in texts:
+        for _, url in LINK_RE.findall(text):
+            count += 1
+            assert url.startswith("http") and not NON_ASCII_RE.search(url), url
+        assert "http" not in LINK_RE.sub("", text), text
+    return count
+
+
+@pytest.mark.parametrize("question", [
+    "成均馆大学需要 GMAT 吗？",                                # 问答：（出处：网址，截至 …）
+    "我本科学金融，GPA 3.6/4.0，雅思 7.0，帮我选校",            # 选校：出处：网址（数据整理日期 …）
+    "我想申请国民大学，请帮我规划申请时间",                     # 时间规划
+    "庆熙大学的申请要求是什么？",                               # 完整要求：出处：网址（截至 …）
+])
+def test_rendered_links_are_ascii_only(question):
+    at = ask(start(), question)
+    assert not at.exception
+    assert check_links(rendered_markdown(at)) >= 2  # 回答区和侧边栏都有链接
+
+
+def test_date_note_outside_link():
+    app = load_app_helpers()
+    text = app.link_urls("出处：https://gsb.skku.edu/en/Full-time_MBA/Admissions.do（截至 2026-10-29）")
+    assert text == "出处：[https://gsb.skku.edu/en/Full-time\\_MBA/Admissions.do](https://gsb.skku.edu/en/Full-time_MBA/Admissions.do)（截至 2026-10-29）"
+    assert app.link_urls("（出处：https://a.example/x?y=1&z=2，截至 2026-10-29）") == (
+        "（出处：[https://a.example/x?y=1&z=2](https://a.example/x?y=1&z=2)，截至 2026-10-29）"
+    )
+    assert app.link_urls("see https://a.example/x.") == "see [https://a.example/x](https://a.example/x)."
+
+
+def load_app_helpers():
+    """只加载 app.py 中的显示函数（不执行页面）。"""
+    import types
+    module = types.ModuleType("app_helpers")
+    exec(Path("app.py").read_text(encoding="utf-8").split("@st.cache_resource")[0], module.__dict__)
+    return module
+
+
+def test_format_answer_keeps_line_breaks():
+    app = load_app_helpers()
+    answer = "根据检索到的资料：\n庆熙大学 经营大学院\n  语言：TOPIK 5级以上\n  出处：https://x.example/a（截至 2026-10-29）\n\n结尾一行\n第二行"
+    out = app.format_answer(answer)
+    assert out == (
+        "根据检索到的资料：  \n庆熙大学 经营大学院\n- 语言：TOPIK 5级以上\n"
+        "- 出处：[https://x.example/a](https://x.example/a)（截至 2026-10-29）"
+        "\n\n结尾一行  \n第二行"
+    )
+
+
+def test_list_followed_by_plain_line_is_separated():
+    app = load_app_helpers()
+    assert app.format_answer("标题\n  字段：一\n说明行") == "标题\n- 字段：一\n\n说明行"
+
+
+def test_answer_rendered_line_by_line():
+    at = ask(start(), "我本科学金融，GPA 3.6/4.0，雅思 7.0，帮我选校")
+    shown = at.chat_message[1].markdown[0].value
+    assert "\n- 语言：" in shown and "\n- 本科专业：" in shown and "\n- 截止状态：" in shown
+    raw = at.session_state["history"][1]["content"]
+    assert "\n  语言：" in raw  # 保存的回答内容本身不变
+
+
+def test_node_path_shows_every_node_including_last():
+    at = start()
+    trace = ["router", "requirement_retriever", "verify", "verify:dates_not_in_sources", "requirement_retriever",
+             "verify", "verify:dates_not_in_sources", "requirement_retriever", "verify", "fallback"]
+    at.session_state["last_result"] = {"trace": trace}
+    at.run()
+    path = next(m.value for m in at.sidebar.markdown if m.value.startswith("1. "))
+    lines = path.splitlines()
+    assert len(lines) == 8 and lines[-1] == "8. `fallback`"
+    assert at.sidebar.expander[0].code[0].proto.wrap_lines
