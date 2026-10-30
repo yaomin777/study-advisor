@@ -248,3 +248,29 @@ def test_node_path_shows_every_node_including_last():
     lines = path.splitlines()
     assert len(lines) == 8 and lines[-1] == "8. `fallback`"
     assert at.sidebar.expander[0].code[0].proto.wrap_lines
+
+
+# ---------------------------------------------------------------------------
+# 韩语提示
+# ---------------------------------------------------------------------------
+
+KOREAN_NOTICE = "이 데모는 중국어로 질문해야 합니다. 예시 질문은 README의 '안내 (한국어)' 표를 참고하세요. / 本演示请使用中文提问。"
+
+
+def test_korean_notice_below_disclaimer():
+    at = start()
+    assert not at.exception
+    assert at.caption[0].value == KOREAN_NOTICE  # 页面顶部第一条说明文字，紧跟免责声明
+
+
+def test_readme_korean_section_lists_existing_scenarios():
+    readme = Path("README.md").read_text(encoding="utf-8")
+    assert readme.startswith("## 안내 (한국어)\n")
+    korean = readme[:readme.index("# AI 经营学硕士留学申请顾问")]
+    assert "'실무 경력을 요구하지 않는 경영학 석사' 지원자를 위한 AI 유학 지원 컨설턴트입니다" in korean
+    assert "| 번호 | 중국어 질문(그대로 입력) | 한국어 번역 | 기대 동작 |" in korean
+    scenarios = readme[readme.index("## 测试场景"):readme.index("## 数据来源与核实")]
+    questions = re.findall(r"^\| \d \| (.+?) \|", scenarios, flags=re.M)
+    assert len(questions) == 5
+    rows = re.findall(r"^\| (\d) \| (.+?) \|", korean, flags=re.M)
+    assert [q for _, q in rows] == questions

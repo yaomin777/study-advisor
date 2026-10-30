@@ -16,6 +16,7 @@ from llm import MODEL_NAME
 
 MAX_QUESTIONS = 20
 DISCLAIMER = "本系统的建议仅供参考，请以学校最新招生简章为准；请勿输入真实个人信息（姓名、证件号、联系方式等）。"
+KOREAN_NOTICE = "이 데모는 중국어로 질문해야 합니다. 예시 질문은 README의 '안내 (한국어)' 표를 참고하세요. / 本演示请使用中文提问。"
 DEMO_MODE = "演示模式（规则版）"
 FRIENDLY_ERROR = "抱歉，处理这个问题时出现了错误，请稍后再试或换一种问法。"
 LIMIT_REACHED = f"本会话已达到 {MAX_QUESTIONS} 个问题的上限，请刷新页面开始新的会话。"
@@ -140,6 +141,7 @@ def main() -> None:
     st.set_page_config(page_title="经营学硕士申请顾问", page_icon="🎓")
     st.title("AI 经营学硕士留学申请顾问")
     st.warning(DISCLAIMER)
+    st.caption(KOREAN_NOTICE)
     init_session()
 
     if not get_api_key():
