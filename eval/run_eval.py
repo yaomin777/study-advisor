@@ -4,15 +4,17 @@
     .venv/bin/python eval/run_eval.py --config full
     .venv/bin/python eval/run_eval.py --config b0 --repeat 3
     .venv/bin/python eval/run_eval.py --config no_verify --limit 5 --include-unchecked
-    .venv/bin/python eval/run_eval.py --report   # 读取各配置最新结果，生成 failures.md 和 manual_review.md
+    .venv/bin/python eval/run_eval.py --config b1 --repeat 3
+    .venv/bin/python eval/run_eval.py --report   # 读取各配置最新结果，生成 failures.md、manual_review.md、removed_statements.md
 
 配置：
     full       完整系统（LangGraph 工作流）
     b0         基线：同一个模型直接回答，不使用 schools.json，不走图
     no_verify  完整系统，但跳过 verify，直接把草稿作为最终回答
+    b1         基线：把 schools.json 全部学校记录放进提示词，同一个模型直接回答，不走图、不路由、不校验
 
 指标（每次运行都计算，最后输出每次的值和平均值）：
-    路由准确率      实际节点路径（去掉带冒号的内部条目和 START/END）与 expected_path 或 expected_path_any 之一一致；b0 不计
+    路由准确率      实际节点路径（去掉带冒号的内部条目和 START/END）与 expected_path 或 expected_path_any 之一一致；b0、b1 不计
     事实准确率      A、C 类：每组 must_contain 至少出现一个词，且不触发 must_not_contain
     幻觉率          所有题目中触发 must_not_contain 的比例；F 类单独统计
     符合度判断正确率 B 类：per_school 中能自动判定的项与回答里该校的判断一致的比例；不能自动判定的写入结果文件供人工检查
@@ -42,7 +44,8 @@ from llm import MODEL_NAME, get_llm, with_max_tokens  # noqa: E402
 
 TESTSET_PATH = ROOT / "eval" / "testset.json"
 RESULTS_DIR = ROOT / "eval" / "results"
-CONFIGS = ("full", "b0", "no_verify")
+CONFIGS = ("full", "b0", "no_verify", "b1")
+BASELINES = ("b0", "b1")        # 不走图的基线：路由不计，符合度无法自动判定时交人工检查
 
 FACT_PREFIXES = ("A", "C")      # 事实准确率统计的题目类别（按 id 首字母）
 FIT_PREFIX = "B"                # 符合度判断
@@ -56,6 +59,16 @@ FIT_CATEGORIES = sorted({g.FIT_YES, g.FIT_NO, g.FIT_UNKNOWN, g.FIT_UNSTATED, g.F
 NEGATED_PREFIX = "不得判为"
 
 B0_SYSTEM_PROMPT = "你是经营学硕士留学申请顾问。请用中文直接回答用户的问题。"
+B1_SYSTEM_PROMPT = (
+    "你是经营学硕士留学申请顾问。请用中文回答用户的问题。"
+    "依据给出的资料回答，资料里没有的内容说明资料中未提及。\n\n【资料】\n{schools}"
+)
+
+
+def baseline_prompt(config: str) -> str:
+    if config == "b1":
+        return B1_SYSTEM_PROMPT.format(schools=json.dumps(g.load_schools(), ensure_ascii=False, indent=1))
+    return B0_SYSTEM_PROMPT
 
 # b0 回答"表示无法回答"的关键词（简单匹配，命中的词写入结果文件供人工复核）
 DECLINE_PHRASES = (
@@ -172,7 +185,7 @@ def judge_fits(item: dict, answer: str, config: str) -> dict:
             )
             if not auto:
                 manual.append({**entry, "reason": "标准判断不是四类结果之一，需人工检查"})
-            elif actual is None and config == "b0":
+            elif actual is None and config in BASELINES:
                 manual.append({**entry, "reason": "基线回答没有结构化的逐校判断，需人工检查"})
             elif actual is None:
                 checks.append({**entry, "ok": False, "reason": "回答中未找到该校的判断"})
@@ -204,7 +217,7 @@ def skip_verify(state: g.AdvisorState) -> dict:
 
 
 def build_app(config: str):
-    if config == "b0":
+    if config in BASELINES:
         return None
     if config == "no_verify":
         original = g.verify
@@ -229,15 +242,30 @@ def text_of(content: Any) -> str:
     return str(content)
 
 
-def invoke_graph(app: Any, question: str) -> tuple[dict, Optional[int]]:
-    """运行图，返回 (最终状态, school_matcher 生成的补充说明条数；未经过 school_matcher 为 None)。"""
+def supplement_texts(draft: str) -> dict[str, str]:
+    """选校回答中各校的补充说明原文 {学校: 补充说明}。"""
+    names = [r["school"] for r in g.load_schools()]
+    out = {}
+    for para in draft.split("\n\n"):
+        lines = para.strip().splitlines()
+        school = next((n for n in names if lines and lines[0].startswith(f"{n} ")), None)
+        if school is None:
+            continue
+        for line in lines:
+            if line.strip().startswith(g.SUPPLEMENT_LABEL):
+                out[school] = line.strip()[len(g.SUPPLEMENT_LABEL):]
+    return out
+
+
+def invoke_graph(app: Any, question: str) -> tuple[dict, Optional[dict[str, str]]]:
+    """运行图，返回 (最终状态, school_matcher 生成的各校补充说明原文；未经过 school_matcher 为 None)。"""
     final: dict = {}
     generated = None
     for mode, chunk in app.stream({"messages": [HumanMessage(content=question)]}, stream_mode=["updates", "values"]):
         if mode == "values":
             final = chunk
         elif "school_matcher" in chunk:
-            generated = (chunk["school_matcher"].get("draft") or "").count(g.SUPPLEMENT_LABEL)
+            generated = supplement_texts(chunk["school_matcher"].get("draft") or "")
     return final, generated
 
 
@@ -268,31 +296,34 @@ def run_item(config: str, item: dict, app: Any, real_llm: Any, today: str) -> di
     start = time.perf_counter()
     trace: Optional[list[str]] = None
     try:
-        if config == "b0":
-            response = counter.invoke([SystemMessage(content=B0_SYSTEM_PROMPT), HumanMessage(content=item["input"])])
+        if config in BASELINES:
+            response = counter.invoke([SystemMessage(content=baseline_prompt(config)), HumanMessage(content=item["input"])])
             answer = text_of(response.content)
         else:
             result, generated = invoke_graph(app, item["input"])
             answer = final_answer(result)
             trace = result.get("trace", [])
-            record["supplements"] = supplement_removal(trace, generated, result.get("draft", ""))
+            count = len(generated) if generated is not None else None
+            record["supplements"] = supplement_removal(trace, count, result.get("draft", ""))
+            if generated is not None:
+                record["supplement_texts"] = generated  # school_matcher 生成的原文（verify 之前）
             record["profile"] = result.get("profile") or {}
         record["error"] = None
     except Exception as e:  # 只记录异常类型，异常内容可能包含请求细节
         answer, record["error"] = "", type(e).__name__
-        trace = [] if config != "b0" else None
+        trace = [] if config not in BASELINES else None
     record["latency_s"] = round(time.perf_counter() - start, 3)
     record["model_calls"] = counter.calls if counter else 0
     record["answer"] = answer
     record["trace"] = trace
     record["path"] = node_path(trace) if trace is not None else None
 
-    if config == "b0":
+    if config in BASELINES:
         hits = [p for p in DECLINE_PHRASES if p in answer]
         record["declined"] = {"ok": bool(hits), "hits": hits}
 
     prefix = item["id"][0]
-    record["route"] = judge_route(item, record["path"]) if config != "b0" else {"ok": None, "reason": "b0 不计"}
+    record["route"] = judge_route(item, record["path"]) if config not in BASELINES else {"ok": None, "reason": f"{config} 不计"}
     record["contains"] = judge_contains(answer, item["gold"])
     record["forbidden_hits"] = record["contains"]["forbidden_hits"]
     record["expected_paths"] = expected_paths(item)
@@ -338,7 +369,7 @@ def compute_metrics(records: list[dict]) -> dict:
         "removed_no_evidence": sum(x["by_reason"][REMOVAL_NO_EVIDENCE] for x in sups),
         "removed_parse_error": sum(x["by_reason"][REMOVAL_PARSE_ERROR] for x in sups),
         "removed_other": sum(x["by_reason"][REMOVAL_OTHER] for x in sups),
-        "b0_declined": sum(r["declined"]["ok"] for r in declined) if declined else None,
+        "baseline_declined": sum(r["declined"]["ok"] for r in declined) if declined else None,
     }
 
 
@@ -370,7 +401,7 @@ METRIC_ROWS = [
     ("removed_no_evidence", "  原因：无依据", "num"),
     ("removed_parse_error", "  原因：解析失败", "num"),
     ("removed_other", "  原因：其他", "num"),
-    ("b0_declined", "b0 表示无法回答的题数", "num"),
+    ("baseline_declined", "基线表示无法回答的题数", "num"),
 ]
 
 
@@ -471,7 +502,7 @@ def write_report(results_dir: Path) -> list[Path]:
     ]
     forbidden_lines = ["## 触发禁用词的题", "", "需人工判断是真幻觉还是误触发。", ""]
     manual_lines = ["# 需要人工检查的清单", ""]
-    fit_manual, b0_answers = [], []
+    fit_manual, baseline_answers = [], []
     for config, data in results.items():
         fail_lines += [f"## {config}（{data['file']}）", ""]
         any_fail = False
@@ -502,8 +533,8 @@ def write_report(results_dir: Path) -> list[Path]:
                         "",
                     ]
             fit_manual += [(config, run["run"], m) for m in run.get("manual_fit_checks", [])]
-            if config == "b0":
-                b0_answers += [(run["run"], rec) for rec in run["items"]]
+            if config in BASELINES:
+                baseline_answers += [(config, run["run"], rec) for rec in run["items"]]
         if not any_fail:
             fail_lines += ["无失败题目。", ""]
     if len(forbidden_lines) == 4:
@@ -519,24 +550,75 @@ def write_report(results_dir: Path) -> list[Path]:
         ]
     else:
         manual_lines.append("无。")
-    manual_lines += ["", "## 2. 触发禁用词的题", "", "见 failures.md 中“触发禁用词的题”一节。", "", "## 3. b0 的回答", ""]
-    for n, rec in b0_answers:
+    manual_lines += ["", "## 2. 触发禁用词的题", "", "见 failures.md 中“触发禁用词的题”一节。", "", "## 3. 基线（b0、b1）的回答", ""]
+    for config, n, rec in baseline_answers:
         declined = rec.get("declined") or {}
         manual_lines += [
-            f"### {rec['id']}（第 {n} 次）",
+            f"### {config} · {rec['id']}（第 {n} 次）",
             f"- 输入：{rec['input']}",
             f"- 关键词判断表示无法回答：{'是（' + '、'.join(declined.get('hits', [])) + '）' if declined.get('ok') else '否'}",
             f"- 回答：{rec['answer']}",
             "",
         ]
-    if not b0_answers:
-        manual_lines.append("没有 b0 结果。")
+    if not baseline_answers:
+        manual_lines.append("没有基线结果。")
 
     results_dir.mkdir(parents=True, exist_ok=True)
     failures_path, manual_path = results_dir / "failures.md", results_dir / "manual_review.md"
+    removed_path = results_dir / "removed_statements.md"
     failures_path.write_text("\n".join(fail_lines + forbidden_lines) + "\n", encoding="utf-8")
     manual_path.write_text("\n".join(manual_lines) + "\n", encoding="utf-8")
-    return [failures_path, manual_path]
+    removed_path.write_text("\n".join(removed_statement_lines(results)) + "\n", encoding="utf-8")
+    return [failures_path, manual_path, removed_path]
+
+
+def removal_detail(trace: list[str], school: str) -> str:
+    """某校补充说明被删的原因（取自 verify 的 trace 条目）。"""
+    if "verify:llm_parse_error" in trace:
+        return "解析失败（verify:llm_parse_error），全部补充说明被删除"
+    if "verify:llm_error" in trace:
+        return "其他（verify:llm_error），全部补充说明被删除"
+    prefix = f"verify:unsupported:{school}："
+    details = [t[len(prefix):].split("｜", 1)[-1] for t in trace if t.startswith(prefix)]
+    return "无依据：" + "；".join(details) if details else "无依据（trace 中未找到该校的详情）"
+
+
+def removed_statement_lines(results: dict[str, dict]) -> list[str]:
+    lines = [
+        "# verify 删除的补充说明",
+        "",
+        "full 配置每次运行中被 verify 删除的补充说明原文和删除原因，以及 no_verify 配置同一题、同一次运行中该校的补充说明原文。",
+        "只列出，不判断对错。",
+        "",
+    ]
+    full, no_verify = results.get("full"), results.get("no_verify")
+    if full is None:
+        return lines + ["没有 full 结果。"]
+    nv_runs = {run["run"]: {r["id"]: r for r in run["items"]} for run in (no_verify or {}).get("runs", [])}
+    found = False
+    for run in full["runs"]:
+        for rec in run["items"]:
+            texts = rec.get("supplement_texts") or {}
+            if not (rec.get("supplements") or {}).get("removed"):
+                continue
+            kept = supplement_texts(rec["answer"])
+            nv_rec = nv_runs.get(run["run"], {}).get(rec["id"])
+            for school, text in texts.items():
+                if school in kept:
+                    continue
+                found = True
+                nv_text = (nv_rec or {}).get("supplement_texts", {}).get(school) if nv_rec else None
+                lines += [
+                    f"## {rec['id']} · 第 {run['run']} 次 · {school}",
+                    f"- 输入：{rec['input']}",
+                    f"- full 被删的补充说明：{text}",
+                    f"- 删除原因：{removal_detail(rec.get('trace') or [], school)}",
+                    f"- no_verify 同题同次的补充说明：{nv_text if nv_text is not None else '（无）'}",
+                    "",
+                ]
+    if not found:
+        lines.append("full 配置中没有被删除的补充说明。")
+    return lines
 
 
 def main(argv: Optional[list[str]] = None) -> int:
@@ -556,8 +638,8 @@ def main(argv: Optional[list[str]] = None) -> int:
 
     print(api_key_hint())
     real_llm = get_llm()
-    if real_llm is None and args.config == "b0":
-        print("b0 配置需要模型，未检测到密钥，已退出。")
+    if real_llm is None and args.config in BASELINES:
+        print(f"{args.config} 配置需要模型，未检测到密钥，已退出。")
         return 2
 
     items = load_items(args.include_unchecked, args.limit)

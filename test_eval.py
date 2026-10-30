@@ -209,7 +209,7 @@ def test_b0_with_fake_model(monkeypatch, tmp_path):
     assert rec["fact_ok"] is True
     assert rec["declined"] == {"ok": False, "hits": []}
     assert out["runs"][0]["metrics"]["routing_accuracy"] is None
-    assert out["runs"][0]["metrics"]["b0_declined"] == 0
+    assert out["runs"][0]["metrics"]["baseline_declined"] == 0
 
 
 def test_b0_without_key_exits(tmp_path):
@@ -273,14 +273,14 @@ def test_full_records_supplements_end_to_end(monkeypatch, tmp_path):
     assert rec["supplements"] == {"generated": 1, "removed": 1, "by_reason": {"无依据": 1, "解析失败": 0, "其他": 0}}
     m = out["runs"][0]["metrics"]
     assert m["supplement_removal_answers"] == 1 and m["supplement_removal_rate"] == 1.0
-    assert m["removed_no_evidence"] == 1 and m["b0_declined"] is None
+    assert m["removed_no_evidence"] == 1 and m["baseline_declined"] is None
 
 
 def test_b0_declined_counted(monkeypatch, tmp_path):
     monkeypatch.setattr(run_eval, "get_llm", lambda: FakeChat("我没有实时数据，无法确定具体截止日期，建议查阅官网。"))
     assert run_eval.main(["--config", "b0", "--limit", "2"]) == 0
     out = load_result(tmp_path)
-    assert out["runs"][0]["metrics"]["b0_declined"] == 2
+    assert out["runs"][0]["metrics"]["baseline_declined"] == 2
     assert "无法确定" in out["runs"][0]["items"][0]["declined"]["hits"]
 
 
@@ -334,3 +334,74 @@ def test_classify_clarify_without_profile_and_b0():
     b0 = {**base, "id": "A01", "route": {"ok": None}, "path": None,
           "contains": {"missing_groups": [["已截止"]], "forbidden_hits": []}}
     assert run_eval.classify(b0) == ["其他"]
+
+
+# ---------------------------------------------------------------------------
+# b1 基线、removed_statements.md
+# ---------------------------------------------------------------------------
+
+class RecordingChat(FakeChat):
+    def __init__(self, text):
+        super().__init__(text)
+        self.messages = []
+
+    def invoke(self, messages):
+        self.messages.append(messages)
+        return super().invoke(messages)
+
+
+def test_b1_puts_all_schools_in_prompt(monkeypatch, tmp_path):
+    chat = RecordingChat("庆熙大学一般硕士1次截止 2026-05-15，已截止。")
+    monkeypatch.setattr(run_eval, "get_llm", lambda: chat)
+    assert run_eval.main(["--config", "b1", "--limit", "1"]) == 0
+    system, human = chat.messages[0]
+    assert "依据给出的资料回答，资料里没有的内容说明资料中未提及" in system.content
+    for school in g.load_schools():
+        assert school["school"] in system.content and school["source_url"] in system.content
+    assert human.content == run_eval.load_items(False, 1)[0]["input"]
+    out = load_result(tmp_path)
+    rec = out["runs"][0]["items"][0]
+    assert out["config"] == "b1" and rec["model_calls"] == 1
+    assert rec["path"] is None and rec["route"]["ok"] is None
+    assert rec["fact_ok"] is True and "declined" in rec
+    assert out["runs"][0]["metrics"]["routing_accuracy"] is None
+
+
+def test_b1_fit_goes_to_manual():
+    it = item(id="B99", gold={"must_contain": [], "must_not_contain": [], "per_school": {"庆熙大学": {"language": "符合"}}})
+    out = run_eval.judge_fits(it, "庆熙大学要求 TOPIK 5级，你符合。", "b1")
+    assert out["checks"] == [] and out["manual"][0]["reason"].startswith("基线回答")
+
+
+def test_b1_without_key_exits(tmp_path):
+    assert run_eval.main(["--config", "b1", "--limit", "1"]) == 2
+
+
+def test_supplement_texts_parsed_from_answer():
+    draft = "\n\n".join([
+        "你的画像：……",
+        "庆熙大学 经营大学院\n  语言：符合\n  补充说明：说明甲\n  出处：x",
+        "仁济大学 经营大学院\n  语言：官网未说明\n  出处：y",
+    ])
+    assert run_eval.supplement_texts(draft) == {"庆熙大学": "说明甲"}
+
+
+def test_removed_statements_report(tmp_path):
+    trace = ["router", "profile_extractor", "school_matcher", "verify", "verify:llm_unsupported_claims(1)",
+             "verify:unsupported:仁济大学：说明乙｜依据不在资料中：xx", "verify:supplement_removed(仁济大学)"]
+    full_rec = {"id": "B01", "input": "q", "trace": trace, "answer": "庆熙大学 经营大学院\n  补充说明：说明甲",
+                "supplement_texts": {"庆熙大学": "说明甲", "仁济大学": "说明乙"},
+                "supplements": {"generated": 2, "removed": 1, "by_reason": {}}}
+    nv_rec = {"id": "B01", "supplement_texts": {"庆熙大学": "说明丙", "仁济大学": "说明丁"}}
+    results = {"full": {"runs": [{"run": 1, "items": [full_rec]}]},
+               "no_verify": {"runs": [{"run": 1, "items": [nv_rec]}]}}
+    text = "\n".join(run_eval.removed_statement_lines(results))
+    assert "## B01 · 第 1 次 · 仁济大学" in text
+    assert "full 被删的补充说明：说明乙" in text
+    assert "删除原因：无依据：依据不在资料中：xx" in text
+    assert "no_verify 同题同次的补充说明：说明丁" in text
+    assert "庆熙大学" not in text.split("## B01")[1].split("\n")[0]
+
+
+def test_removal_detail_parse_error():
+    assert run_eval.removal_detail(["verify:llm_parse_error"], "庆熙大学").startswith("解析失败")
