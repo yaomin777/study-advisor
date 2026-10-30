@@ -405,3 +405,35 @@ def test_removed_statements_report(tmp_path):
 
 def test_removal_detail_parse_error():
     assert run_eval.removal_detail(["verify:llm_parse_error"], "庆熙大学").startswith("解析失败")
+
+
+# ---------------------------------------------------------------------------
+# b1_date
+# ---------------------------------------------------------------------------
+
+def test_b1_date_prompt_only_adds_date_and_status_requirement():
+    b1 = run_eval.baseline_prompt("b1")
+    dated = run_eval.baseline_prompt("b1_date", "2026-10-30")
+    assert dated.startswith("今天的日期是 2026-10-30。")
+    assert "回答中说明每个截止日期相对今天是已截止还是未截止" in dated
+    assert dated.replace("今天的日期是 2026-10-30。", "", 1).replace(run_eval.B1_DATE_REQUIREMENT, "", 1) == b1
+
+
+def test_b1_date_uses_run_date(monkeypatch, tmp_path):
+    chat = RecordingChat("一般硕士1次截止 2026-05-15，已截止。")
+    monkeypatch.setattr(run_eval, "get_llm", lambda: chat)
+    assert run_eval.main(["--config", "b1_date", "--limit", "1"]) == 0
+    out = load_result(tmp_path)
+    system = chat.messages[0][0].content
+    assert system.startswith(f"今天的日期是 {out['eval_date']}。")
+    rec = out["runs"][0]["items"][0]
+    assert out["config"] == "b1_date" and rec["path"] is None and rec["route"]["ok"] is None
+    assert rec["fact_ok"] is True and "declined" in rec
+
+
+def test_latest_results_does_not_mix_b1_and_b1_date(tmp_path):
+    for name in ("b1_20261030-112532.json", "b1_date_20261030-120000.json"):
+        (tmp_path / name).write_text(json.dumps({"runs": []}), encoding="utf-8")
+    latest = run_eval.latest_results(tmp_path)
+    assert latest["b1"]["file"] == "b1_20261030-112532.json"
+    assert latest["b1_date"]["file"] == "b1_date_20261030-120000.json"

@@ -5,6 +5,7 @@
     .venv/bin/python eval/run_eval.py --config b0 --repeat 3
     .venv/bin/python eval/run_eval.py --config no_verify --limit 5 --include-unchecked
     .venv/bin/python eval/run_eval.py --config b1 --repeat 3
+    .venv/bin/python eval/run_eval.py --config b1_date --repeat 3
     .venv/bin/python eval/run_eval.py --report   # 读取各配置最新结果，生成 failures.md、manual_review.md、removed_statements.md
 
 配置：
@@ -12,9 +13,10 @@
     b0         基线：同一个模型直接回答，不使用 schools.json，不走图
     no_verify  完整系统，但跳过 verify，直接把草稿作为最终回答
     b1         基线：把 schools.json 全部学校记录放进提示词，同一个模型直接回答，不走图、不路由、不校验
+    b1_date    与 b1 相同，提示词开头写明今天的日期，并要求说明每个截止日期相对今天已截止还是未截止
 
 指标（每次运行都计算，最后输出每次的值和平均值）：
-    路由准确率      实际节点路径（去掉带冒号的内部条目和 START/END）与 expected_path 或 expected_path_any 之一一致；b0、b1 不计
+    路由准确率      实际节点路径（去掉带冒号的内部条目和 START/END）与 expected_path 或 expected_path_any 之一一致；b0、b1、b1_date 不计
     事实准确率      A、C 类：每组 must_contain 至少出现一个词，且不触发 must_not_contain
     幻觉率          所有题目中触发 must_not_contain 的比例；F 类单独统计
     符合度判断正确率 B 类：per_school 中能自动判定的项与回答里该校的判断一致的比例；不能自动判定的写入结果文件供人工检查
@@ -27,6 +29,7 @@
 import argparse
 import copy
 import json
+import re
 import sys
 import time
 from datetime import date, datetime
@@ -44,8 +47,8 @@ from llm import MODEL_NAME, get_llm, with_max_tokens  # noqa: E402
 
 TESTSET_PATH = ROOT / "eval" / "testset.json"
 RESULTS_DIR = ROOT / "eval" / "results"
-CONFIGS = ("full", "b0", "no_verify", "b1")
-BASELINES = ("b0", "b1")        # 不走图的基线：路由不计，符合度无法自动判定时交人工检查
+CONFIGS = ("full", "b0", "no_verify", "b1", "b1_date")
+BASELINES = ("b0", "b1", "b1_date")        # 不走图的基线：路由不计，符合度无法自动判定时交人工检查
 
 FACT_PREFIXES = ("A", "C")      # 事实准确率统计的题目类别（按 id 首字母）
 FIT_PREFIX = "B"                # 符合度判断
@@ -63,11 +66,20 @@ B1_SYSTEM_PROMPT = (
     "你是经营学硕士留学申请顾问。请用中文回答用户的问题。"
     "依据给出的资料回答，资料里没有的内容说明资料中未提及。\n\n【资料】\n{schools}"
 )
+# b1_date：在 b1 提示词基础上只加两处——开头的今天日期、截止状态要求
+B1_DATE_PREFIX = "今天的日期是 {today}。"
+B1_DATE_REQUIREMENT = "回答中说明每个截止日期相对今天是已截止还是未截止。"
+B1_DATE_SYSTEM_PROMPT = B1_DATE_PREFIX + B1_SYSTEM_PROMPT.replace(
+    "资料中未提及。", "资料中未提及。" + B1_DATE_REQUIREMENT, 1
+)
 
 
-def baseline_prompt(config: str) -> str:
+def baseline_prompt(config: str, today: str = "") -> str:
+    schools = json.dumps(g.load_schools(), ensure_ascii=False, indent=1)
     if config == "b1":
-        return B1_SYSTEM_PROMPT.format(schools=json.dumps(g.load_schools(), ensure_ascii=False, indent=1))
+        return B1_SYSTEM_PROMPT.format(schools=schools)
+    if config == "b1_date":
+        return B1_DATE_SYSTEM_PROMPT.format(schools=schools, today=today or date.today().isoformat())
     return B0_SYSTEM_PROMPT
 
 # b0 回答"表示无法回答"的关键词（简单匹配，命中的词写入结果文件供人工复核）
@@ -297,7 +309,7 @@ def run_item(config: str, item: dict, app: Any, real_llm: Any, today: str) -> di
     trace: Optional[list[str]] = None
     try:
         if config in BASELINES:
-            response = counter.invoke([SystemMessage(content=baseline_prompt(config)), HumanMessage(content=item["input"])])
+            response = counter.invoke([SystemMessage(content=baseline_prompt(config, today)), HumanMessage(content=item["input"])])
             answer = text_of(response.content)
         else:
             result, generated = invoke_graph(app, item["input"])
@@ -482,7 +494,8 @@ def classify(rec: dict) -> list[str]:
 def latest_results(results_dir: Path) -> dict[str, dict]:
     out = {}
     for config in CONFIGS:
-        files = sorted(results_dir.glob(f"{config}_*.json"))
+        # 只取 <配置>_<时间>.json，避免 b1 误取 b1_date 的文件
+        files = sorted(f for f in results_dir.glob(f"{config}_*.json") if re.fullmatch(rf"{config}_\d{{8}}-\d{{6}}\.json", f.name))
         if files:
             out[config] = {"file": files[-1].name, **json.loads(files[-1].read_text(encoding="utf-8"))}
     return out
@@ -550,7 +563,7 @@ def write_report(results_dir: Path) -> list[Path]:
         ]
     else:
         manual_lines.append("无。")
-    manual_lines += ["", "## 2. 触发禁用词的题", "", "见 failures.md 中“触发禁用词的题”一节。", "", "## 3. 基线（b0、b1）的回答", ""]
+    manual_lines += ["", "## 2. 触发禁用词的题", "", "见 failures.md 中“触发禁用词的题”一节。", "", "## 3. 基线（b0、b1、b1_date）的回答", ""]
     for config, n, rec in baseline_answers:
         declined = rec.get("declined") or {}
         manual_lines += [
