@@ -1,0 +1,101 @@
+{
+  "_format": {
+    "school": "学校名称（string），requirement_retriever 按此字段和 aliases 在问题中做校名匹配",
+    "aliases": "别名（list of string）：中文简称、韩文名、英文名或缩写；英文别名按整词匹配，不区分大小写",
+    "program": "项目名称（string）",
+    "rounds": "申请轮次（list），每项为 {\"name\": 轮次名（含报名开始日、年度或入学学期）, \"deadline\": 报名截止日 \"YYYY-MM-DD\"}；无日期则为 []",
+    "gmat_gre": "GMAT/GRE 要求（string）",
+    "language": "语言要求（string）",
+    "background_req": "背景要求，如本科专业（string）",
+    "essays": "文书要求（list of string）",
+    "recommendations": "推荐信要求（string）",
+    "work_experience": "工作经验要求（string）",
+    "source_url": "官方出处 URL（string，必填）",
+    "as_of": "核实日期（string，YYYY-MM-DD）",
+    "_note": "官网未给出的信息写“官网未说明（核实日期 YYYY-MM-DD）”，不推测；“未提及”不得改写为“不要求”"
+  },
+  "schools": [
+    {
+      "school": "庆熙大学",
+      "aliases": ["庆熙大", "庆熙", "경희대학교", "경희대", "Kyung Hee University", "Kyung Hee", "KHU"],
+      "program": "经营大学院（2026学年度后期）",
+      "rounds": [
+        {"name": "一般硕士1次（报名 2026-04-13 起）", "deadline": "2026-05-15"},
+        {"name": "一般硕士2次（报名 2026-05-22 起）", "deadline": "2026-06-05"},
+        {"name": "外国人（国际班）1次（报名 2026-04-29 起）", "deadline": "2026-05-21"}
+      ],
+      "gmat_gre": "官网未提及",
+      "language": "TOPIK 5级以上（仅限外国人）",
+      "background_req": "4年制大学毕业（预定）者，未限制专业",
+      "essays": ["官网未说明（核实日期 2026-10-29）"],
+      "recommendations": "官网未说明（核实日期 2026-10-29）",
+      "work_experience": "报考资格中未要求工作经验",
+      "source_url": "https://khmba.khu.ac.kr/khmba_kor/user/bbs/BMSR00040/view.do?boardId=532435&menuNo=10800152",
+      "as_of": "2026-10-29"
+    },
+    {
+      "school": "仁济大学",
+      "aliases": ["仁济大", "仁济", "인제대학교", "인제대", "Inje University", "Inje"],
+      "program": "经营大学院（2026学年度后期）",
+      "rounds": [
+        {"name": "报名 2026-06-22 起", "deadline": "2026-07-17"}
+      ],
+      "gmat_gre": "官网未说明（核实日期 2026-10-29）",
+      "language": "官网未说明（核实日期 2026-10-29）",
+      "background_req": "与所修专业无关均可报考",
+      "essays": ["官网未说明（核实日期 2026-10-29）"],
+      "recommendations": "官网未说明（核实日期 2026-10-29）",
+      "work_experience": "报考资格中未要求工作经验",
+      "source_url": "https://mba.inje.ac.kr/mba/info/notice.do?mode=download&articleNo=75480&attachNo=40633",
+      "as_of": "2026-10-29"
+    },
+    {
+      "school": "成均馆大学",
+      "aliases": ["成均馆大", "成均馆", "성균관대학교", "성균관대", "Sungkyunkwan University", "Sungkyunkwan", "SKKU", "SKK GSB", "SKKGSB"],
+      "program": "SKK GSB Full-Time MBA",
+      "rounds": [
+        {"name": "报名 2026-10-01 起（入学学期以官网为准）", "deadline": "2026-11-06"}
+      ],
+      "gmat_gre": "选择性提交（GMAT或GRE成绩单），提交优秀成绩者在书面评审中加分",
+      "language": "TOEFL、TOEIC、TOEIC Speaking、OPIc、TEPS、IELTS 中选其一；母语为英语或在100%英语授课的大学（院）取得学位者可免",
+      "background_req": "4年制大学毕业以上（学士）或同等学历者，未限制专业",
+      "essays": ["申请书及英文在线essay"],
+      "recommendations": "官网材料清单未列出",
+      "work_experience": "报考资格中未要求工作经验",
+      "source_url": "https://gsb.skku.edu/gsb/Full-time_MBA/Admissions.do",
+      "as_of": "2026-10-29"
+    },
+    {
+      "school": "国民大学",
+      "aliases": ["国民大", "국민대학교", "국민대", "Kookmin University", "Kookmin"],
+      "program": "经营大学院（2027学年度前期）",
+      "rounds": [
+        {"name": "2027学年度前期（报名 2026-10-19 起，17:00 截止）", "deadline": "2026-11-13"}
+      ],
+      "gmat_gre": "官网未说明（核实日期 2026-10-29）",
+      "language": "官网未说明（核实日期 2026-10-29）",
+      "background_req": "学士学位取得（预定）者及依法令认定具备同等资格者，未限制专业",
+      "essays": ["官网未说明（核实日期 2026-10-29）"],
+      "recommendations": "官网未说明（核实日期 2026-10-29）",
+      "work_experience": "报考资格中未要求工作经验",
+      "source_url": "https://mba.kookmin.ac.kr/mba/main/notice.do?mode=view&articleNo=5940485",
+      "as_of": "2026-10-29"
+    },
+    {
+      "school": "崇实大学",
+      "aliases": ["崇实大", "崇实", "숭실대학교", "숭실대", "Soongsil University", "Soongsil", "SSU"],
+      "program": "一般大学院·硕士（2027学年度前期；各学科要求不同，以所申请学科为准）",
+      "rounds": [
+        {"name": "2027学年度前期（报名 2026-10-06 10:00 起，16:00 截止）", "deadline": "2026-10-16"}
+      ],
+      "gmat_gre": "官网未提及",
+      "language": "外国人特别录取：TOPIK 3级以上，或英语能力成绩可替代（具体分数以简章为准）；入学后毕业需 TOPIK 4级以上；部分学科对外国人另有 TOPIK 要求",
+      "background_req": "国内外4年制正规大学学士学位取得（预定）者，未限制本科专业；跨专业者入学后可能需修先修课或补学分",
+      "essays": ["官网未说明（博士需学业计划书）"],
+      "recommendations": "硕士不需提交（简章规定仅博士提交1封）",
+      "work_experience": "报考资格中未要求工作经验",
+      "source_url": "https://mba.ssu.ac.kr/",
+      "as_of": "2026-10-29"
+    }
+  ]
+}

@@ -1,0 +1,1062 @@
+{
+  "_format": {
+    "expected_path": "完整节点路径（不含START/END；评测前先过滤trace里带冒号的内部条目）",
+    "expected_path_any": "多条可接受路径之一",
+    "gold.must_contain": "列表里的每一组都要求至少出现其中一个词",
+    "gold.must_not_contain": "出现任一词即判错（含幻觉检验）",
+    "gold.per_school": "逐校要求符合度的标准判断",
+    "date_sensitive": "结果取决于评测当天的日期，需记录评测日期",
+    "needs_check": "依赖尚未复核的数据，核对官网后再使用"
+  },
+  "eval_date": "【评测当天填写，如 2026-10-30】",
+  "items": [
+    {
+      "id": "A01",
+      "category": "qa",
+      "input": "庆熙大学经营大学院一般硕士第一次的报名截止日期是哪天？",
+      "expected_intent": "qa",
+      "expected_path": [
+        "router",
+        "requirement_retriever",
+        "verify"
+      ],
+      "gold": {
+        "must_contain": [
+          [
+            "2026-05-15",
+            "2026.05.15",
+            "5月15日"
+          ],
+          [
+            "已截止"
+          ]
+        ],
+        "must_not_contain": [],
+        "per_school": {}
+      },
+      "date_sensitive": true,
+      "needs_check": false,
+      "note": ""
+    },
+    {
+      "id": "A02",
+      "category": "qa",
+      "input": "庆熙大学外国人（国际班）第一次的报名截止日期是哪天？",
+      "expected_intent": "qa",
+      "expected_path": [
+        "router",
+        "requirement_retriever",
+        "verify"
+      ],
+      "gold": {
+        "must_contain": [
+          [
+            "2026-05-21",
+            "2026.05.21",
+            "5月21日"
+          ]
+        ],
+        "must_not_contain": [],
+        "per_school": {}
+      },
+      "date_sensitive": true,
+      "needs_check": false,
+      "note": ""
+    },
+    {
+      "id": "A03",
+      "category": "qa",
+      "input": "仁济大学经营大学院的报名截止日期是什么时候？",
+      "expected_intent": "qa",
+      "expected_path": [
+        "router",
+        "requirement_retriever",
+        "verify"
+      ],
+      "gold": {
+        "must_contain": [
+          [
+            "2026-07-17",
+            "2026.07.17",
+            "7月17日"
+          ],
+          [
+            "已截止"
+          ]
+        ],
+        "must_not_contain": [],
+        "per_school": {}
+      },
+      "date_sensitive": true,
+      "needs_check": false,
+      "note": ""
+    },
+    {
+      "id": "A04",
+      "category": "qa",
+      "input": "国民大学经营大学院2027学年度前期什么时候截止报名？",
+      "expected_intent": "qa",
+      "expected_path": [
+        "router",
+        "requirement_retriever",
+        "verify"
+      ],
+      "gold": {
+        "must_contain": [
+          [
+            "2026-11-13",
+            "2026.11.13",
+            "11月13日"
+          ],
+          [
+            "未截止"
+          ]
+        ],
+        "must_not_contain": [],
+        "per_school": {}
+      },
+      "date_sensitive": true,
+      "needs_check": false,
+      "note": "评测日须在2026-11-13之前"
+    },
+    {
+      "id": "A05",
+      "category": "qa",
+      "input": "崇实大学硕士的报名截止时间是什么时候？",
+      "expected_intent": "qa",
+      "expected_path": [
+        "router",
+        "requirement_retriever",
+        "verify"
+      ],
+      "gold": {
+        "must_contain": [
+          [
+            "2026-10-16",
+            "2026.10.16",
+            "10月16日"
+          ],
+          [
+            "已截止"
+          ]
+        ],
+        "must_not_contain": [],
+        "per_school": {}
+      },
+      "date_sensitive": true,
+      "needs_check": false,
+      "note": ""
+    },
+    {
+      "id": "A06",
+      "category": "qa",
+      "input": "崇实大学硕士需要提交推荐信吗？",
+      "expected_intent": "qa",
+      "expected_path": [
+        "router",
+        "requirement_retriever",
+        "verify"
+      ],
+      "gold": {
+        "must_contain": [
+          [
+            "不需提交",
+            "不需要提交",
+            "仅博士",
+            "只有博士"
+          ]
+        ],
+        "must_not_contain": [],
+        "per_school": {}
+      },
+      "date_sensitive": false,
+      "needs_check": false,
+      "note": ""
+    },
+    {
+      "id": "A07",
+      "category": "qa",
+      "input": "庆熙大学对外国人的韩语成绩有什么要求？",
+      "expected_intent": "qa",
+      "expected_path": [
+        "router",
+        "requirement_retriever",
+        "verify"
+      ],
+      "gold": {
+        "must_contain": [
+          [
+            "TOPIK 5",
+            "TOPIK5",
+            "5级"
+          ]
+        ],
+        "must_not_contain": [],
+        "per_school": {}
+      },
+      "date_sensitive": false,
+      "needs_check": false,
+      "note": ""
+    },
+    {
+      "id": "A08",
+      "category": "qa",
+      "input": "崇实大学是否要求提交GMAT或GRE成绩？",
+      "expected_intent": "qa",
+      "expected_path": [
+        "router",
+        "requirement_retriever",
+        "verify"
+      ],
+      "gold": {
+        "must_contain": [
+          [
+            "未提及",
+            "未说明",
+            "以最新简章为准"
+          ]
+        ],
+        "must_not_contain": [
+          "不需要",
+          "不要求",
+          "无需",
+          "不用"
+        ],
+        "per_school": {}
+      },
+      "date_sensitive": false,
+      "needs_check": false,
+      "note": "官网未提及不能说成不要求（幻觉检验）"
+    },
+    {
+      "id": "A09",
+      "category": "qa",
+      "input": "仁济大学对本科专业有限制吗？",
+      "expected_intent": "qa",
+      "expected_path": [
+        "router",
+        "requirement_retriever",
+        "verify"
+      ],
+      "gold": {
+        "must_contain": [
+          [
+            "无关",
+            "不限",
+            "未限制"
+          ]
+        ],
+        "must_not_contain": [],
+        "per_school": {}
+      },
+      "date_sensitive": false,
+      "needs_check": false,
+      "note": ""
+    },
+    {
+      "id": "A10",
+      "category": "qa",
+      "input": "国民大学经营大学院要求申请者有工作经验吗？",
+      "expected_intent": "qa",
+      "expected_path": [
+        "router",
+        "requirement_retriever",
+        "verify"
+      ],
+      "gold": {
+        "must_contain": [
+          [
+            "未要求工作经验"
+          ]
+        ],
+        "must_not_contain": [],
+        "per_school": {}
+      },
+      "date_sensitive": false,
+      "needs_check": false,
+      "note": "按记录原文：报考资格中未要求工作经验"
+    },
+    {
+      "id": "A11",
+      "category": "qa",
+      "input": "成均馆大学SKK GSB Full-Time MBA的报名截止日期是哪天？",
+      "expected_intent": "qa",
+      "expected_path": [
+        "router",
+        "requirement_retriever",
+        "verify"
+      ],
+      "gold": {
+        "must_contain": [
+          [
+            "2026-11-06",
+            "2026.11.06",
+            "11月6日"
+          ],
+          [
+            "未截止"
+          ]
+        ],
+        "must_not_contain": [],
+        "per_school": {}
+      },
+      "date_sensitive": true,
+      "needs_check": true,
+      "note": "成均馆页面已更新，需先核对 schools.json 与官网再用；评测日须在2026-11-06之前"
+    },
+    {
+      "id": "A12",
+      "category": "qa",
+      "input": "成均馆大学SKK GSB对GMAT或GRE成绩是怎么要求的？",
+      "expected_intent": "qa",
+      "expected_path": [
+        "router",
+        "requirement_retriever",
+        "verify"
+      ],
+      "gold": {
+        "must_contain": [
+          [
+            "选择性",
+            "可选",
+            "加分"
+          ]
+        ],
+        "must_not_contain": [],
+        "per_school": {}
+      },
+      "date_sensitive": false,
+      "needs_check": true,
+      "note": "需与最新官网核对后再用"
+    },
+    {
+      "id": "B01",
+      "category": "profile",
+      "input": "我是外国留学生，TOPIK 6级，GPA 3.6/4.5，本科专业是经营学，想申请经营学硕士，请看看哪些学校符合要求。",
+      "expected_intent": "profile",
+      "expected_path": [
+        "router",
+        "profile_extractor",
+        "school_matcher",
+        "verify"
+      ],
+      "gold": {
+        "must_contain": [],
+        "must_not_contain": [],
+        "per_school": {
+          "庆熙大学": {
+            "language": "符合"
+          },
+          "崇实大学": {
+            "language": "符合"
+          },
+          "仁济大学": {
+            "language": "官网未说明"
+          },
+          "国民大学": {
+            "language": "官网未说明"
+          }
+        }
+      },
+      "date_sensitive": false,
+      "needs_check": false,
+      "note": ""
+    },
+    {
+      "id": "B02",
+      "category": "profile",
+      "input": "我的TOPIK是3级，GPA 3.2/4.0，本科读的英语文学，想申请经营学硕士，哪些学校符合？",
+      "expected_intent": "profile",
+      "expected_path": [
+        "router",
+        "profile_extractor",
+        "school_matcher",
+        "verify"
+      ],
+      "gold": {
+        "must_contain": [],
+        "must_not_contain": [],
+        "per_school": {
+          "庆熙大学": {
+            "language": "不符合"
+          },
+          "崇实大学": {
+            "language": "符合"
+          }
+        }
+      },
+      "date_sensitive": false,
+      "needs_check": false,
+      "note": ""
+    },
+    {
+      "id": "B03",
+      "category": "profile",
+      "input": "TOPIK 4级，GPA 3.0/4.0，本科专业计算机，申请经营学硕士可以吗？",
+      "expected_intent": "profile",
+      "expected_path": [
+        "router",
+        "profile_extractor",
+        "school_matcher",
+        "verify"
+      ],
+      "gold": {
+        "must_contain": [],
+        "must_not_contain": [],
+        "per_school": {
+          "庆熙大学": {
+            "language": "不符合"
+          },
+          "崇实大学": {
+            "language": "符合"
+          },
+          "仁济大学": {
+            "major": "与专业无关均可报考"
+          }
+        }
+      },
+      "date_sensitive": false,
+      "needs_check": false,
+      "note": ""
+    },
+    {
+      "id": "B04",
+      "category": "profile",
+      "input": "我没有TOPIK成绩，只有雅思6.5，GPA 3.4/4.0，本科经济学，请看看符合哪些学校的要求。",
+      "expected_intent": "profile",
+      "expected_path": [
+        "router",
+        "profile_extractor",
+        "school_matcher",
+        "verify"
+      ],
+      "gold": {
+        "must_contain": [],
+        "must_not_contain": [
+          "符合庆熙"
+        ],
+        "per_school": {
+          "庆熙大学": {
+            "language": "不得判为符合"
+          },
+          "崇实大学": {
+            "language": "无法判断，以简章为准"
+          }
+        }
+      },
+      "date_sensitive": false,
+      "needs_check": false,
+      "note": "记录只列TOPIK，英语分数无法与之比较"
+    },
+    {
+      "id": "B05",
+      "category": "profile",
+      "input": "我的托福95分，GPA 3.5/4.0，本科会计，想申请崇实大学，我的英语成绩够吗？",
+      "expected_intent": "profile",
+      "expected_path": [
+        "router",
+        "profile_extractor",
+        "school_matcher",
+        "verify"
+      ],
+      "gold": {
+        "must_contain": [
+          [
+            "以简章为准",
+            "无法判断",
+            "无法确认"
+          ]
+        ],
+        "must_not_contain": [
+          "95分够",
+          "95符合",
+          "达标"
+        ],
+        "per_school": {
+          "崇实大学": {
+            "language": "无法判断，以简章为准"
+          }
+        }
+      },
+      "date_sensitive": false,
+      "needs_check": false,
+      "note": "记录只写具体分数以简章为准，不能推断95分是否够（已出现过的失败案例）"
+    },
+    {
+      "id": "B06",
+      "category": "profile",
+      "input": "GPA 90/100，TOPIK 5级，本科国际贸易，想申请经营学硕士，请评估。",
+      "expected_intent": "profile",
+      "expected_path": [
+        "router",
+        "profile_extractor",
+        "school_matcher",
+        "verify"
+      ],
+      "gold": {
+        "must_contain": [],
+        "must_not_contain": [],
+        "per_school": {
+          "庆熙大学": {
+            "language": "符合"
+          },
+          "崇实大学": {
+            "language": "符合"
+          }
+        }
+      },
+      "date_sensitive": false,
+      "needs_check": false,
+      "note": ""
+    },
+    {
+      "id": "B07",
+      "category": "profile",
+      "input": "TOPIK 2级，GPA 3.8/4.5，本科管理学，想申请经营学硕士，请评估。",
+      "expected_intent": "profile",
+      "expected_path": [
+        "router",
+        "profile_extractor",
+        "school_matcher",
+        "verify"
+      ],
+      "gold": {
+        "must_contain": [],
+        "must_not_contain": [],
+        "per_school": {
+          "庆熙大学": {
+            "language": "不符合"
+          },
+          "崇实大学": {
+            "language": "不符合"
+          }
+        }
+      },
+      "date_sensitive": false,
+      "needs_check": false,
+      "note": ""
+    },
+    {
+      "id": "B08",
+      "category": "profile",
+      "input": "GPA 3.9/4.3，IELTS 7.5，GMAT 700，本科金融学，请看看哪些学校符合要求。",
+      "expected_intent": "profile",
+      "expected_path": [
+        "router",
+        "profile_extractor",
+        "school_matcher",
+        "verify"
+      ],
+      "gold": {
+        "must_contain": [],
+        "must_not_contain": [
+          "录取概率",
+          "很可能录取",
+          "把握"
+        ],
+        "per_school": {
+          "庆熙大学": {
+            "gmat_gre": "官网未提及，不得说有加分"
+          },
+          "崇实大学": {
+            "gmat_gre": "官网未提及，不得说有加分"
+          }
+        }
+      },
+      "date_sensitive": false,
+      "needs_check": true,
+      "note": "成均馆GMAT可选提交需先核对官网"
+    },
+    {
+      "id": "C01",
+      "category": "timeline",
+      "input": "我想申请国民大学经营大学院，请帮我按截止日期倒推准备计划。",
+      "expected_intent": "timeline",
+      "expected_path": [
+        "router",
+        "requirement_retriever",
+        "timeline_planner",
+        "verify"
+      ],
+      "gold": {
+        "must_contain": [
+          [
+            "2026-11-13",
+            "2026.11.13",
+            "11月13日"
+          ],
+          [
+            "未截止"
+          ]
+        ],
+        "must_not_contain": [],
+        "per_school": {}
+      },
+      "date_sensitive": true,
+      "needs_check": false,
+      "note": "计划里的所有日期必须能在记录或由代码计算得到；评测日须在11-13之前"
+    },
+    {
+      "id": "C02",
+      "category": "timeline",
+      "input": "我想申请庆熙大学，请帮我规划申请时间。",
+      "expected_intent": "timeline",
+      "expected_path": [
+        "router",
+        "requirement_retriever",
+        "timeline_planner",
+        "verify"
+      ],
+      "gold": {
+        "must_contain": [
+          [
+            "已截止"
+          ],
+          [
+            "以最新简章为准"
+          ]
+        ],
+        "must_not_contain": [
+          "2027-"
+        ],
+        "per_school": {}
+      },
+      "date_sensitive": true,
+      "needs_check": false,
+      "note": "该校轮次均已截止，不得把过期日期当作可申请日期"
+    },
+    {
+      "id": "C03",
+      "category": "timeline",
+      "input": "帮我规划崇实大学硕士的申请时间。",
+      "expected_intent": "timeline",
+      "expected_path": [
+        "router",
+        "requirement_retriever",
+        "timeline_planner",
+        "verify"
+      ],
+      "gold": {
+        "must_contain": [
+          [
+            "已截止"
+          ],
+          [
+            "以最新简章为准"
+          ]
+        ],
+        "must_not_contain": [],
+        "per_school": {}
+      },
+      "date_sensitive": true,
+      "needs_check": false,
+      "note": ""
+    },
+    {
+      "id": "C04",
+      "category": "timeline",
+      "input": "我想同时申请国民大学和成均馆大学，请按截止日期排一下先后顺序。",
+      "expected_intent": "timeline",
+      "expected_path": [
+        "router",
+        "requirement_retriever",
+        "timeline_planner",
+        "verify"
+      ],
+      "gold": {
+        "must_contain": [
+          [
+            "2026-11-06",
+            "2026.11.06",
+            "11月6日"
+          ],
+          [
+            "2026-11-13",
+            "2026.11.13",
+            "11月13日"
+          ]
+        ],
+        "must_not_contain": [],
+        "per_school": {}
+      },
+      "date_sensitive": true,
+      "needs_check": true,
+      "note": "成均馆（11-06）应排在国民（11-13）之前"
+    },
+    {
+      "id": "D01",
+      "category": "review",
+      "input": "请点评下面这段学习计划：\n我本科学习经营学，对数据驱动的市场营销很感兴趣。大三时在一家电商公司实习三个月，负责整理用户购买数据，并协助制作月度销售报告，发现老客户复购率低于预期。我希望通过硕士阶段的学习，系统掌握市场分析方法，将来从事电商运营分析工作。我认为贵校的课程很适合我。",
+      "expected_intent": "review",
+      "expected_path": [
+        "router",
+        "doc_reviewer"
+      ],
+      "gold": {
+        "must_contain": [
+          [
+            "结构"
+          ],
+          [
+            "针对性"
+          ],
+          [
+            "具体"
+          ]
+        ],
+        "must_not_contain": [
+          "录取"
+        ],
+        "per_school": {}
+      },
+      "date_sensitive": false,
+      "needs_check": false,
+      "note": "应给三方面反馈，不改写全文，不涉及学校事实"
+    },
+    {
+      "id": "D02",
+      "category": "review",
+      "input": "请点评我的文书：我想读经营学硕士。",
+      "expected_intent": "review",
+      "expected_path": [
+        "router",
+        "doc_reviewer"
+      ],
+      "gold": {
+        "must_contain": [
+          [
+            "补充",
+            "太短",
+            "更多"
+          ]
+        ],
+        "must_not_contain": [],
+        "per_school": {}
+      },
+      "date_sensitive": false,
+      "needs_check": false,
+      "note": "文本太短，只提示补充，不调用模型"
+    },
+    {
+      "id": "D03",
+      "category": "review",
+      "input": "帮我看看我的简历写得怎么样。",
+      "expected_intent": "review",
+      "expected_path_any": [
+        [
+          "router",
+          "doc_reviewer"
+        ],
+        [
+          "router",
+          "clarify"
+        ]
+      ],
+      "gold": {
+        "must_contain": [
+          [
+            "粘贴",
+            "提供",
+            "补充",
+            "发给我",
+            "内容"
+          ]
+        ],
+        "must_not_contain": [],
+        "per_school": {}
+      },
+      "date_sensitive": false,
+      "needs_check": false,
+      "note": "没有附内容，应提示提供"
+    },
+    {
+      "id": "E01",
+      "category": "unclear",
+      "input": "我想申请经营学硕士，该怎么准备？",
+      "expected_intent": "unclear",
+      "expected_path_any": [
+        [
+          "router",
+          "clarify"
+        ],
+        [
+          "router",
+          "profile_extractor",
+          "clarify"
+        ]
+      ],
+      "gold": {
+        "must_contain": [
+          [
+            "GPA",
+            "成绩"
+          ],
+          [
+            "语言",
+            "TOPIK"
+          ],
+          [
+            "专业"
+          ]
+        ],
+        "must_not_contain": [],
+        "per_school": {}
+      },
+      "date_sensitive": false,
+      "needs_check": false,
+      "note": ""
+    },
+    {
+      "id": "E02",
+      "category": "unclear",
+      "input": "帮我推荐学校。",
+      "expected_intent": "profile",
+      "expected_path": [
+        "router",
+        "profile_extractor",
+        "clarify"
+      ],
+      "gold": {
+        "must_contain": [
+          [
+            "GPA"
+          ],
+          [
+            "语言",
+            "TOPIK"
+          ],
+          [
+            "专业"
+          ]
+        ],
+        "must_not_contain": [],
+        "per_school": {}
+      },
+      "date_sensitive": false,
+      "needs_check": false,
+      "note": ""
+    },
+    {
+      "id": "E03",
+      "category": "unclear",
+      "input": "我GPA 3.5/4.0，想申请，请看看。",
+      "expected_intent": "profile",
+      "expected_path": [
+        "router",
+        "profile_extractor",
+        "clarify"
+      ],
+      "gold": {
+        "must_contain": [
+          [
+            "语言",
+            "TOPIK"
+          ],
+          [
+            "专业"
+          ]
+        ],
+        "must_not_contain": [
+          "GMAT"
+        ],
+        "per_school": {}
+      },
+      "date_sensitive": false,
+      "needs_check": false,
+      "note": "只应追问语言成绩和本科专业，不追问GPA，也不追问可选的GMAT/GRE"
+    },
+    {
+      "id": "E04",
+      "category": "unclear",
+      "input": "这个怎么弄？",
+      "expected_intent": "unclear",
+      "expected_path": [
+        "router",
+        "clarify"
+      ],
+      "gold": {
+        "must_contain": [],
+        "must_not_contain": [],
+        "per_school": {}
+      },
+      "date_sensitive": false,
+      "needs_check": false,
+      "note": ""
+    },
+    {
+      "id": "F01",
+      "category": "no_answer",
+      "input": "首尔大学经营大学院的报名截止日期是哪天？",
+      "expected_intent": "qa",
+      "expected_path": [
+        "router",
+        "requirement_retriever",
+        "fallback"
+      ],
+      "gold": {
+        "must_contain": [],
+        "must_not_contain": [
+          "2026-",
+          "2027-"
+        ],
+        "per_school": {}
+      },
+      "date_sensitive": false,
+      "needs_check": false,
+      "note": "库外学校，不得给出任何日期"
+    },
+    {
+      "id": "F02",
+      "category": "no_answer",
+      "input": "延世大学经营专门大学院的报名截止日期是哪天？",
+      "expected_intent": "qa",
+      "expected_path": [
+        "router",
+        "requirement_retriever",
+        "fallback"
+      ],
+      "gold": {
+        "must_contain": [],
+        "must_not_contain": [
+          "2026-",
+          "2027-"
+        ],
+        "per_school": {}
+      },
+      "date_sensitive": false,
+      "needs_check": false,
+      "note": "该校已从数据中移除"
+    },
+    {
+      "id": "F03",
+      "category": "no_answer",
+      "input": "高丽大学经营大学院对GMAT有什么要求？",
+      "expected_intent": "qa",
+      "expected_path": [
+        "router",
+        "requirement_retriever",
+        "fallback"
+      ],
+      "gold": {
+        "must_contain": [],
+        "must_not_contain": [
+          "不需要",
+          "不要求",
+          "无需",
+          "不用"
+        ],
+        "per_school": {}
+      },
+      "date_sensitive": false,
+      "needs_check": false,
+      "note": ""
+    },
+    {
+      "id": "F04",
+      "category": "no_answer",
+      "input": "庆熙大学经营大学院的学费是多少？",
+      "expected_intent": "qa",
+      "expected_path_any": [
+        [
+          "router",
+          "requirement_retriever",
+          "fallback"
+        ],
+        [
+          "router",
+          "requirement_retriever",
+          "verify"
+        ]
+      ],
+      "gold": {
+        "must_contain": [
+          [
+            "未提及",
+            "未说明",
+            "以最新简章为准",
+            "无法确认",
+            "没有"
+          ]
+        ],
+        "must_not_contain": [
+          "万韩元",
+          "韩元",
+          "₩"
+        ],
+        "per_school": {}
+      },
+      "date_sensitive": false,
+      "needs_check": false,
+      "note": "学校在库内但数据没有学费字段，不得编造金额"
+    },
+    {
+      "id": "F05",
+      "category": "no_answer",
+      "input": "我能被庆熙大学录取吗？大概有多大把握？",
+      "expected_intent": "profile",
+      "expected_path_any": [
+        [
+          "router",
+          "profile_extractor",
+          "clarify"
+        ],
+        [
+          "router",
+          "requirement_retriever",
+          "fallback"
+        ],
+        [
+          "router",
+          "clarify"
+        ]
+      ],
+      "gold": {
+        "must_contain": [],
+        "must_not_contain": [
+          "很可能录取",
+          "录取概率",
+          "把握很大",
+          "一定"
+        ],
+        "per_school": {}
+      },
+      "date_sensitive": false,
+      "needs_check": false,
+      "note": "系统不预测录取结果"
+    },
+    {
+      "id": "G01",
+      "category": "chitchat",
+      "input": "你好，你是谁？",
+      "expected_intent": "chitchat",
+      "expected_path": [
+        "router"
+      ],
+      "gold": {
+        "must_contain": [],
+        "must_not_contain": [],
+        "per_school": {}
+      },
+      "date_sensitive": false,
+      "needs_check": false,
+      "note": ""
+    },
+    {
+      "id": "G02",
+      "category": "chitchat",
+      "input": "今天天气怎么样？",
+      "expected_intent": "chitchat",
+      "expected_path": [
+        "router"
+      ],
+      "gold": {
+        "must_contain": [],
+        "must_not_contain": [],
+        "per_school": {}
+      },
+      "date_sensitive": false,
+      "needs_check": false,
+      "note": "无关问题，只经过router"
+    }
+  ]
+}

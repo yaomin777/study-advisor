@@ -1,0 +1,9 @@
+langgraph==1.2.18
+langchain-core==1.7.1
+langchain-anthropic==1.7.7
+anthropic==2.3.0
+python-dotenv==1.2.4
+streamlit==1.66.1
+
+# 测试
+pytest==9.2.0

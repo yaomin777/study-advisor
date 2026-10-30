@@ -1,0 +1,11 @@
+# 密钥（不得提交）
+.env
+.streamlit/secrets.toml
+
+# Python
+.venv/
+__pycache__/
+.pytest_cache/
+
+# macOS
+.DS_Store

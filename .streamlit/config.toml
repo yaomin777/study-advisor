@@ -1,0 +1,7 @@
+# 未捕获的异常不在浏览器中显示堆栈（app.py 已捕获异常并显示友好提示，这里是兜底）
+[client]
+showErrorDetails = "none"
+
+# 不向 Streamlit 发送使用统计
+[browser]
+gatherUsageStats = false

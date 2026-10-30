@@ -1,0 +1,43 @@
+```mermaid
+---
+config:
+  flowchart:
+    curve: linear
+---
+graph TD;
+	__start__([<p>__start__</p>]):::first
+	router(router)
+	profile_extractor(profile_extractor)
+	clarify(clarify)
+	school_matcher(school_matcher)
+	requirement_retriever(requirement_retriever)
+	doc_reviewer(doc_reviewer)
+	timeline_planner(timeline_planner)
+	verify(verify)
+	fallback(fallback)
+	__end__([<p>__end__</p>]):::last
+	__start__ --> router;
+	profile_extractor -.-> clarify;
+	profile_extractor -.-> school_matcher;
+	requirement_retriever -.-> fallback;
+	requirement_retriever -.-> timeline_planner;
+	requirement_retriever -.-> verify;
+	router -.-> __end__;
+	router -.-> clarify;
+	router -.-> doc_reviewer;
+	router -.-> profile_extractor;
+	router -.-> requirement_retriever;
+	school_matcher --> verify;
+	timeline_planner --> verify;
+	verify -.-> __end__;
+	verify -.-> fallback;
+	verify -.-> requirement_retriever;
+	verify -.-> school_matcher;
+	verify -.-> timeline_planner;
+	clarify --> __end__;
+	doc_reviewer --> __end__;
+	fallback --> __end__;
+	classDef default fill:#f2f0ff,line-height:1.2
+	classDef first fill-opacity:0
+	classDef last fill:#bfb6fc
+```
